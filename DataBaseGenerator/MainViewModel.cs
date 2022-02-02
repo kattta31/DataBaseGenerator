@@ -29,20 +29,6 @@ namespace DataBaseGenerator.UI.Wpf
         private int ID_Patient;
 
 
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
         public string UpdateText
         {
             get
@@ -77,51 +63,42 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        //private DelegateCommand selectDb;
-        //public ICommand SelectDb => selectDb = new DelegateCommand(PerformRequest);
-
-        //private void PerformRequest()
-        //{
-        //    try
-        //    {
-        //        myConnection = new MySqlConnection(connect);
-
-        //        myConnection.Open();
-
-        //        adapter = new MySqlDataAdapter();
-
-        //        mySqlCommand = new MySqlCommand($"INSERT INTO patient (ID_Patient, LastName, FirstName, MiddleName, PatientID, BirthDate, Sex, Address, AddInfo, Occupation) VALUES ('10', '3', '4', '6', 'MXR-000005', '1984-01-02', 'm', 'm', 'm', 'm');", myConnection);
-
-        //        dataReader = mySqlCommand.ExecuteReader();
-
-        //        UpdateText = "Patients registered";
-
-        //        //while (dataReader.Read())
-        //        //{
-        //        //    UpdateText = dataReader[0].ToString();
-        //        //}
-
-        //        dataReader.Close();
-
-        //        myConnection.Close();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        UpdateText = "Patient in Base";
-        //    }
-        //}
-
-        
-        
-
         private DelegateCommand selectDb;
         public ICommand SelectDb => selectDb = new DelegateCommand(PerformRequest);
 
         private void PerformRequest()
         {
+            try
+            {
+                myConnection = new MySqlConnection(connect);
 
-           
+                myConnection.Open();
+
+                adapter = new MySqlDataAdapter();
+
+                mySqlCommand = new MySqlCommand($"INSERT INTO patient (ID_Patient, LastName, FirstName, MiddleName, PatientID, BirthDate, Sex, Address, AddInfo, Occupation) VALUES ('10', '3', '4', '6', 'MXR-000005', '1984-01-02', 'm', 'm', 'm', 'm');", myConnection);
+
+                dataReader = mySqlCommand.ExecuteReader();
+
+                UpdateText = "Patients registered";
+
+                //while (dataReader.Read())
+                //{
+                //    UpdateText = dataReader[0].ToString();
+                //}
+
+                dataReader.Close();
+
+                myConnection.Close();
+            }
+            catch (Exception e)
+            {
+                UpdateText = "Patient in Base";
+            }
         }
+
+
+
 
 
     }
