@@ -1,4 +1,5 @@
 using System;
+using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.GeneratorRules.WorkList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,6 +25,29 @@ namespace DataBaseGenerator.Test
             var result = lastName.Generate();
 
             Console.WriteLine(result);
+
+        }
+
+        [TestMethod]
+        public void CreateNewPatient()
+        {
+            Patient newPatient = new Patient();
+
+            newPatient.IdPatient = 1;
+            newPatient.FirstName = "Vasia";
+            newPatient.LastName = "Pupkin";
+            newPatient.MiddleName = "Olegich";
+            newPatient.PatientId = "MXR-0001";
+            newPatient.BirthDate = new DateTime(1985,01,01);
+            newPatient.Sex = "M";
+            newPatient.Address = "Minsk";
+            newPatient.AddInfo = "No comments";
+            newPatient.Occupation = "Engineer";
+
+
+                
+
+            Console.WriteLine(newPatient);
 
         }
     }

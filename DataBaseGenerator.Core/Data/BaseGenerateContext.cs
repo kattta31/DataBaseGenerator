@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DataBaseGenerator.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataBaseGenerator.UI.Wpf.Data
+namespace DataBaseGenerator.Core.Data
 {
     public class BaseGenerateContext : DbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DataBaseGenerator.UI.Wpf.Migrations
+namespace DataBaseGenerator.Core.Migrations
 {
     public partial class Initial : Migration
     {

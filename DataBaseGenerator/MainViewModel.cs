@@ -4,9 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using DataBaseGenerator.Core;
+using DataBaseGenerator.Core.Data;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -114,7 +116,7 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
-       
+        
 
         private DelegateCommand addPatient;
         public ICommand AddPatient => addPatient ??= new DelegateCommand(PerformAddPatient);
@@ -123,10 +125,12 @@ namespace DataBaseGenerator.UI.Wpf
         {
             try
             {
-                var addPatient = DataBaseCommand.CreatePatient(1, "Grin", "Jorik");
+
+                var addPatient = DataBaseCommand.CreatePatient(1,"Vasia","Pupkin", "Olegich","MXR-0001",
+                    new DateTime(1985, 01, 01), "M","Minsk", "No comments", "Engineer");
 
                 UpdateText = "Patient added";
-
+                
             }
 
             catch (Exception e)

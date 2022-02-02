@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using DataBaseGenerator.UI.Wpf.Data;
+using DataBaseGenerator.Core.Data;
 
 
-namespace DataBaseGenerator.Core
+
+namespace DataBaseGenerator.Core.Data
 {
     public static class DataBaseCommand
     {
@@ -21,22 +22,30 @@ namespace DataBaseGenerator.Core
         }
 
 
-        public static string CreatePatient(int iD, string lastName, string name)
+        public static string CreatePatient(int iD, string lastName, string name, string middleName, 
+            string patientId, DateTime birthDate, string sex, string address, string addInfo, string occupation)
         {
             string result = "Patient created";
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                bool checkIsExist = dataBase.Patients.Any(element => element.IdPatient == iD && element.LastName == lastName && element.FirstName == name);
+                bool checkIsExist = dataBase.Patients.Any(
+                    element => element.IdPatient == iD && element.LastName == lastName && element.FirstName == name && element.MiddleName == middleName
+                    && element.PatientId == patientId && element.BirthDate == birthDate && element.Sex == sex && element.Address == address && element.AddInfo == addInfo);
                 
                 if (!checkIsExist)
                 {
-                    Patient newPatient = new Patient {IdPatient = iD, LastName = lastName, FirstName = name};
+                    Patient newPatient = new Patient
+                    {
+                        IdPatient = iD, LastName = lastName, FirstName = name, MiddleName = middleName, PatientId = patientId, BirthDate = birthDate,
+                        Sex = sex, Address = address, AddInfo = addInfo, Occupation = occupation
+                    };
 
                     dataBase.Patients.Add(newPatient);
                     dataBase.SaveChanges();
 
                     result = "Done";
+                   
                 }
 
                 return result;
@@ -53,10 +62,8 @@ namespace DataBaseGenerator.Core
                 dataBase.Patients.Remove(patient);
                 dataBase.SaveChanges();
 
-                //result = "Сделано! Пацоент " + patient.LastName + "удален из базы";
-
                 result = $"Сделано! Пацоент {patient.LastName} удален из базы";
-                MessageBox.Show(result);
+                
             }
 
             return result;
