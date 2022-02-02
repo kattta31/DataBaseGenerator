@@ -1,0 +1,12 @@
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\bin\Debug\net5.0-windows\DataBaseGenerator.Core.deps.json
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\bin\Debug\net5.0-windows\DataBaseGenerator.Core.dll
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\bin\Debug\net5.0-windows\ref\DataBaseGenerator.Core.dll
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\bin\Debug\net5.0-windows\DataBaseGenerator.Core.pdb
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.csproj.AssemblyReference.cache
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.AssemblyInfoInputs.cache
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.AssemblyInfo.cs
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.csproj.CoreCompileInputs.cache
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.dll
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\ref\DataBaseGenerator.Core.dll
+D:\Develop\DataBaseGenerator\DataBaseGenerator\DataBaseGenerator.Core\obj\Debug\net5.0-windows\DataBaseGenerator.Core.pdb
