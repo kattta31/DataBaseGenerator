@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
+        xmlns:core="clr-namespace:DataBaseGenerator.Core;assembly=DataBaseGenerator.Core"
         d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
         mc:Ignorable="d"
-        Title="DataBase Generator"
-        Height="450"
+        Title="DataBase Generator" 
+        Height="450" 
         Width="800"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
@@ -27,34 +28,8 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+
         <Grid Grid.Row="0"
-              Grid.Column="0"
-              Grid.ColumnSpan="2">
-
-            <ListView Name="Patient"
-                      ItemsSource="{Binding AllPatients}"
-                      Margin="5">
-                
-                <ListView.View>
-                    <GridView>
-
-                        <GridViewColumn Header="Id"
-                                        DisplayMemberBinding="{Binding Id}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="LastName"
-                                        DisplayMemberBinding="{Binding LastName}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="Name"
-                                        DisplayMemberBinding="{Binding Name}">
-                        </GridViewColumn>
-
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </Grid>
-
-        <Grid Grid.Row="1"
               Grid.Column="0"
               Grid.ColumnSpan="2">
 
@@ -64,59 +39,44 @@
                      HorizontalContentAlignment="Center"
                      VerticalContentAlignment="Center"
                      Text="{Binding UpdateText, UpdateSourceTrigger= PropertyChanged}"
-                     IsReadOnly="True" />
+                     IsReadOnly="True">
+            </TextBox>
 
         </Grid>
 
         <Grid Grid.Row="1"
               Grid.Column="0"
-              Grid.ColumnSpan="2" />
+              Grid.ColumnSpan="2">
 
-        <Grid Name="ButtonConnect"
-              Grid.Row="2"
-              Grid.Column="0"
-              Margin="5">
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Grid.Column="0">
 
             <Button Name="Connect"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Center"
                     Content="Connect"
-                    Command="{Binding ConnectDB}" />
+                    Command="{Binding ConnectDB}">
+            </Button>
 
-            
-            <Button Name="Add"
-                        Width="150"
-                        Height="50"
-                        HorizontalAlignment="Right"
-                        Content="Add"
-                        Command="{Binding AddPatient}" />
-
-            
         </Grid>
 
-        
-
-        <Grid Name="ButtonSelect"
-              Grid.Row="2"
-              Grid.Column="1"
-              Margin="5">
+        <Grid Grid.Row="2"
+              Grid.Column="1">
 
             <Button Name="Select"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Center"
                     Content="Request"
-                    Command="{Binding SelectDb}" />
-
-            <Button Name="Delete"
-                    Width="150"
-                    Height="50"
-                    HorizontalAlignment="Right"
-                    Content="Delete"
-                    Command="{Binding DeletePatient}" />
+                    Command="{Binding SelectDb}">
+            </Button>
 
         </Grid>
+
 
 
     </Grid>

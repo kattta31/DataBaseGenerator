@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBaseGenerator.UI.Wpf.Migrations
 {
-    [DbContext(typeof(BaseGenerateContext))]
+    [DbContext(typeof(BaseGenerate))]
     [Migration("20220201133427_Initial")]
     partial class Initial
     {
