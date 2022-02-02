@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBaseGenerator.UI.Wpf.Migrations
 {
-    [DbContext(typeof(BaseGenerate))]
+    [DbContext(typeof(BaseGenerateContext))]
     partial class BaseGenerateModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
