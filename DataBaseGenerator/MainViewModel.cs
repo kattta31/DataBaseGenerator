@@ -133,8 +133,6 @@ namespace DataBaseGenerator.UI.Wpf
             {
                 UpdateText = "Patient not added";
             }
-            
-            
 
         }
 
@@ -159,8 +157,6 @@ namespace DataBaseGenerator.UI.Wpf
                 UpdateText = "Patient not Deleted";
             }
         }
-
-
 
     }
 }
