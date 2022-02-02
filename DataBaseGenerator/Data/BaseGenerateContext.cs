@@ -8,16 +8,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBaseGenerator.UI.Wpf.Data
 {
-    public class BaseGenerate : DbContext
+    public class BaseGenerateContext : DbContext
     {
+
         public DbSet<Patient> Patients { get; set; }
 
-        public BaseGenerate()
+
+        public BaseGenerateContext()
         {
             Database.EnsureCreated();
         }
 
-        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

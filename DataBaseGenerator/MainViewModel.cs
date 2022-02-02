@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using DataBaseGenerator.Core;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -98,6 +99,66 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
+
+        private List<Patient> allPatients = DataBaseCommand.GetAllPatients();
+
+        public List<Patient> AllPatients
+        {
+            get
+            {
+                return allPatients;
+            }
+            set
+            {
+                SetProperty(ref allPatients, value);
+            }
+        }
+
+       
+
+        private DelegateCommand addPatient;
+        public ICommand AddPatient => addPatient ??= new DelegateCommand(PerformAddPatient);
+
+        private void PerformAddPatient()
+        {
+            try
+            {
+                var addPatient = DataBaseCommand.CreatePatient(1, "Grin", "Jorik");
+
+                UpdateText = "Patient added";
+
+            }
+
+            catch (Exception e)
+            {
+                UpdateText = "Patient not added";
+            }
+            
+            
+
+        }
+
+        private DelegateCommand deletePatient;
+        public ICommand DeletePatient => deletePatient ??= new DelegateCommand(PerformDeletePatient);
+
+        private void PerformDeletePatient()
+        {
+            try
+            {
+                Patient patient = new Patient();
+                patient.Id = 1;
+                patient.LastName = "";
+                patient.Name = "";
+
+                var deletePatient = DataBaseCommand.DeletePatient(patient);
+
+                UpdateText = "Patient delete";
+            }
+            catch (Exception e)
+            {
+                UpdateText = "Patient not Deleted";
+            }
+        }
 
 
 
