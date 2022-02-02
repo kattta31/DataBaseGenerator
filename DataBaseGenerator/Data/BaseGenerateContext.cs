@@ -22,7 +22,7 @@ namespace DataBaseGenerator.UI.Wpf.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(@"server=localhost;database=worklistgenerator;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
+            optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
         }
 
     }

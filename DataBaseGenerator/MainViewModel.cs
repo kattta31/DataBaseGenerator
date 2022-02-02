@@ -25,7 +25,7 @@ namespace DataBaseGenerator.UI.Wpf
         public MySqlDataReader dataReader;
         private MySqlDataAdapter adapter;
         private DataTable tablet;
-        public string connect = "Server=localhost;DataBase=worklistgenerator;Uid=root;pwd=root;";
+        public string connect = "Server=localhost;DataBase=medxregistry;Uid=root;pwd=root;";
         private string _updateText;
         private int ID_Patient;
 
@@ -143,12 +143,12 @@ namespace DataBaseGenerator.UI.Wpf
         {
             try
             {
-                Patient patient = new Patient();
-                patient.Id = 1;
-                patient.LastName = "";
-                patient.Name = "";
+                //Patient patient = new Patient();
+                //patient.Id = 1;
+                //patient.LastName = "";
+                //patient.Name = "";
 
-                var deletePatient = DataBaseCommand.DeletePatient(patient);
+                //var deletePatient = DataBaseCommand.DeletePatient(patient);
 
                 UpdateText = "Patient delete";
             }

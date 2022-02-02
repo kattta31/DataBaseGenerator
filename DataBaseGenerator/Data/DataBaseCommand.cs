@@ -27,11 +27,11 @@ namespace DataBaseGenerator.Core
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                bool checkIsExist = dataBase.Patients.Any(element => element.Id == iD && element.LastName == lastName && element.Name == name);
+                bool checkIsExist = dataBase.Patients.Any(element => element.IdPatient == iD && element.LastName == lastName && element.FirstName == name);
                 
                 if (!checkIsExist)
                 {
-                    Patient newPatient = new Patient {Id = iD, LastName = lastName, Name = name};
+                    Patient newPatient = new Patient {IdPatient = iD, LastName = lastName, FirstName = name};
 
                     dataBase.Patients.Add(newPatient);
                     dataBase.SaveChanges();
@@ -69,12 +69,12 @@ namespace DataBaseGenerator.Core
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                Patient patient = dataBase.Patients.FirstOrDefault(position => position.Id == oldPatient.Id);
+                Patient patient = dataBase.Patients.FirstOrDefault(position => position.IdPatient == oldPatient.IdPatient);
                 if (patient != null)
                 {
-                    patient.Id = iD;
+                    patient.IdPatient = iD;
                     patient.LastName = lastName;
-                    patient.Name = name;
+                    patient.FirstName = name;
                     dataBase.SaveChanges();
 
                     result = $"Done!!! Patient data {patient.LastName} changed";

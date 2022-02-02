@@ -39,14 +39,34 @@
                     <GridView>
 
                         <GridViewColumn Header="Id"
-                                        DisplayMemberBinding="{Binding Id}">
-                        </GridViewColumn>
+                                        DisplayMemberBinding="{Binding IdPatient}"/>
+
                         <GridViewColumn Header="LastName"
-                                        DisplayMemberBinding="{Binding LastName}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="Name"
-                                        DisplayMemberBinding="{Binding Name}">
-                        </GridViewColumn>
+                                        DisplayMemberBinding="{Binding LastName}"/>
+
+                        <GridViewColumn Header="FirstName"
+                                        DisplayMemberBinding="{Binding FirstName}"/>
+
+                        <GridViewColumn Header="MiddleName"
+                                        DisplayMemberBinding="{Binding MiddleName}"/>
+
+                        <GridViewColumn Header="PatientId"
+                                        DisplayMemberBinding="{Binding PatientId}"/>
+
+                        <GridViewColumn Header="BirthDate"
+                                        DisplayMemberBinding="{Binding BirthDate}"/>
+
+                        <GridViewColumn Header="Sex"
+                                        DisplayMemberBinding="{Binding Sex}"/>
+
+                        <GridViewColumn Header="Address"
+                                        DisplayMemberBinding="{Binding Address}"/>
+
+                        <GridViewColumn Header="AddInfo"
+                                        DisplayMemberBinding="{Binding AddInfo}"/>
+
+                        <GridViewColumn Header="Occupation"
+                                        DisplayMemberBinding="{Binding Occupation}"/>
 
                     </GridView>
                 </ListView.View>
