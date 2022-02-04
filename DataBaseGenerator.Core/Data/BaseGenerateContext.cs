@@ -11,7 +11,7 @@ namespace DataBaseGenerator.Core.Data
     public class BaseGenerateContext : DbContext
     {
 
-        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Patient> Patient { get; set; }
 
 
         public BaseGenerateContext()

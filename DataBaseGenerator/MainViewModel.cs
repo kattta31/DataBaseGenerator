@@ -126,7 +126,7 @@ namespace DataBaseGenerator.UI.Wpf
             try
             {
 
-                var addPatient = DataBaseCommand.CreatePatient(1,"Vasia","Pupkin", "Olegich","MXR-0001",
+                var addPatient = DataBaseCommand.CreatePatient(5,"Vasia","Pupkin", "Olegich","MXR-0005",
                     new DateTime(1985, 01, 01), "M","Minsk", "No comments", "Engineer");
 
                 UpdateText = "Patient added";

@@ -39,7 +39,7 @@
                     <GridView>
 
                         <GridViewColumn Header="Id"
-                                        DisplayMemberBinding="{Binding IdPatient}"/>
+                                        DisplayMemberBinding="{Binding ID_Patient}"/>
 
                         <GridViewColumn Header="LastName"
                                         DisplayMemberBinding="{Binding LastName}"/>
@@ -51,7 +51,7 @@
                                         DisplayMemberBinding="{Binding MiddleName}"/>
 
                         <GridViewColumn Header="PatientId"
-                                        DisplayMemberBinding="{Binding PatientId}"/>
+                                        DisplayMemberBinding="{Binding PatientID}"/>
 
                         <GridViewColumn Header="BirthDate"
                                         DisplayMemberBinding="{Binding BirthDate}"/>

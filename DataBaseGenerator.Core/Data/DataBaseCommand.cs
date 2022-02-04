@@ -16,7 +16,7 @@ namespace DataBaseGenerator.Core.Data
         {
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                var result = dataBase.Patients.ToList();
+                var result = dataBase.Patient.ToList();
                 return result;
             }
         }
@@ -29,19 +29,19 @@ namespace DataBaseGenerator.Core.Data
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                bool checkIsExist = dataBase.Patients.Any(
-                    element => element.IdPatient == iD && element.LastName == lastName && element.FirstName == name && element.MiddleName == middleName
-                    && element.PatientId == patientId && element.BirthDate == birthDate && element.Sex == sex && element.Address == address && element.AddInfo == addInfo);
+                bool checkIsExist = dataBase.Patient.Any(
+                    element => element.ID_Patient == iD && element.LastName == lastName && element.FirstName == name && element.MiddleName == middleName
+                    && element.PatientID == patientId && element.BirthDate == birthDate && element.Sex == sex && element.Address == address && element.AddInfo == addInfo);
                 
                 if (!checkIsExist)
                 {
                     Patient newPatient = new Patient
                     {
-                        IdPatient = iD, LastName = lastName, FirstName = name, MiddleName = middleName, PatientId = patientId, BirthDate = birthDate,
+                        ID_Patient = iD, LastName = lastName, FirstName = name, MiddleName = middleName, PatientID = patientId, BirthDate = birthDate,
                         Sex = sex, Address = address, AddInfo = addInfo, Occupation = occupation
                     };
 
-                    dataBase.Patients.Add(newPatient);
+                    dataBase.Patient.Add(newPatient);
                     dataBase.SaveChanges();
 
                     result = "Done";
@@ -59,7 +59,7 @@ namespace DataBaseGenerator.Core.Data
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                dataBase.Patients.Remove(patient);
+                dataBase.Patient.Remove(patient);
                 dataBase.SaveChanges();
 
                 result = $"Сделано! Пацоент {patient.LastName} удален из базы";
@@ -76,10 +76,10 @@ namespace DataBaseGenerator.Core.Data
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                Patient patient = dataBase.Patients.FirstOrDefault(position => position.IdPatient == oldPatient.IdPatient);
+                Patient patient = dataBase.Patient.FirstOrDefault(position => position.ID_Patient == oldPatient.ID_Patient);
                 if (patient != null)
                 {
-                    patient.IdPatient = iD;
+                    patient.ID_Patient = iD;
                     patient.LastName = lastName;
                     patient.FirstName = name;
                     dataBase.SaveChanges();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBaseGenerator.Core.GeneratorRules.WorkList
+namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
     public sealed class RandomMiddleNameRule : IGeneratorRule<string>
     {

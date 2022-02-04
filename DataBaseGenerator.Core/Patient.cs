@@ -6,7 +6,7 @@ namespace DataBaseGenerator.Core
 {
     public class Patient
     {
-        public int IdPatient { get; set; }
+        public int ID_Patient { get; set; }
 
         public string LastName { get; set; }
 
@@ -14,7 +14,7 @@ namespace DataBaseGenerator.Core
 
         public string MiddleName { get; set; }
 
-        public string PatientId { get; set; }
+        public string PatientID { get; set; }
 
         public DateTime BirthDate { get; set; }
 

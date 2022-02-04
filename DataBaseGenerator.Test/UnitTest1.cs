@@ -1,6 +1,6 @@
 using System;
 using DataBaseGenerator.Core;
-using DataBaseGenerator.Core.GeneratorRules.WorkList;
+using DataBaseGenerator.Core.GeneratorRules.Patient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DataBaseGenerator.Test
@@ -33,11 +33,11 @@ namespace DataBaseGenerator.Test
         {
             Patient newPatient = new Patient();
 
-            newPatient.IdPatient = 1;
+            newPatient.ID_Patient = 1;
             newPatient.FirstName = "Vasia";
             newPatient.LastName = "Pupkin";
             newPatient.MiddleName = "Olegich";
-            newPatient.PatientId = "MXR-0001";
+            newPatient.PatientID = "MXR-0001";
             newPatient.BirthDate = new DateTime(1985,01,01);
             newPatient.Sex = "M";
             newPatient.Address = "Minsk";
