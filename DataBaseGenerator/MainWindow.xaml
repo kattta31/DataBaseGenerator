@@ -20,6 +20,7 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -27,7 +28,8 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0"
+        <Grid Name="PatientTable"
+            Grid.Row="0"
               Grid.Column="0"
               Grid.ColumnSpan="2">
 
@@ -74,7 +76,73 @@
 
         </Grid>
 
-        <Grid Grid.Row="1"
+
+        <Grid Name="WorkListTable"
+              Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="2">
+
+            <ListView Name="WorkList"
+                      
+                      Margin="5">
+
+                <ListView.View>
+                    <GridView>
+
+                        <GridViewColumn Header="Id"
+                                        DisplayMemberBinding="{Binding ID_WorkList}"/>
+
+                        <GridViewColumn Header="LastName"
+                                        DisplayMemberBinding="{Binding CreateDate}"/>
+
+                        <GridViewColumn Header="FirstName"
+                                        DisplayMemberBinding="{Binding CreateTime}"/>
+
+                        <GridViewColumn Header="MiddleName"
+                                        DisplayMemberBinding="{Binding CompleteDate}"/>
+
+                        <GridViewColumn Header="PatientId"
+                                        DisplayMemberBinding="{Binding CompleteTime}"/>
+
+                        <GridViewColumn Header="BirthDate"
+                                        DisplayMemberBinding="{Binding ID_Patient}"/>
+
+                        <GridViewColumn Header="Sex"
+                                        DisplayMemberBinding="{Binding State}"/>
+
+                        <GridViewColumn Header="Address"
+                                        DisplayMemberBinding="{Binding SOPInstanceUID}"/>
+
+                        <GridViewColumn Header="AddInfo"
+                                        DisplayMemberBinding="{Binding Modality}"/>
+
+                        <GridViewColumn Header="Occupation"
+                                        DisplayMemberBinding="{Binding StationAeTitle}"/>
+
+                        <GridViewColumn Header="BirthDate"
+                                        DisplayMemberBinding="{Binding BirtProcedureStepStartDateTimehDate}"/>
+
+                        <GridViewColumn Header="Sex"
+                                        DisplayMemberBinding="{Binding PerformingPhysiciansName}"/>
+
+                        <GridViewColumn Header="Address"
+                                        DisplayMemberBinding="{Binding StudyDescription}"/>
+
+                        <GridViewColumn Header="AddInfo"
+                                        DisplayMemberBinding="{Binding ReferringPhysiciansName}"/>
+
+                        <GridViewColumn Header="Occupation"
+                                        DisplayMemberBinding="{Binding RequestingPhysician}"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
+
+        <Grid Name="ViewUpdateText"
+              Grid.Row="2"
               Grid.Column="0"
               Grid.ColumnSpan="2">
 
@@ -87,13 +155,10 @@
                      IsReadOnly="True" />
 
         </Grid>
-
-        <Grid Grid.Row="1"
-              Grid.Column="0"
-              Grid.ColumnSpan="2" />
+        
 
         <Grid Name="ButtonConnect"
-              Grid.Row="2"
+              Grid.Row="3"
               Grid.Column="0"
               Margin="5">
 
@@ -117,7 +182,7 @@
         
 
         <Grid Name="ButtonSelect"
-              Grid.Row="2"
+              Grid.Row="3"
               Grid.Column="1"
               Margin="5">
 

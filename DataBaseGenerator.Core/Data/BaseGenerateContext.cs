@@ -10,10 +10,11 @@ namespace DataBaseGenerator.Core.Data
 {
     public class BaseGenerateContext : DbContext
     {
-
+        
         public DbSet<Patient> Patient { get; set; }
 
-
+        public DbSet<WorkList> WorkList { get; set; }
+        
         public BaseGenerateContext()
         {
             Database.EnsureCreated();

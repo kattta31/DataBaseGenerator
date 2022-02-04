@@ -19,7 +19,7 @@ namespace DataBaseGenerator.UI.Wpf
     {
         public MainViewModel()
         {
-            
+
         }
 
         public MySqlConnection myConnection;
@@ -37,7 +37,7 @@ namespace DataBaseGenerator.UI.Wpf
             get
             {
                 return _updateText;
-            } 
+            }
             set
             {
                 SetProperty(ref _updateText, value);
@@ -85,10 +85,10 @@ namespace DataBaseGenerator.UI.Wpf
 
                 UpdateText = "Patients registered";
 
-                //while (dataReader.Read())
-                //{
-                //    UpdateText = dataReader[0].ToString();
-                //}
+                while (dataReader.Read())
+                {
+                    UpdateText = dataReader[0].ToString();
+                }
 
                 dataReader.Close();
 
@@ -116,7 +116,7 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
-        
+
 
         private DelegateCommand addPatient;
         public ICommand AddPatient => addPatient ??= new DelegateCommand(PerformAddPatient);
@@ -126,11 +126,11 @@ namespace DataBaseGenerator.UI.Wpf
             try
             {
 
-                var addPatient = DataBaseCommand.CreatePatient(5,"Vasia","Pupkin", "Olegich","MXR-0005",
-                    new DateTime(1985, 01, 01), "M","Minsk", "No comments", "Engineer");
+                var addPatient = DataBaseCommand.CreatePatient(1, "Vasia", "Pupkin", "Olegich", "MXR-0004",
+                    new DateTime(1985, 01, 01), "M", "Minsk", "No comments", "Engineer");
 
                 UpdateText = "Patient added";
-                
+
             }
 
             catch (Exception e)

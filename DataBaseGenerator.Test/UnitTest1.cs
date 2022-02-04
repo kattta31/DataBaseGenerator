@@ -33,16 +33,16 @@ namespace DataBaseGenerator.Test
         {
             Patient newPatient = new Patient();
 
-            newPatient.ID_Patient = 1;
-            newPatient.FirstName = "Vasia";
-            newPatient.LastName = "Pupkin";
-            newPatient.MiddleName = "Olegich";
-            newPatient.PatientID = "MXR-0001";
-            newPatient.BirthDate = new DateTime(1985,01,01);
-            newPatient.Sex = "M";
-            newPatient.Address = "Minsk";
-            newPatient.AddInfo = "No comments";
-            newPatient.Occupation = "Engineer";
+            //newPatient.ID_Patient = 1;
+            //newPatient.FirstName = "Vasia";
+            //newPatient.LastName = "Pupkin";
+            //newPatient.MiddleName = "Olegich";
+            //newPatient.PatientID = "MXR-0001";
+            //newPatient.BirthDate = new DateTime(1985,01,01);
+            //newPatient.Sex = "M";
+            //newPatient.Address = "Minsk";
+            //newPatient.AddInfo = "No comments";
+            //newPatient.Occupation = "Engineer";
 
 
                 

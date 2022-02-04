@@ -25,6 +25,6 @@ namespace DataBaseGenerator.Core
         public string AddInfo { get; set; }
 
         public string Occupation { get; set; }
-
+        
     }
 }
