@@ -164,9 +164,7 @@ namespace DataBaseGenerator.UI.Wpf
                 //var addPatient = DataBaseCommand.CreatePatient(1, "Vasia", "Pupkin", "Olegich", "MXR-0004",
                 //    new DateTime(1985, 01, 01), "M", "Minsk", "No comments", "Engineer");
 
-                var addPatient = DataBaseCommand.CreatePatient(newPatient.ID_Patient.Generate(000019), newPatient.LastName.Generate(), 
-                    newPatient.FirstName.Generate(), newPatient.MiddleName.Generate(), newPatient.BirthDate.Generate(), newPatient.Sex.Generate(),
-                    newPatient.Address.Generate(),newPatient.AddInfo.Generate(),newPatient.Occupation.Generate());
+                var addPatient = DataBaseCommand.GenerateDateBase(newPatient);
 
                 UpdateText = "Patient added";
 
