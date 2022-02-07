@@ -30,9 +30,9 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
             return birthDate;
         }
 
-        //public override string ToString()
-        //{
-        //    return $"{Generate()}";
-        //}
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

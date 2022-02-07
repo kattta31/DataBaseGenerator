@@ -15,7 +15,6 @@ namespace DataBaseGenerator.Test
             var result = name.Generate();
 
             Console.WriteLine(result);
-
         }
 
         [TestMethod]
@@ -25,30 +24,58 @@ namespace DataBaseGenerator.Test
             var result = lastName.Generate();
 
             Console.WriteLine(result);
-
         }
 
         [TestMethod]
         public void CreateNewPatient()
         {
-            Patient newPatient = new Patient();
+            var newPatient = new PatientGeneratorParameters(
+                new OrderIdPatientRule(),
+                new RandomFirstNameRule(),
+                new RandomLastNameRule(),
+                new RandomMiddleNameRule(),
+                new RandomBirthDateRule(new DateTime()),
+                new RandomSexRule(),
+                new RandomAddressRule(),
+                new RandomAddInfoRule(),
+                new RandomOccupationRule()
+            );
 
-            //newPatient.ID_Patient = 1;
-            //newPatient.FirstName = "Vasia";
-            //newPatient.LastName = "Pupkin";
-            //newPatient.MiddleName = "Olegich";
-            //newPatient.PatientID = "MXR-0001";
-            //newPatient.BirthDate = new DateTime(1985,01,01);
-            //newPatient.Sex = "M";
-            //newPatient.Address = "Minsk";
-            //newPatient.AddInfo = "No comments";
-            //newPatient.Occupation = "Engineer";
+            newPatient.ID_Patient.Generate(1);
+            newPatient.LastName.Generate();
+            newPatient.FirstName.Generate();
+            newPatient.MiddleName.Generate();
+            newPatient.BirthDate.Generate();
+            newPatient.Sex.Generate();
+            newPatient.Address.Generate();
+            newPatient.AddInfo.Generate();
+            newPatient.Occupation.Generate();
+
+            var result = newPatient;
+
+            Console.WriteLine(result);
+        }
+
+        [TestMethod]
+        public void GeneratePatient()
+        {
+            var patient = new PatientGenerator();
+
+            var newPatient = new PatientGeneratorParameters(
+                new OrderIdPatientRule(),
+                new RandomFirstNameRule(),
+                new RandomLastNameRule(),
+                new RandomMiddleNameRule(),
+                new RandomBirthDateRule(new DateTime()),
+                new RandomSexRule(),
+                new RandomAddressRule(),
+                new RandomAddInfoRule(),
+                new RandomOccupationRule());
 
 
-                
+            var result = patient.Generate(newPatient);
 
-            Console.WriteLine(newPatient);
-
+            Console.WriteLine(result);
         }
     }
 }

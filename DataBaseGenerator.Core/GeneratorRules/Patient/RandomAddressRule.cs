@@ -32,9 +32,9 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
             return address;
         }
 
-        //public override string ToString()
-        //{
-        //    return $"{Generate()}";
-        //}
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

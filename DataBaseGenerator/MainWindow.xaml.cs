@@ -20,9 +20,16 @@ namespace DataBaseGenerator.UI.Wpf
     /// </summary>
     public partial class MainWindow
     {
+        
+        //Create ListView для возможности обновлять таблицу
+
+        public static ListView AllPatientView;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            AllPatientView = ViewAllPatient;
         }
     }
 }

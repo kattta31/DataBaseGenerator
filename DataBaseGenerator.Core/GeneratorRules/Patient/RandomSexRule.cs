@@ -23,5 +23,10 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
 
             return patientSex;
         }
+
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

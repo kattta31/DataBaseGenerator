@@ -30,5 +30,10 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
 
             return lastName;
         }
+
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

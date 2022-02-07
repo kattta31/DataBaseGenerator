@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
-    public sealed class OrderPatientIdRule : IGeneratorRule<string, int>
-    {
-        public int ID_Patient { get; set; }
+    //public sealed class OrderPatientIdRule : IGeneratorRule<string, int>
+    //{
+    //    public int ID_Patient { get; set; }
 
-        public string Generate(int index)
-        {
-            return $"{index}";
-        }
+    //    public string Generate(int index)
+    //    {
+    //        return $"{index}";
+    //    }
 
-        //public override string ToString()
-        //{
-        //    return $"{Generate($"{}")}";
-        //}
-    }
+    //    //public override string ToString()
+    //    //{
+    //    //    return $"{Generate($"{}")}";
+    //    //}
+    //}
 }

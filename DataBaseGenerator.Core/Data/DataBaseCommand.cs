@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using DataBaseGenerator.Core.Data;
-
+using DataBaseGenerator.Core.GeneratorRules.Patient;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DataBaseGenerator.Core.Data
@@ -22,24 +24,24 @@ namespace DataBaseGenerator.Core.Data
         }
 
 
-        public static string CreatePatient(int iD, string lastName, string name, string middleName,
-    string patientId, DateTime birthDate, string sex, string address, string addInfo, string occupation)
+        public static string CreatePatient(string patientId, string lastName, string firstName, string middleName,
+            DateTime birthDate, string sex, string address, string addInfo, string occupation)
         {
             string result = "Patient created";
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
                 bool checkIsExist = dataBase.Patient.Any(
-                    element => element.ID_Patient == iD && element.LastName == lastName && element.FirstName == name && element.MiddleName == middleName
+                    element => element.LastName == lastName && element.FirstName == firstName && element.MiddleName == middleName
                     && element.PatientID == patientId && element.BirthDate == birthDate && element.Sex == sex && element.Address == address && element.AddInfo == addInfo);
 
                 if (!checkIsExist)
                 {
                     Patient newPatient = new Patient
                     {
-                        ID_Patient = iD,
+
                         LastName = lastName,
-                        FirstName = name,
+                        FirstName = firstName,
                         MiddleName = middleName,
                         PatientID = patientId,
                         BirthDate = birthDate,
@@ -60,7 +62,7 @@ namespace DataBaseGenerator.Core.Data
             }
         }
 
-
+        
         public static string DeletePatient(Patient patient)
         {
             string result = "Patient is not create";

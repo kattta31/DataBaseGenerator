@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
+using DataBaseGenerator.Core.GeneratorRules.Patient;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -17,9 +19,10 @@ namespace DataBaseGenerator.UI.Wpf
 {
     public class MainViewModel : BindableBase
     {
-        public MainViewModel()
-        {
 
+       public MainViewModel()
+        {
+       
         }
 
         public MySqlConnection myConnection;
@@ -116,7 +119,23 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
+        
 
+        private DelegateCommand refreshPatients;
+        public ICommand RefreshPatients => refreshPatients ??= new DelegateCommand(PerformRefreshPatients);
+
+        private void PerformRefreshPatients()
+        {
+            AllPatients = DataBaseCommand.GetAllPatients();
+            MainWindow.AllPatientView.ItemsSource = null;
+            MainWindow.AllPatientView.Items.Clear();
+            MainWindow.AllPatientView.ItemsSource = AllPatients;
+            MainWindow.AllPatientView.Items.Refresh();
+        }
+
+
+        //НАДО ПРОВЕРИТЬ - ВАРИАНТ , ЛИБО ТАК ЛИБО ТАК!!!
+        private RandomLastNameRule _lastName;
 
         private DelegateCommand addPatient;
         public ICommand AddPatient => addPatient ??= new DelegateCommand(PerformAddPatient);
@@ -125,9 +144,29 @@ namespace DataBaseGenerator.UI.Wpf
         {
             try
             {
+                //НАДО ПРОВЕРИТЬ - ВАРИАНТ , ЛИБО ТАК ЛИБО ТАК!!!
 
-                var addPatient = DataBaseCommand.CreatePatient(1, "Vasia", "Pupkin", "Olegich", "MXR-0004",
-                    new DateTime(1985, 01, 01), "M", "Minsk", "No comments", "Engineer");
+                var patient = new PatientGenerator();
+
+                var newPatient = new PatientGeneratorParameters(
+                    new OrderIdPatientRule(),
+                    new RandomLastNameRule(),
+                    new RandomFirstNameRule(),
+                    new RandomMiddleNameRule(),
+                    new RandomBirthDateRule(new DateTime()),
+                    new RandomSexRule(),
+                    new RandomAddressRule(),
+                    new RandomAddInfoRule(),
+                    new RandomOccupationRule());
+
+                
+
+                //var addPatient = DataBaseCommand.CreatePatient(1, "Vasia", "Pupkin", "Olegich", "MXR-0004",
+                //    new DateTime(1985, 01, 01), "M", "Minsk", "No comments", "Engineer");
+
+                var addPatient = DataBaseCommand.CreatePatient(newPatient.ID_Patient.Generate(000019), newPatient.LastName.Generate(), 
+                    newPatient.FirstName.Generate(), newPatient.MiddleName.Generate(), newPatient.BirthDate.Generate(), newPatient.Sex.Generate(),
+                    newPatient.Address.Generate(),newPatient.AddInfo.Generate(),newPatient.Occupation.Generate());
 
                 UpdateText = "Patient added";
 
@@ -162,5 +201,6 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
+        
     }
 }

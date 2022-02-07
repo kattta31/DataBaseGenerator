@@ -33,9 +33,9 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
         }
 
 
-        //public override string ToString()
-        //{
-        //    return $"{Generate()}";
-        //}
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

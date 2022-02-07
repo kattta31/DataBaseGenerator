@@ -24,7 +24,7 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
 
         //public override string ToString()
         //{
-        //    return $"{Generate($"{PatientID.}")}";
+        //    return $"{Generate($"{PatientID}-{}")}";
         //}
     }
 }
