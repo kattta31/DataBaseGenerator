@@ -38,7 +38,7 @@ namespace DataBaseGenerator.Core
 
 
 
-        public int PatientCount { get; set; } = 2;
+        public int PatientCount { get; set; }
 
         public  IGeneratorRule<int, int> ID_Patient { get; }
 

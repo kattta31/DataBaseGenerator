@@ -23,45 +23,7 @@ namespace DataBaseGenerator.Core.Data
             }
         }
 
-
-        //public static string CreatePatient(string patientId, string lastName, string firstName, string middleName,
-        //    DateTime birthDate, string sex, string address, string addInfo, string occupation)
-        //{
-        //    string result = "Patient created";
-
-        //    using (BaseGenerateContext dataBase = new BaseGenerateContext())
-        //    {
-        //        bool checkIsExist = dataBase.Patient.Any(
-        //            element => element.LastName == lastName && element.FirstName == firstName && element.MiddleName == middleName
-        //            && element.PatientID == patientId && element.BirthDate == birthDate && element.Sex == sex && element.Address == address && element.AddInfo == addInfo);
-
-        //        if (!checkIsExist)
-        //        {
-        //            Patient newPatient = new Patient
-        //            {
-
-        //                LastName = lastName,
-        //                FirstName = firstName,
-        //                MiddleName = middleName,
-        //                PatientID = patientId,
-        //                BirthDate = birthDate,
-        //                Sex = sex,
-        //                Address = address,
-        //                AddInfo = addInfo,
-        //                Occupation = occupation
-        //            };
-
-        //            dataBase.Patient.Add(newPatient);
-        //            dataBase.SaveChanges();
-
-        //            result = "Done";
-
-        //        }
-
-        //        return result;
-        //    }
-        //}
-
+        
         public static IEnumerable<PatientGeneratorParameters> GenerateDateBase(PatientGeneratorParameters patientGeneratorParameters)
         {
             var dataBaseGenerators = new List<PatientGeneratorParameters>();
@@ -121,6 +83,7 @@ namespace DataBaseGenerator.Core.Data
                 return result;
             }
         }
+
 
         public static string DeletePatient(Patient patient)
         {

@@ -20,19 +20,23 @@ namespace DataBaseGenerator.UI.Wpf
     public class MainViewModel : BindableBase
     {
 
-       public MainViewModel()
+        public MainViewModel()
         {
-       
+
         }
 
-        public MySqlConnection myConnection;
-        public MySqlCommand mySqlCommand;
-        public MySqlDataReader dataReader;
-        private MySqlDataAdapter adapter;
-        private DataTable tablet;
-        public string connect = "Server=localhost;DataBase=medxregistry;Uid=root;pwd=root;";
+
+        private PatientGeneratorParameters _patientGeneratorParameters;
+
+        private MySqlConnection _myConnection;
+        private MySqlCommand _mySqlCommand;
+        private MySqlDataReader _dataReader;
+        private MySqlDataAdapter _adapter;
+        private DataTable _tablet;
+        private string _connect = "Server=localhost;DataBase=medxregistry;Uid=root;pwd=root;";
         private string _updateText;
-        private int ID_Patient;
+
+
 
 
         public string UpdateText
@@ -48,16 +52,16 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        private DelegateCommand connectDB;
-        public ICommand ConnectDB => connectDB = new DelegateCommand(PerformConnectDB);
+        private DelegateCommand _connectDB;
+        public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
 
         private void PerformConnectDB()
         {
             try
             {
-                myConnection = new MySqlConnection(connect);
+                _myConnection = new MySqlConnection(_connect);
 
-                myConnection.Open();
+                _myConnection.Open();
 
                 UpdateText = "DB connect";
 
@@ -69,33 +73,33 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        private DelegateCommand selectDb;
-        public ICommand SelectDb => selectDb = new DelegateCommand(PerformRequest);
+        private DelegateCommand _selectDb;
+        public ICommand SelectDb => _selectDb = new DelegateCommand(PerformRequest);
 
         private void PerformRequest()
         {
             try
             {
-                myConnection = new MySqlConnection(connect);
+                _myConnection = new MySqlConnection(_connect);
 
-                myConnection.Open();
+                _myConnection.Open();
 
-                adapter = new MySqlDataAdapter();
+                _adapter = new MySqlDataAdapter();
 
-                mySqlCommand = new MySqlCommand($"INSERT INTO patient (ID_Patient, LastName, FirstName, MiddleName, PatientID, BirthDate, Sex, Address, AddInfo, Occupation) VALUES ('10', '3', '4', '6', 'MXR-000005', '1984-01-02', 'm', 'm', 'm', 'm');", myConnection);
+                _mySqlCommand = new MySqlCommand($"INSERT INTO patient (ID_Patient, LastName, FirstName, MiddleName, PatientID, BirthDate, Sex, Address, AddInfo, Occupation) VALUES ('10', '3', '4', '6', 'MXR-000005', '1984-01-02', 'm', 'm', 'm', 'm');", _myConnection);
 
-                dataReader = mySqlCommand.ExecuteReader();
+                _dataReader = _mySqlCommand.ExecuteReader();
 
                 UpdateText = "Patients registered";
 
-                while (dataReader.Read())
+                while (_dataReader.Read())
                 {
-                    UpdateText = dataReader[0].ToString();
+                    UpdateText = _dataReader[0].ToString();
                 }
 
-                dataReader.Close();
+                _dataReader.Close();
 
-                myConnection.Close();
+                _myConnection.Close();
             }
             catch (Exception e)
             {
@@ -105,21 +109,21 @@ namespace DataBaseGenerator.UI.Wpf
 
 
 
-        private List<Patient> allPatients = DataBaseCommand.GetAllPatients();
+        private List<Patient> _allPatients = DataBaseCommand.GetAllPatients();
 
         public List<Patient> AllPatients
         {
             get
             {
-                return allPatients;
+                return _allPatients;
             }
             set
             {
-                SetProperty(ref allPatients, value);
+                SetProperty(ref _allPatients, value);
             }
         }
 
-        
+
 
         private DelegateCommand refreshPatients;
         public ICommand RefreshPatients => refreshPatients ??= new DelegateCommand(PerformRefreshPatients);
@@ -134,20 +138,13 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        //НАДО ПРОВЕРИТЬ - ВАРИАНТ , ЛИБО ТАК ЛИБО ТАК!!!
-        private RandomLastNameRule _lastName;
-
-        private DelegateCommand addPatient;
-        public ICommand AddPatient => addPatient ??= new DelegateCommand(PerformAddPatient);
+        private DelegateCommand _addPatient;
+        public ICommand AddPatient => _addPatient ??= new DelegateCommand(PerformAddPatient);
 
         private void PerformAddPatient()
         {
             try
             {
-                //НАДО ПРОВЕРИТЬ - ВАРИАНТ , ЛИБО ТАК ЛИБО ТАК!!!
-
-                var patient = new PatientGenerator();
-
                 var newPatient = new PatientGeneratorParameters(
                     new OrderIdPatientRule(),
                     new RandomLastNameRule(),
@@ -158,12 +155,10 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomSexRule(),
                     new RandomAddressRule(),
                     new RandomAddInfoRule(),
-                    new RandomOccupationRule());
-
-                
-
-                //var addPatient = DataBaseCommand.CreatePatient(1, "Vasia", "Pupkin", "Olegich", "MXR-0004",
-                //    new DateTime(1985, 01, 01), "M", "Minsk", "No comments", "Engineer");
+                    new RandomOccupationRule())
+                {
+                    PatientCount = 5
+                };
 
                 var addPatient = DataBaseCommand.GenerateDateBase(newPatient);
 
@@ -176,10 +171,13 @@ namespace DataBaseGenerator.UI.Wpf
                 UpdateText = "Patient not added";
             }
 
+            PerformRefreshPatients();
+
         }
 
-        private DelegateCommand deletePatient;
-        public ICommand DeletePatient => deletePatient ??= new DelegateCommand(PerformDeletePatient);
+
+        private DelegateCommand _deletePatient;
+        public ICommand DeletePatient => _deletePatient ??= new DelegateCommand(PerformDeletePatient);
 
         private void PerformDeletePatient()
         {
@@ -200,6 +198,6 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
-        
+
     }
 }

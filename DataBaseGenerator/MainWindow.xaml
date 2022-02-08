@@ -44,6 +44,9 @@
                         <GridViewColumn Header="Id"
                                         DisplayMemberBinding="{Binding ID_Patient}"/>
 
+                        <GridViewColumn Header="PatientId"
+                                        DisplayMemberBinding="{Binding PatientID}"/>
+
                         <GridViewColumn Header="LastName"
                                         DisplayMemberBinding="{Binding LastName}"/>
 
@@ -52,9 +55,6 @@
 
                         <GridViewColumn Header="MiddleName"
                                         DisplayMemberBinding="{Binding MiddleName}"/>
-
-                        <GridViewColumn Header="PatientId"
-                                        DisplayMemberBinding="{Binding PatientID}"/>
 
                         <GridViewColumn Header="BirthDate"
                                         DisplayMemberBinding="{Binding BirthDate}"/>

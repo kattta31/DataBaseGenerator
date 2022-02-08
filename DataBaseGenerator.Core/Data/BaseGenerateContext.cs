@@ -25,6 +25,5 @@ namespace DataBaseGenerator.Core.Data
         {
             optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
         }
-
     }
 }
