@@ -8,23 +8,16 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
     public sealed class OrderIdPatientRule : IGeneratorRule<string, int>
     {
-        public string PatientID { get; set; } = "MXR";
+        public int ID_Patient { get; set; }
 
-        public string Generate(int parameter)
+        public string Generate(int index)
         {
-            if (string.IsNullOrWhiteSpace(PatientID))
-            {
-                throw new InvalidOperationException("Prefix must contain an string");
-            }
-
-            var patientId = $"{PatientID}-{parameter}";
-
-            return patientId;
+            return $"{index}";
         }
 
         //public override string ToString()
         //{
-        //    return $"{Generate($"{PatientID}-{}")}";
+        //    return $"{Generate($"{}")}";
         //}
     }
 }

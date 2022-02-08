@@ -22,7 +22,7 @@ namespace DataBaseGenerator.Core
 
         {
            
-            ID_Patient = iD_Patient ?? throw new ArgumentNullException(nameof(iD_Patient));
+            PatientId = iD_Patient ?? throw new ArgumentNullException(nameof(iD_Patient));
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             MiddleName = middleName ?? throw new ArgumentNullException(nameof(middleName));
@@ -36,9 +36,9 @@ namespace DataBaseGenerator.Core
 
 
 
-        public int PatientID { get; set; } = 20;
+        public int PatientCount { get; set; } = 2;
 
-        public IGeneratorRule<string, int> ID_Patient { get; }
+        public IGeneratorRule<string, int> PatientId { get; }
 
         public IGeneratorRule<string> LastName { get; }
 

@@ -11,7 +11,7 @@ namespace DataBaseGenerator.Core
             var dataBaseGenerators = new List<PatientGeneratorParameters>();
 
 
-            for (var patientindex = 0; patientindex < patientGeneratorParameters.PatientID; patientindex++)
+            for (var patientindex = 0; patientindex < patientGeneratorParameters.PatientCount; patientindex++)
             {
                 var patients = CreatePatientModule(patientindex);
 
@@ -25,7 +25,7 @@ namespace DataBaseGenerator.Core
         public PatientGeneratorParameters CreatePatientModule(int patientIndex)
         {
             var newPatient = new PatientGeneratorParameters(
-                new OrderIdPatientRule(),
+                new OrderPatientIdRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),
@@ -36,7 +36,7 @@ namespace DataBaseGenerator.Core
                 new RandomOccupationRule()
             );
 
-            newPatient.ID_Patient.Generate(patientIndex);
+            newPatient.PatientId.Generate(patientIndex);
             newPatient.LastName.Generate();
             newPatient.FirstName.Generate();
             newPatient.MiddleName.Generate();

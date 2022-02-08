@@ -30,7 +30,7 @@ namespace DataBaseGenerator.Test
         public void CreateNewPatient()
         {
             var newPatient = new PatientGeneratorParameters(
-                new OrderIdPatientRule(),
+                new OrderPatientIdRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),
@@ -41,7 +41,7 @@ namespace DataBaseGenerator.Test
                 new RandomOccupationRule()
             );
 
-            newPatient.ID_Patient.Generate(1);
+            newPatient.PatientId.Generate(1);
             newPatient.LastName.Generate();
             newPatient.FirstName.Generate();
             newPatient.MiddleName.Generate();
@@ -62,7 +62,7 @@ namespace DataBaseGenerator.Test
             var patient = new PatientGenerator();
 
             var newPatient = new PatientGeneratorParameters(
-                new OrderIdPatientRule(),
+                new OrderPatientIdRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),

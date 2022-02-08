@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
-    //public sealed class OrderPatientIdRule : IGeneratorRule<string, int>
-    //{
-    //    public int ID_Patient { get; set; }
+    public sealed class OrderPatientIdRule : IGeneratorRule<string, int>
+    {
+        public string PatientID { get; set; } = "MXR";
 
-    //    public string Generate(int index)
-    //    {
-    //        return $"{index}";
-    //    }
+        public string Generate(int parameter)
+        {
+            if (string.IsNullOrWhiteSpace(PatientID))
+            {
+                throw new InvalidOperationException("Prefix must contain an string");
+            }
 
-    //    //public override string ToString()
-    //    //{
-    //    //    return $"{Generate($"{}")}";
-    //    //}
-    //}
+            var patientId = $"{PatientID}-{parameter}";
+
+            return patientId;
+        }
+
+        //public override string ToString()
+        //{
+        //    return $"{Generate($"{PatientID}-{}")}";
+        //}
+    }
 }

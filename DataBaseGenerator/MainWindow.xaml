@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen">
 
 
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
 
 
         <Grid.RowDefinitions>

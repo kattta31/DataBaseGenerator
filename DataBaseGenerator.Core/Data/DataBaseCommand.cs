@@ -68,7 +68,7 @@ namespace DataBaseGenerator.Core.Data
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                for (var patientindex = 0; patientindex < patientGeneratorParameters.PatientID; patientindex++)
+                for (var patientindex = 0; patientindex < patientGeneratorParameters.PatientCount; patientindex++)
                 {
                     var patients = CreatePatient(patientindex, patientGeneratorParameters);
 
@@ -90,7 +90,7 @@ namespace DataBaseGenerator.Core.Data
                 
                 bool checkIsExist = dataBase.Patient.Any(
                     element => element.LastName == patientGeneratorParameters.LastName.Generate() && element.FirstName == patientGeneratorParameters.FirstName.Generate()
-                        && element.MiddleName == patientGeneratorParameters.MiddleName.Generate() && element.PatientID == patientGeneratorParameters.ID_Patient.Generate(patientIndex)
+                        && element.MiddleName == patientGeneratorParameters.MiddleName.Generate() && element.PatientID == patientGeneratorParameters.PatientId.Generate(patientIndex)
                         && element.BirthDate == patientGeneratorParameters.BirthDate.Generate() && element.Sex == patientGeneratorParameters.Sex.Generate()
                         && element.Address == patientGeneratorParameters.Address.Generate() && element.AddInfo == patientGeneratorParameters.AddInfo.Generate() 
                         && element.Occupation == patientGeneratorParameters.Occupation.Generate());
@@ -103,7 +103,7 @@ namespace DataBaseGenerator.Core.Data
                         LastName = patientGeneratorParameters.LastName.Generate(),
                         FirstName = patientGeneratorParameters.FirstName.Generate(),
                         MiddleName = patientGeneratorParameters.MiddleName.Generate(),
-                        PatientID = patientGeneratorParameters.ID_Patient.Generate(patientIndex),
+                        PatientID = patientGeneratorParameters.PatientId.Generate(patientIndex),
                         BirthDate = patientGeneratorParameters.BirthDate.Generate(),
                         Sex = patientGeneratorParameters.Sex.Generate(),
                         Address = patientGeneratorParameters.Address.Generate(),
