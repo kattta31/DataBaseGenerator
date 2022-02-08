@@ -149,10 +149,11 @@ namespace DataBaseGenerator.UI.Wpf
                 var patient = new PatientGenerator();
 
                 var newPatient = new PatientGeneratorParameters(
-                    new OrderPatientIdRule(),
+                    new OrderIdPatientRule(),
                     new RandomLastNameRule(),
                     new RandomFirstNameRule(),
                     new RandomMiddleNameRule(),
+                    new OrderPatientIdRule(),
                     new RandomBirthDateRule(new DateTime()),
                     new RandomSexRule(),
                     new RandomAddressRule(),

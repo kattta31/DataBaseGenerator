@@ -30,10 +30,11 @@ namespace DataBaseGenerator.Test
         public void CreateNewPatient()
         {
             var newPatient = new PatientGeneratorParameters(
-                new OrderPatientIdRule(),
+                new OrderIdPatientRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),
+                new OrderPatientIdRule(),
                 new RandomBirthDateRule(new DateTime()),
                 new RandomSexRule(),
                 new RandomAddressRule(),
@@ -41,10 +42,11 @@ namespace DataBaseGenerator.Test
                 new RandomOccupationRule()
             );
 
-            newPatient.PatientId.Generate(1);
+            newPatient.ID_Patient.Generate(1);
             newPatient.LastName.Generate();
             newPatient.FirstName.Generate();
             newPatient.MiddleName.Generate();
+            newPatient.PatientId.Generate(1);
             newPatient.BirthDate.Generate();
             newPatient.Sex.Generate();
             newPatient.Address.Generate();
@@ -62,10 +64,11 @@ namespace DataBaseGenerator.Test
             var patient = new PatientGenerator();
 
             var newPatient = new PatientGeneratorParameters(
-                new OrderPatientIdRule(),
+                new OrderIdPatientRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),
+                new OrderPatientIdRule(),
                 new RandomBirthDateRule(new DateTime()),
                 new RandomSexRule(),
                 new RandomAddressRule(),

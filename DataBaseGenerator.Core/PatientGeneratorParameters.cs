@@ -10,10 +10,11 @@ namespace DataBaseGenerator.Core
     {
         public PatientGeneratorParameters(
             
-            IGeneratorRule<string, int> iD_Patient,
+            IGeneratorRule<int, int> iDPatient,
             IGeneratorRule<string> lastName,
             IGeneratorRule<string> firstName,
             IGeneratorRule<string> middleName,
+            IGeneratorRule<string, int> patientId,
             IGeneratorRule<DateTime> birthDate,
             IGeneratorRule<string> sex,
             IGeneratorRule<string> address,
@@ -21,11 +22,12 @@ namespace DataBaseGenerator.Core
             IGeneratorRule<string> occupation)
 
         {
-           
-            PatientId = iD_Patient ?? throw new ArgumentNullException(nameof(iD_Patient));
+
+            ID_Patient = iDPatient ?? throw new ArgumentNullException(nameof(iDPatient));
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             MiddleName = middleName ?? throw new ArgumentNullException(nameof(middleName));
+            PatientId = patientId ?? throw new ArgumentNullException(nameof(patientId));
             BirthDate = birthDate ?? throw new ArgumentNullException(nameof(birthDate));
             Sex = sex ?? throw new ArgumentNullException(nameof(sex));
             Address = address ?? throw new ArgumentNullException(nameof(address));
@@ -38,13 +40,15 @@ namespace DataBaseGenerator.Core
 
         public int PatientCount { get; set; } = 2;
 
-        public IGeneratorRule<string, int> PatientId { get; }
+        public  IGeneratorRule<int, int> ID_Patient { get; }
 
         public IGeneratorRule<string> LastName { get; }
 
         public IGeneratorRule<string> FirstName { get; }
 
         public IGeneratorRule<string> MiddleName { get; }
+
+        public IGeneratorRule<string, int> PatientId { get; }
 
         public IGeneratorRule<DateTime> BirthDate { get; }
 

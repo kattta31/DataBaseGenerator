@@ -89,7 +89,7 @@ namespace DataBaseGenerator.Core.Data
             {
                 
                 bool checkIsExist = dataBase.Patient.Any(
-                    element => element.LastName == patientGeneratorParameters.LastName.Generate() && element.FirstName == patientGeneratorParameters.FirstName.Generate()
+                    element =>element.ID_Patient == patientGeneratorParameters.ID_Patient.Generate(patientIndex) && element.LastName == patientGeneratorParameters.LastName.Generate() && element.FirstName == patientGeneratorParameters.FirstName.Generate()
                         && element.MiddleName == patientGeneratorParameters.MiddleName.Generate() && element.PatientID == patientGeneratorParameters.PatientId.Generate(patientIndex)
                         && element.BirthDate == patientGeneratorParameters.BirthDate.Generate() && element.Sex == patientGeneratorParameters.Sex.Generate()
                         && element.Address == patientGeneratorParameters.Address.Generate() && element.AddInfo == patientGeneratorParameters.AddInfo.Generate() 
@@ -99,7 +99,7 @@ namespace DataBaseGenerator.Core.Data
                 {
                     Patient newPatient = new Patient
                     {
-
+                        ID_Patient = patientGeneratorParameters.ID_Patient.Generate(patientIndex),
                         LastName = patientGeneratorParameters.LastName.Generate(),
                         FirstName = patientGeneratorParameters.FirstName.Generate(),
                         MiddleName = patientGeneratorParameters.MiddleName.Generate(),

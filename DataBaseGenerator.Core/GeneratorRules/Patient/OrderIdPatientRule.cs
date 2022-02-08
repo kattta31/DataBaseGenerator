@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
-    public sealed class OrderIdPatientRule : IGeneratorRule<string, int>
+    public sealed class OrderIdPatientRule : IGeneratorRule<int, int>
     {
-        public int ID_Patient { get; set; }
+        //public string ID_Patient { get; set; } = "Nomer";
 
-        public string Generate(int index)
+        public int Generate(int parameter)
         {
-            return $"{index}";
+            var iDPatient = parameter;
+
+            return iDPatient;
         }
 
         //public override string ToString()

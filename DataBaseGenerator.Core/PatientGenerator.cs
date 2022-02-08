@@ -25,10 +25,11 @@ namespace DataBaseGenerator.Core
         public PatientGeneratorParameters CreatePatientModule(int patientIndex)
         {
             var newPatient = new PatientGeneratorParameters(
-                new OrderPatientIdRule(),
+                new OrderIdPatientRule(),
                 new RandomFirstNameRule(),
                 new RandomLastNameRule(),
                 new RandomMiddleNameRule(),
+                new OrderPatientIdRule(),
                 new RandomBirthDateRule(new DateTime()),
                 new RandomSexRule(),
                 new RandomAddressRule(),
@@ -36,10 +37,11 @@ namespace DataBaseGenerator.Core
                 new RandomOccupationRule()
             );
 
-            newPatient.PatientId.Generate(patientIndex);
+            newPatient.ID_Patient.Generate(patientIndex);
             newPatient.LastName.Generate();
             newPatient.FirstName.Generate();
             newPatient.MiddleName.Generate();
+            newPatient.PatientId.Generate(patientIndex);
             newPatient.BirthDate.Generate();
             newPatient.Sex.Generate();
             newPatient.Address.Generate();
