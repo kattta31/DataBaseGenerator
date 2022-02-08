@@ -259,11 +259,3 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-DataBaseGenerator.Core/Patient.cs
-DataBaseGenerator.Core/WorkList.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/OrderIdPatientRule.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/OrderPatientIdRule.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/RandomAddInfoRule.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/RandomAddressRule.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/RandomBirthDateRule.cs
-DataBaseGenerator.Core/GeneratorRules/Patient/RandomFirstNameRule.cs
