@@ -157,7 +157,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomAddInfoRule(),
                     new RandomOccupationRule())
                 {
-                    PatientCount = 5
+                    PatientCount = 150
                 };
 
                 var addPatient = DataBaseCommand.GenerateDateBase(newPatient);

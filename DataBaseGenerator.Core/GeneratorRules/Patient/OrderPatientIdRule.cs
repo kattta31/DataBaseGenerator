@@ -8,7 +8,7 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
 {
     public sealed class OrderPatientIdRule : IGeneratorRule<string, int>
     {
-        public string PatientID { get; set; } = "MXR";
+        public string PatientID { get; set; } = "MXR-";
 
         public string Generate(int parameter)
         {
@@ -17,7 +17,9 @@ namespace DataBaseGenerator.Core.GeneratorRules.Patient
                 throw new InvalidOperationException("Prefix must contain an string");
             }
 
-            var patientId = $"{PatientID}-{parameter}";
+            //var patientId = $"{PatientID}{parameter}";
+
+            var patientId = PatientID + $"{parameter}".PadLeft(5,'0');
 
             return patientId;
         }
