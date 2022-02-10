@@ -41,10 +41,10 @@
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn Header="Id"
+                        <GridViewColumn Header="ID_Patient"
                                         DisplayMemberBinding="{Binding ID_Patient}"/>
 
-                        <GridViewColumn Header="PatientId"
+                        <GridViewColumn Header="PatientID"
                                         DisplayMemberBinding="{Binding PatientID}"/>
 
                         <GridViewColumn Header="LastName"

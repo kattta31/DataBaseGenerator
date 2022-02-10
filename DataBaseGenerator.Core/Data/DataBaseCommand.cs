@@ -52,7 +52,7 @@ namespace DataBaseGenerator.Core.Data
                 
                 bool checkIsExist = dataBase.Patient.Any(
                     element =>element.ID_Patient == patientGeneratorParameters.ID_Patient.Generate(patientIndex) && element.LastName == patientGeneratorParameters.LastName.Generate() && element.FirstName == patientGeneratorParameters.FirstName.Generate()
-                        && element.MiddleName == patientGeneratorParameters.MiddleName.Generate() && element.PatientID == patientGeneratorParameters.PatientId.Generate(patientIndex)
+                        && element.MiddleName == patientGeneratorParameters.MiddleName.Generate() && element.PatientID == patientGeneratorParameters.PatientID.Generate(patientIndex)
                         && element.BirthDate == patientGeneratorParameters.BirthDate.Generate() && element.Sex == patientGeneratorParameters.Sex.Generate()
                         && element.Address == patientGeneratorParameters.Address.Generate() && element.AddInfo == patientGeneratorParameters.AddInfo.Generate() 
                         && element.Occupation == patientGeneratorParameters.Occupation.Generate());
@@ -65,7 +65,7 @@ namespace DataBaseGenerator.Core.Data
                         LastName = patientGeneratorParameters.LastName.Generate(),
                         FirstName = patientGeneratorParameters.FirstName.Generate(),
                         MiddleName = patientGeneratorParameters.MiddleName.Generate(),
-                        PatientID = patientGeneratorParameters.PatientId.Generate(patientIndex),
+                        PatientID = patientGeneratorParameters.PatientID.Generate(patientIndex),
                         BirthDate = patientGeneratorParameters.BirthDate.Generate(),
                         Sex = patientGeneratorParameters.Sex.Generate(),
                         Address = patientGeneratorParameters.Address.Generate(),
@@ -94,7 +94,7 @@ namespace DataBaseGenerator.Core.Data
                 dataBase.Patient.Remove(patient);
                 dataBase.SaveChanges();
 
-                result = $"Сделано! Пацоент {patient.LastName} удален из базы";
+                result = $"Сделано! Пациент удален из базы";
 
             }
 

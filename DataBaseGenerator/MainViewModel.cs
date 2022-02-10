@@ -183,12 +183,26 @@ namespace DataBaseGenerator.UI.Wpf
         {
             try
             {
-                //Patient patient = new Patient();
-                //patient.Id = 1;
-                //patient.LastName = "";
-                //patient.Name = "";
+                _myConnection = new MySqlConnection(_connect);
 
-                //var deletePatient = DataBaseCommand.DeletePatient(patient);
+                _myConnection.Open();
+
+                _adapter = new MySqlDataAdapter();
+
+                _mySqlCommand = new MySqlCommand($"DROP TABLE medxregistry.patient, medxregistry.worklist;", _myConnection);
+
+                _dataReader = _mySqlCommand.ExecuteReader();
+
+                UpdateText = "Patients registered";
+
+                while (_dataReader.Read())
+                {
+                    UpdateText = _dataReader[0].ToString();
+                }
+
+                _dataReader.Close();
+
+                _myConnection.Close();
 
                 UpdateText = "Patient delete";
             }

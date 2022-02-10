@@ -46,7 +46,7 @@ namespace DataBaseGenerator.Test
             newPatient.LastName.Generate();
             newPatient.FirstName.Generate();
             newPatient.MiddleName.Generate();
-            newPatient.PatientId.Generate(1);
+            newPatient.PatientID.Generate(1);
             newPatient.BirthDate.Generate();
             newPatient.Sex.Generate();
             newPatient.Address.Generate();

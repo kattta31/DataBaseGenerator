@@ -8,6 +8,8 @@ namespace DataBaseGenerator.Core
     {
         public int WorkListID { get; set; }
 
+        public int ID_WorkList { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public DateTime CreateTime { get; set; }
@@ -16,7 +18,7 @@ namespace DataBaseGenerator.Core
 
         public DateTime CompleteTime { get; set; }
 
-        public string ID_Patient { get; set; }
+        public int ID_Patient { get; set; }
 
         public string State { get; set; }
 
@@ -26,7 +28,7 @@ namespace DataBaseGenerator.Core
 
         public string StationAeTitle { get; set; }
 
-        public DateTime BirtProcedureStepStartDateTimehDate { get; set; }
+        public DateTime ProcedureStepStartDateTime { get; set; }
 
         public string PerformingPhysiciansName { get; set; }
 

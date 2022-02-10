@@ -27,7 +27,7 @@ namespace DataBaseGenerator.Core
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             MiddleName = middleName ?? throw new ArgumentNullException(nameof(middleName));
-            PatientId = patientId ?? throw new ArgumentNullException(nameof(patientId));
+            PatientID = patientId ?? throw new ArgumentNullException(nameof(patientId));
             BirthDate = birthDate ?? throw new ArgumentNullException(nameof(birthDate));
             Sex = sex ?? throw new ArgumentNullException(nameof(sex));
             Address = address ?? throw new ArgumentNullException(nameof(address));
@@ -48,7 +48,7 @@ namespace DataBaseGenerator.Core
 
         public IGeneratorRule<string> MiddleName { get; }
 
-        public IGeneratorRule<string, int> PatientId { get; }
+        public IGeneratorRule<string, int> PatientID { get; }
 
         public IGeneratorRule<DateTime> BirthDate { get; }
 
