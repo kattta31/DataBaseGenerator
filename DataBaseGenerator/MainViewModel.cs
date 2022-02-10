@@ -124,6 +124,21 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
+        private List<WorkList> _allWorkLists = DataBaseCommand.GetAllWorkLists();
+
+        public List<WorkList> AllWorkLists
+        {
+            get
+            {
+                return _allWorkLists;
+            }
+            set
+            {
+                SetProperty(ref _allWorkLists, value);
+            }
+        }
+
+
 
         private DelegateCommand refreshPatients;
         public ICommand RefreshPatients => refreshPatients ??= new DelegateCommand(PerformRefreshPatients);

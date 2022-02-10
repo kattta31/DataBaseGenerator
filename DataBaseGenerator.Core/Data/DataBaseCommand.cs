@@ -18,12 +18,22 @@ namespace DataBaseGenerator.Core.Data
         {
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                var result = dataBase.Patient.ToList();
-                return result;
+                var patient = dataBase.Patient.ToList();
+                return patient;
             }
         }
 
-        
+
+        public static List<WorkList> GetAllWorkLists()
+        {
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                var workList = dataBase.WorkList.ToList();
+                return workList;
+            }
+        }
+
+
         public static IEnumerable<PatientGeneratorParameters> GenerateDateBase(PatientGeneratorParameters patientGeneratorParameters)
         {
             var dataBaseGenerators = new List<PatientGeneratorParameters>();

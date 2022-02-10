@@ -100,13 +100,13 @@
               Grid.ColumnSpan="2">
 
             <ListView Name="WorkList"
-                      
+                      ItemsSource="{Binding AllWorkLists}"
                       Margin="5">
 
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn Header="Id"
+                        <GridViewColumn Header="ID_WorkList"
                                         DisplayMemberBinding="{Binding ID_WorkList}"/>
 
                         <GridViewColumn Header="LastName"
