@@ -77,18 +77,32 @@
 
         </Grid>
 
-        <Grid Name="ButtonRefresh"
+        <Grid Name="ButtonRefreshPatient"
               Grid.Row="1"
-              Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Grid.Column="1"
               Margin="5">
 
-            <Button Name="Refresh"
+            <Button Name="RefreshPatient"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Right"
-                    Content="Refresh"
-                    Command="{Binding RefreshPatients}" />
+                    HorizontalAlignment="Center"
+                    Content="Refresh Patient"
+                    Command="{Binding RefreshPatients}"/>
+
+
+        </Grid>
+
+        <Grid Name="ButtonRefreshWorkList"
+              Grid.Row="1"
+              Grid.Column="0"
+              Margin="5">
+
+            <Button Name="RefreshWorkList"
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    Content="Refresh WorkList"
+                    Command="{Binding RefreshWorkList}"/>
 
 
         </Grid>
@@ -99,7 +113,7 @@
               Grid.Column="0"
               Grid.ColumnSpan="2">
 
-            <ListView Name="WorkList"
+            <ListView Name="ViewAllWorkList"
                       ItemsSource="{Binding AllWorkLists}"
                       Margin="5">
 
@@ -109,46 +123,46 @@
                         <GridViewColumn Header="ID_WorkList"
                                         DisplayMemberBinding="{Binding ID_WorkList}"/>
 
-                        <GridViewColumn Header="LastName"
+                        <GridViewColumn Header="CreateDate"
                                         DisplayMemberBinding="{Binding CreateDate}"/>
 
-                        <GridViewColumn Header="FirstName"
+                        <GridViewColumn Header="CreateTime"
                                         DisplayMemberBinding="{Binding CreateTime}"/>
 
-                        <GridViewColumn Header="MiddleName"
+                        <GridViewColumn Header="CompleteDate"
                                         DisplayMemberBinding="{Binding CompleteDate}"/>
 
-                        <GridViewColumn Header="PatientId"
+                        <GridViewColumn Header="CompleteTime"
                                         DisplayMemberBinding="{Binding CompleteTime}"/>
 
-                        <GridViewColumn Header="BirthDate"
+                        <GridViewColumn Header="ID_Patient"
                                         DisplayMemberBinding="{Binding ID_Patient}"/>
 
-                        <GridViewColumn Header="Sex"
+                        <GridViewColumn Header="State"
                                         DisplayMemberBinding="{Binding State}"/>
 
-                        <GridViewColumn Header="Address"
+                        <GridViewColumn Header="SOPInstanceUID"
                                         DisplayMemberBinding="{Binding SOPInstanceUID}"/>
 
-                        <GridViewColumn Header="AddInfo"
+                        <GridViewColumn Header="Modality"
                                         DisplayMemberBinding="{Binding Modality}"/>
 
-                        <GridViewColumn Header="Occupation"
+                        <GridViewColumn Header="StationAeTitle"
                                         DisplayMemberBinding="{Binding StationAeTitle}"/>
 
-                        <GridViewColumn Header="BirthDate"
+                        <GridViewColumn Header="BirtProcedureStepStartDateTimehDate"
                                         DisplayMemberBinding="{Binding BirtProcedureStepStartDateTimehDate}"/>
 
-                        <GridViewColumn Header="Sex"
+                        <GridViewColumn Header="PerformingPhysiciansName"
                                         DisplayMemberBinding="{Binding PerformingPhysiciansName}"/>
 
-                        <GridViewColumn Header="Address"
+                        <GridViewColumn Header="StudyDescription"
                                         DisplayMemberBinding="{Binding StudyDescription}"/>
 
-                        <GridViewColumn Header="AddInfo"
+                        <GridViewColumn Header="ReferringPhysiciansName"
                                         DisplayMemberBinding="{Binding ReferringPhysiciansName}"/>
 
-                        <GridViewColumn Header="Occupation"
+                        <GridViewColumn Header="RequestingPhysician"
                                         DisplayMemberBinding="{Binding RequestingPhysician}"/>
 
                     </GridView>
@@ -186,12 +200,12 @@
                     Content="Connect"
                     Command="{Binding ConnectDB}" />
 
-            
-            <Button Name="Add"
+
+            <Button Name="AddPatient"
                         Width="150"
                         Height="50"
                         HorizontalAlignment="Right"
-                        Content="Add"
+                        Content="AddPatient"
                         Command="{Binding AddPatient}" />
 
             
@@ -203,12 +217,12 @@
               Grid.Column="1"
               Margin="5">
 
-            <Button Name="Select"
+            <Button Name="AddWorkList"
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Content="Request"
-                    Command="{Binding SelectDb}" />
+                    Content="AddWorkList"
+                    Command="{Binding AddWorkList}" />
 
             <Button Name="Delete"
                     Width="150"

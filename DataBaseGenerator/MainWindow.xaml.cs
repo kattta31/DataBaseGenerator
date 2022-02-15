@@ -24,12 +24,15 @@ namespace DataBaseGenerator.UI.Wpf
         //Create ListView для возможности обновлять таблицу
 
         public static ListView AllPatientView;
+        public static ListView AllWorkListView;
 
         public MainWindow()
         {
             InitializeComponent();
 
             AllPatientView = ViewAllPatient;
+
+            AllWorkListView = ViewAllWorkList;
         }
     }
 }

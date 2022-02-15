@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataBaseGenerator.Core.GeneratorRules.WorkList
 {
-    public sealed class OrderIdWorklistRule : IGeneratorRule<int, int>
+    public sealed class RandomProcedureStepStartDateTimeRule : IGeneratorRule<DateTime>
     {
-        public int Generate(int parameter)
+        public DateTime Generate()
         {
-            var iDWorklist = parameter;
-
-            return iDWorklist;
+            return DateTime.Now;
         }
     }
 }

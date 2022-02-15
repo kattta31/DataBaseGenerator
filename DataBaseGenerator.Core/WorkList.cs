@@ -10,13 +10,13 @@ namespace DataBaseGenerator.Core
 
         public int ID_WorkList { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+        
+        public TimeSpan? CreateTime { get; set; }
+        
+        public DateTime? CompleteDate { get; set; }
 
-        public DateTime CreateTime { get; set; }
-
-        public DateTime CompleteDate { get; set; }
-
-        public DateTime CompleteTime { get; set; }
+        public TimeSpan? CompleteTime { get; set; }
 
         public int ID_Patient { get; set; }
 
@@ -28,7 +28,7 @@ namespace DataBaseGenerator.Core
 
         public string StationAeTitle { get; set; }
 
-        public DateTime ProcedureStepStartDateTime { get; set; }
+        public DateTime? ProcedureStepStartDateTime { get; set; }
 
         public string PerformingPhysiciansName { get; set; }
 

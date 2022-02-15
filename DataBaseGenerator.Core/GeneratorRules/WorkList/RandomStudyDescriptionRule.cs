@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataBaseGenerator.Core.GeneratorRules.WorkList
 {
-    public sealed class OrderIdWorklistRule : IGeneratorRule<int, int>
+    public sealed class RandomStudyDescriptionRule : IGeneratorRule<string>
     {
-        public int Generate(int parameter)
+        public string Generate()
         {
-            var iDWorklist = parameter;
-
-            return iDWorklist;
+            return "hjgyu675";
         }
     }
 }
