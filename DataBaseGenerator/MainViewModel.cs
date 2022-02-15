@@ -172,7 +172,6 @@ namespace DataBaseGenerator.UI.Wpf
 
         private void PerformAddPatient()
         {
-            ModificationDB();
             try
             {
                 var newPatient = new PatientGeneratorParameters(
@@ -187,7 +186,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomAddInfoRule(),
                     new RandomOccupationRule())
                 {
-                    PatientCount = 15
+                    PatientCount = 150
                 };
 
                 var addPatient = DataBaseCommand.GeneratePatientDateBase(newPatient);
@@ -230,7 +229,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomReferringPhysiciansNameRule(),
                     new RandomRequestingPhysicianRule())
                 {
-                    WorkListCount = 10
+                    WorkListCount = 100
                 };
 
                 var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
@@ -267,7 +266,7 @@ namespace DataBaseGenerator.UI.Wpf
 
                 _dataReader = _mySqlCommand.ExecuteReader();
 
-                UpdateText = "Patients registered";
+                UpdateText = "DataBases DELETE";
 
                 while (_dataReader.Read())
                 {
@@ -278,47 +277,49 @@ namespace DataBaseGenerator.UI.Wpf
 
                 _myConnection.Close();
 
-                UpdateText = "Patient delete";
+                UpdateText = "DataBase DELETE";
             }
             catch (Exception e)
             {
-                UpdateText = "Patient not Deleted";
+                UpdateText = "DataBase is not Deleted";
             }
         }
 
 
-        private DelegateCommand _modificationDB;
-        public ICommand ModificationDataBase => _modificationDB ??= new DelegateCommand(ModificationDB);
+        //Method for Modification Data Base !!!
 
-        private void ModificationDB()
-        {
-            try
-            {
-                _myConnection = new MySqlConnection(_connect);
+        //private DelegateCommand _modificationDB;
+        //public ICommand ModificationDataBase => _modificationDB ??= new DelegateCommand(ModificationDB);
 
-                _myConnection.Open();
+        //private void ModificationDB()
+        //{
+        //    try
+        //    {
+        //        _myConnection = new MySqlConnection(_connect);
 
-                _adapter = new MySqlDataAdapter();
+        //        _myConnection.Open();
 
-                _mySqlCommand = new MySqlCommand($"ALTER TABLE medxregistry.worklist CHANGE COLUMN CreateDate CreateDate DATE NULL, " +
-                                                 $"CHANGE COLUMN CreateTime CreateTime TIME NULL, CHANGE COLUMN CompleteDate CompleteDate DATE NULL, " +
-                                                 $"CHANGE COLUMN CompleteTime CompleteTime TIME NULL, " +
-                                                 "CHANGE COLUMN ProcedureStepStartDateTime ProcedureStepStartDateTime DATETIME NULL ;", _myConnection);
+        //        _adapter = new MySqlDataAdapter();
 
-                _dataReader = _mySqlCommand.ExecuteReader();
+        //        _mySqlCommand = new MySqlCommand($"ALTER TABLE medxregistry.worklist CHANGE COLUMN CreateDate CreateDate DATE NULL, " +
+        //                                         $"CHANGE COLUMN CreateTime CreateTime TIME NULL, CHANGE COLUMN CompleteDate CompleteDate DATE NULL, " +
+        //                                         $"CHANGE COLUMN CompleteTime CompleteTime TIME NULL, " +
+        //                                         "CHANGE COLUMN ProcedureStepStartDateTime ProcedureStepStartDateTime DATETIME NULL ;", _myConnection);
 
-                UpdateText = "DataBase modifier";
+        //        _dataReader = _mySqlCommand.ExecuteReader();
 
-                _dataReader.Close();
+        //        UpdateText = "DataBase modifier";
 
-                _myConnection.Close();
-                
-            }
-            catch (Exception e)
-            {
-                UpdateText = "WorkList not modification";
-            }
-        }
+        //        _dataReader.Close();
+
+        //        _myConnection.Close();
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        UpdateText = "WorkList not modification";
+        //    }
+        //}
 
 
 

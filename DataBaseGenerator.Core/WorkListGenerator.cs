@@ -53,7 +53,7 @@ namespace DataBaseGenerator.Core
             newWorkList.SOPInstanceUID.Generate();
             newWorkList.Modality.Generate();
             newWorkList.StationAeTitle.Generate();
-            //newWorkList.ProcedureStepStartDateTime.Generate();
+            newWorkList.ProcedureStepStartDateTime.Generate();
             newWorkList.PerformingPhysiciansName.Generate();
             newWorkList.StudyDescription.Generate();
             newWorkList.ReferringPhysiciansName.Generate();

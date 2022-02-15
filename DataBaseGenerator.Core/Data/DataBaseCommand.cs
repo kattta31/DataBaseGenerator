@@ -135,7 +135,7 @@ namespace DataBaseGenerator.Core.Data
                                 workList.SOPInstanceUID == workListGeneratorParameters.SOPInstanceUID.Generate() && 
                                 workList.Modality == workListGeneratorParameters.Modality.Generate() && 
                                 workList.StationAeTitle == workListGeneratorParameters.StationAeTitle.Generate() && 
-                                //workList.ProcedureStepStartDateTime == workListGeneratorParameters.ProcedureStepStartDateTime.Generate() &&
+                                workList.ProcedureStepStartDateTime == workListGeneratorParameters.ProcedureStepStartDateTime.Generate() &&
                                 workList.PerformingPhysiciansName == workListGeneratorParameters.PerformingPhysiciansName.Generate() && 
                                 workList.StudyDescription == workListGeneratorParameters.StudyDescription.Generate() && 
                                 workList.ReferringPhysiciansName == workListGeneratorParameters.ReferringPhysiciansName.Generate() && 
@@ -156,7 +156,7 @@ namespace DataBaseGenerator.Core.Data
                         SOPInstanceUID = workListGeneratorParameters.SOPInstanceUID.Generate(),
                         Modality = workListGeneratorParameters.Modality.Generate(),
                         StationAeTitle = workListGeneratorParameters.StationAeTitle.Generate(),
-                        //ProcedureStepStartDateTime = workListGeneratorParameters.ProcedureStepStartDateTime.Generate(),
+                        ProcedureStepStartDateTime = workListGeneratorParameters.ProcedureStepStartDateTime.Generate(),
                         PerformingPhysiciansName = workListGeneratorParameters.PerformingPhysiciansName.Generate(),
                         StudyDescription = workListGeneratorParameters.StudyDescription.Generate(),
                         ReferringPhysiciansName = workListGeneratorParameters.ReferringPhysiciansName.Generate(),

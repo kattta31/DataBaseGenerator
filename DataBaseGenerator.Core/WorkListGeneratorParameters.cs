@@ -33,7 +33,7 @@ namespace DataBaseGenerator.Core
             SOPInstanceUID = sOPInstanceUID ?? throw new ArgumentNullException(nameof(sOPInstanceUID));
             Modality = modality ?? throw new ArgumentNullException(nameof(modality));
             StationAeTitle = stationAeTitle ?? throw new ArgumentNullException(nameof(stationAeTitle));
-            //ProcedureStepStartDateTime = procedureStepStartDateTime ?? throw new ArgumentNullException(nameof(procedureStepStartDateTime));
+            ProcedureStepStartDateTime = procedureStepStartDateTime ?? throw new ArgumentNullException(nameof(procedureStepStartDateTime));
             PerformingPhysiciansName =  performingPhysiciansName?? throw new ArgumentNullException(nameof(performingPhysiciansName));
             StudyDescription = studyDescription ?? throw new ArgumentNullException(nameof(studyDescription));
             ReferringPhysiciansName = referringPhysiciansName ?? throw new ArgumentNullException(nameof(referringPhysiciansName));
@@ -63,7 +63,7 @@ namespace DataBaseGenerator.Core
 
         public IGeneratorRule<string> StationAeTitle { get; }
 
-        //public IGeneratorRule<DateTime> ProcedureStepStartDateTime { get; }
+        public IGeneratorRule<DateTime> ProcedureStepStartDateTime { get; }
 
         public IGeneratorRule<string> PerformingPhysiciansName { get; }
 

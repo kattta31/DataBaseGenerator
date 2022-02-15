@@ -28,7 +28,7 @@ namespace DataBaseGenerator.Core
 
         public string StationAeTitle { get; set; }
 
-        public DateTime? ProcedureStepStartDateTime { get; set; }
+        public DateTime ProcedureStepStartDateTime { get; set; }
 
         public string PerformingPhysiciansName { get; set; }
 

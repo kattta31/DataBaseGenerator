@@ -59,6 +59,7 @@ namespace DataBaseGenerator.Core.Data
 
             #region Configure indexes
 
+            //Patient index 
 
             modelBuilder.Entity<Patient>().HasIndex(patient => patient.PatientID).HasDatabaseName("Idx_Primary");
 
@@ -70,8 +71,8 @@ namespace DataBaseGenerator.Core.Data
 
             modelBuilder.Entity<Patient>().HasIndex(patient => patient.MiddleName).HasDatabaseName("MiddleName").IsFullText();
 
-
-
+            
+            //WorkList index
 
             modelBuilder.Entity<WorkList>().HasIndex(worklist => worklist.ID_Patient).HasDatabaseName("ID_Patient");
 
