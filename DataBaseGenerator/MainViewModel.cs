@@ -228,8 +228,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomPerformingPhysiciansNameRule(),
                     new RandomStudyDescriptionRule(),
                     new RandomReferringPhysiciansNameRule(),
-                    new RandomRequestingPhysicianRule()
-                )
+                    new RandomRequestingPhysicianRule())
                 {
                     WorkListCount = 10
                 };

@@ -50,7 +50,7 @@ namespace DataBaseGenerator.Core.Data
 
             modelBuilder.Entity<Patient>().HasCharSet("Utf8");
 
-            modelBuilder.Entity<WorkList>().HasKey(worklist => worklist.ID_WorkList).HasName("PK_WorkList");
+            modelBuilder.Entity<WorkList>().HasKey(worklist => worklist.WorkListID).HasName("PK_WorkList");
 
             modelBuilder.Entity<WorkList>().HasCharSet("Utf8");
 
@@ -70,9 +70,9 @@ namespace DataBaseGenerator.Core.Data
 
             modelBuilder.Entity<Patient>().HasIndex(patient => patient.MiddleName).HasDatabaseName("MiddleName").IsFullText();
 
-            
 
-            
+
+
             modelBuilder.Entity<WorkList>().HasIndex(worklist => worklist.ID_Patient).HasDatabaseName("ID_Patient");
 
 
@@ -108,9 +108,8 @@ namespace DataBaseGenerator.Core.Data
 
             #region Configure columns table WorkList
 
-            //modelBuilder.Entity<WorkList>().Ignore(patient => patient.WorkListID);
-
-            modelBuilder.Entity<WorkList>().Property(patient => patient.WorkListID).HasColumnType("INT UNSIGNED NOT NULL").ValueGeneratedNever();
+            
+            modelBuilder.Entity<WorkList>().Property(patient => patient.WorkListID).HasColumnType("INT UNSIGNED NOT NULL").IsRequired();
 
             modelBuilder.Entity<WorkList>().Property(patient => patient.ID_WorkList).HasColumnType("INT UNSIGNED NOT NULL").IsRequired();
 
