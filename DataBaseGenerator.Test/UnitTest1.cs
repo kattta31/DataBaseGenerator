@@ -86,34 +86,34 @@ namespace DataBaseGenerator.Test
             Console.WriteLine(result);
         }
 
-        //[TestMethod]
-        //public void CreateNewWorkList()
-        //{
-        //    var workList = new WorkListGenerator();
+        [TestMethod]
+        public void CreateNewWorkList()
+        {
+            var workList = new WorkListGenerator();
 
-        //    var newWorkList = new WorkListGeneratorParameters(
-        //        new OrderIdWorklistRule(),
-        //        new RandomCreateDateRule(),
-        //        new RandomCreateTimeRule(),
-        //        //new RandomCompleteDateRule(),
-        //        //new RandomCompleteTimeRule(),
-        //        new OrderIdPatientWlRule(),
-        //        new RandomStateRule(),
-        //        new RandomSOPInstanceUIDRule(),
-        //        new RandomModalityRule(),
-        //        new RandomStationAeTitleRule(),
-        //        new RandomProcedureStepStartDateTimeRule(),
-        //        new RandomPerformingPhysiciansNameRule(),
-        //        new RandomStudyDescriptionRule(),
-        //        new RandomReferringPhysiciansNameRule(),
-        //        new RandomRequestingPhysicianRule())
-        //    {
-        //        WorkListCount = 4
-        //    };
+            var newWorkList = new WorkListGeneratorParameters(
+                new OrderIdWorklistRule(),
+                new RandomCreateDateRule(),
+                new RandomCreateTimeRule(),
+                new RandomCompleteDateRule(),
+                new RandomCompleteTimeRule(),
+                new OrderIdPatientWlRule(),
+                new RandomStateRule(),
+                new RandomSOPInstanceUIDRule(),
+                new RandomModalityRule(),
+                new RandomStationAeTitleRule(),
+                new RandomProcedureStepStartDateTimeRule(),
+                new RandomPerformingPhysiciansNameRule(),
+                new RandomStudyDescriptionRule(),
+                new RandomReferringPhysiciansNameRule(),
+                new RandomRequestingPhysicianRule())
+            {
+                WorkListCount = 4
+            };
 
-        //    var result = workList.Generator(newWorkList);
+            var result = workList.Generator(newWorkList);
 
-        //    Console.WriteLine(result);
-        //}
+            Console.WriteLine(result);
+        }
     }
 }

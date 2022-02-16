@@ -186,7 +186,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomAddInfoRule(),
                     new RandomOccupationRule())
                 {
-                    PatientCount = 150
+                    PatientCount = 15
                 };
 
                 var addPatient = DataBaseCommand.GeneratePatientDateBase(newPatient);
@@ -229,7 +229,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomReferringPhysiciansNameRule(),
                     new RandomRequestingPhysicianRule())
                 {
-                    WorkListCount = 100
+                    WorkListCount = 15
                 };
 
                 var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
@@ -277,7 +277,7 @@ namespace DataBaseGenerator.UI.Wpf
 
                 _myConnection.Close();
 
-                UpdateText = "DataBase DELETE";
+                UpdateText = "Deletion completed";
             }
             catch (Exception e)
             {

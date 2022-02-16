@@ -10,9 +10,9 @@ namespace DataBaseGenerator.Core
 
         public int ID_WorkList { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         
-        public TimeSpan? CreateTime { get; set; }
+        public TimeSpan CreateTime { get; set; }
         
         public DateTime? CompleteDate { get; set; }
 

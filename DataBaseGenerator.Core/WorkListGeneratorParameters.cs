@@ -24,8 +24,8 @@ namespace DataBaseGenerator.Core
 
         {
             ID_WorkList = iD_WorkList ?? throw new ArgumentNullException(nameof(iD_WorkList));
-            //CreateDate = createDate ?? throw new ArgumentNullException(nameof(createDate));
-            //CreateTime = createTime ?? throw new ArgumentNullException(nameof(createTime));
+            CreateDate = createDate ?? throw new ArgumentNullException(nameof(createDate));
+            CreateTime = createTime ?? throw new ArgumentNullException(nameof(createTime));
             //CompleteDate = completeDate ?? throw new ArgumentNullException(nameof(completeDate));
             //CompleteTime = completeTime ?? throw new ArgumentNullException(nameof(completeTime));
             ID_Patient = iD_Patient ?? throw new ArgumentNullException(nameof(iD_Patient));
@@ -45,9 +45,9 @@ namespace DataBaseGenerator.Core
 
         public IGeneratorRule<int, int> ID_WorkList { get; }
 
-        //public IGeneratorRule<DateTime> CreateDate { get; }
+        public IGeneratorRule<DateTime> CreateDate { get; }
 
-        //public IGeneratorRule<TimeSpan> CreateTime { get; }
+        public IGeneratorRule<TimeSpan> CreateTime { get; }
 
         //public IGeneratorRule<DateTime> CompleteDate { get; }
 

@@ -44,8 +44,8 @@ namespace DataBaseGenerator.Core
             );
 
             newWorkList.ID_WorkList.Generate(workListIndex);
-            //newWorkList.CreateDate.Generate();
-            //newWorkList.CreateTime.Generate();
+            newWorkList.CreateDate.Generate();
+            newWorkList.CreateTime.Generate();
             //newWorkList.CompleteDate.Generate();
             //newWorkList.CompleteTime.Generate();
             newWorkList.ID_Patient.Generate(workListIndex);

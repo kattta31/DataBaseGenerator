@@ -10,7 +10,9 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
     {
         public DateTime Generate()
         {
-            return new DateTime(1980, 12, 3, 20, 30, 15);
+            DateTime dateNow = DateTime.Today;
+
+            return dateNow;
         }
     }
 }

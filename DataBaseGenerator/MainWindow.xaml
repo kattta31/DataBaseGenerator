@@ -150,8 +150,8 @@
                         <GridViewColumn Header="StationAeTitle"
                                         DisplayMemberBinding="{Binding StationAeTitle}"/>
 
-                        <GridViewColumn Header="BirtProcedureStepStartDateTimehDate"
-                                        DisplayMemberBinding="{Binding BirtProcedureStepStartDateTimehDate}"/>
+                        <GridViewColumn Header="ProcedureStepStartDateTime"
+                                        DisplayMemberBinding="{Binding ProcedureStepStartDateTime}"/>
 
                         <GridViewColumn Header="PerformingPhysiciansName"
                                         DisplayMemberBinding="{Binding PerformingPhysiciansName}"/>

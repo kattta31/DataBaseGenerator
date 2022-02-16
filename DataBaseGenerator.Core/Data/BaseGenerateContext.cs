@@ -25,9 +25,12 @@ namespace DataBaseGenerator.Core.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
+
+            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;port=3307", new MySqlServerVersion(new Version(5, 6, 12)));
+
         }
 
-        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +59,7 @@ namespace DataBaseGenerator.Core.Data
 
 
             #endregion
+
 
             #region Configure indexes
 

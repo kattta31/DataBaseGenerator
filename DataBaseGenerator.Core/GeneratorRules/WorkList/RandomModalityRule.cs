@@ -8,6 +8,7 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
 {
     public sealed class RandomModalityRule : IGeneratorRule<string>
     {
+
         public string Generate()
         {
             return "DX";

@@ -125,9 +125,9 @@ namespace DataBaseGenerator.Core.Data
             {
 
                 bool checkIsExist = dataBase.WorkList.Any(
-                    workList => workList.ID_WorkList == workListGeneratorParameters.ID_WorkList.Generate(workListIndex) && 
-                                //workList.CreateDate == workListGeneratorParameters.CreateDate.Generate() &&
-                                //workList.CreateTime == workListGeneratorParameters.CreateTime.Generate() &&
+                    workList => workList.ID_WorkList == workListGeneratorParameters.ID_WorkList.Generate(workListIndex) &&
+                                workList.CreateDate == workListGeneratorParameters.CreateDate.Generate() &&
+                                workList.CreateTime == workListGeneratorParameters.CreateTime.Generate() &&
                                 //workList.CompleteDate == workListGeneratorParameters.CompleteDate.Generate() &&
                                 //workList.CompleteTime == workListGeneratorParameters.CompleteTime.Generate() &&
                                 workList.ID_Patient == workListGeneratorParameters.ID_Patient.Generate(workListIndex) && 
@@ -147,8 +147,8 @@ namespace DataBaseGenerator.Core.Data
                     WorkList newWorkList = new WorkList()
                     {
                         ID_WorkList = workListGeneratorParameters.ID_WorkList.Generate(workListIndex),
-                        //CreateDate = workListGeneratorParameters.CreateDate.Generate(),
-                        //CreateTime = workListGeneratorParameters.CreateTime.Generate(),
+                        CreateDate = workListGeneratorParameters.CreateDate.Generate(),
+                        CreateTime = workListGeneratorParameters.CreateTime.Generate(),
                         //CompleteDate = workListGeneratorParameters.CompleteDate.Generate(),
                         //CompleteTime = workListGeneratorParameters.CompleteTime.Generate(),
                         ID_Patient = workListGeneratorParameters.ID_Patient.Generate(workListIndex),
