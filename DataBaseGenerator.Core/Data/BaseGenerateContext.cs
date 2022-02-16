@@ -24,9 +24,14 @@ namespace DataBaseGenerator.Core.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
+            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
+
+            optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(8, 0, 28)));
+
 
             //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;port=3307", new MySqlServerVersion(new Version(5, 6, 12)));
+
+            //optionsBuilder.UseMySql(@"server=192.168.61.91;database=medxregistry;user=root;port=3305", new MySqlServerVersion(new Version(5, 6, 12)));
 
         }
 

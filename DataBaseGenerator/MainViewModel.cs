@@ -276,7 +276,7 @@ namespace DataBaseGenerator.UI.Wpf
                 _dataReader.Close();
 
                 _myConnection.Close();
-
+                
                 UpdateText = "Deletion completed";
             }
             catch (Exception e)
