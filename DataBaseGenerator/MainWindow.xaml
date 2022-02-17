@@ -14,7 +14,7 @@
                  WindowStartupLocation="CenterScreen">
 
 
-    <Grid ShowGridLines="False">
+    <Grid ShowGridLines="True">
 
         <Grid.Resources>
 
@@ -25,6 +25,7 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -87,6 +88,36 @@
 
         </Grid>
 
+        <Grid Name="TextBoxPatientCount"
+              Grid.Row="1"
+              Grid.Column="0"
+              Margin="5">
+
+            <TextBox Name="PatientCount"
+                     Width="150"
+                     Height="50"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Text="{Binding SetPatientCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+        <Grid Name="ButtonAddPatient"
+              Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Margin="5">
+
+            <Button Name="AddPatient"
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    Content="AddPatient"
+                    Command="{Binding AddPatient}" />
+
+        </Grid>
+
         <Grid Name="ButtonRefreshPatient"
               Grid.Row="1"
               Grid.Column="1"
@@ -98,22 +129,6 @@
                     HorizontalAlignment="Center"
                     Content="Refresh Patient"
                     Command="{Binding RefreshPatients}" />
-
-
-        </Grid>
-
-        <Grid Name="ButtonRefreshWorkList"
-              Grid.Row="1"
-              Grid.Column="0"
-              Margin="5">
-
-            <Button Name="RefreshWorkList"
-                    Width="150"
-                    Height="50"
-                    HorizontalAlignment="Center"
-                    Content="Refresh WorkList"
-                    Command="{Binding RefreshWorkList}" />
-
 
         </Grid>
 
@@ -183,9 +198,54 @@
 
         </Grid>
 
+        <Grid Name="TextBoxWorkListCount"
+              Grid.Row="3"
+              Grid.Column="0"
+              Margin="5">
+
+            <TextBox Name="WorkListCount"
+                     Width="150"
+                     Height="50"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+        <Grid Name="ButtonAddWorkList"
+              Grid.Row="3"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Margin="5">
+
+            <Button Name="AddWorkList"
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    Content="AddWorkList"
+                    Command="{Binding AddWorkList}" />
+
+        </Grid>
+
+        <Grid Name="ButtonRefreshWorkList"
+              Grid.Row="3"
+              Grid.Column="1"
+              Margin="5">
+
+            <Button Name="RefreshWorkList"
+                    Grid.Column="0"
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    Content="Refresh WorkList"
+                    Command="{Binding RefreshWorkList}" />
+
+        </Grid>
+
 
         <Grid Name="ViewUpdateText"
-              Grid.Row="3"
+              Grid.Row="4"
               Grid.Column="0"
               Grid.ColumnSpan="2"
               Background="{DynamicResource MahApps.Brushes.Accent}"
@@ -203,45 +263,28 @@
 
 
         <Grid Name="ButtonConnect"
-              Grid.Row="4"
+              Grid.Row="5"
               Grid.Column="0"
               Margin="5">
 
             <Button Name="Connect"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Center"
                     Content="Connect"
                     Command="{Binding ConnectDB}" />
 
-
-            <Button Name="AddPatient"
-                    Width="150"
-                    Height="50"
-                    HorizontalAlignment="Right"
-                    Content="AddPatient"
-                    Command="{Binding AddPatient}" />
-
-
         </Grid>
 
-
         <Grid Name="ButtonSelect"
-              Grid.Row="4"
+              Grid.Row="5"
               Grid.Column="1"
               Margin="5">
-
-            <Button Name="AddWorkList"
-                    Width="150"
-                    Height="50"
-                    HorizontalAlignment="Left"
-                    Content="AddWorkList"
-                    Command="{Binding AddWorkList}" />
 
             <Button Name="Delete"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Right"
+                    HorizontalAlignment="Center"
                     Content="Delete"
                     Command="{Binding DeletePatient}" />
 

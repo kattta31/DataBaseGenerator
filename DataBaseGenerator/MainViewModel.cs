@@ -36,6 +36,8 @@ namespace DataBaseGenerator.UI.Wpf
         private DataTable _tablet;
         private string _connect = "Server=localhost;DataBase=medxregistry;Uid=root;pwd=root;";
         private string _updateText;
+        private int _patientCount;
+        private int _workListCount;
 
 
 
@@ -49,6 +51,33 @@ namespace DataBaseGenerator.UI.Wpf
             set
             {
                 SetProperty(ref _updateText, value);
+            }
+        }
+
+        public int SetPatientCount
+        {
+            get
+            {
+                return _patientCount;
+            }
+
+            set
+            {
+                SetProperty(ref _patientCount, value);
+            }
+        }
+
+
+        public int SetWorkListCount
+        {
+            get
+            {
+                return _workListCount;
+            }
+
+            set
+            {
+                SetProperty(ref _workListCount, value);
             }
         }
 
@@ -125,6 +154,7 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
+
         private List<WorkList> _allWorkLists = DataBaseCommand.GetAllWorkLists();
 
         public List<WorkList> AllWorkLists
@@ -154,6 +184,7 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
+
         private DelegateCommand refreshWorkList;
         public ICommand RefreshWorkList => refreshWorkList ??= new DelegateCommand(PerformRefreshWorkList);
 
@@ -165,6 +196,7 @@ namespace DataBaseGenerator.UI.Wpf
             MainWindow.AllWorkListView.ItemsSource = AllWorkLists;
             MainWindow.AllWorkListView.Items.Refresh();
         }
+
 
 
         private DelegateCommand _addPatient;
@@ -186,7 +218,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomAddInfoRule(),
                     new RandomOccupationRule())
                 {
-                    PatientCount = 15
+                    PatientCount = _patientCount
                 };
 
                 var addPatient = DataBaseCommand.GeneratePatientDateBase(newPatient);
@@ -229,7 +261,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new RandomReferringPhysiciansNameRule(),
                     new RandomRequestingPhysicianRule())
                 {
-                    WorkListCount = 15
+                    WorkListCount = _workListCount
                 };
 
                 var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
