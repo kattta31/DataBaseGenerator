@@ -8,9 +8,22 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
 {
     public sealed class RandomPerformingPhysiciansNameRule : IGeneratorRule<string>
     {
+        private static IDictionary<int, string> _doctorPerformer = new Dictionary<int, string>
+        {
+            {0, "Боткин С.П."},
+            {1, "Павлов И.П."},
+            {2, "Юдин С.С."},
+            {3, "Филатов В.П."},
+            {4, "Войно-Ясенецкий В.Ф."}
+        };
+
         public string Generate()
         {
-            return "Vasia";
+            var random = new Random();
+
+            var doctorPerformer = _doctorPerformer[random.Next(0, _doctorPerformer.Count)];
+
+            return doctorPerformer;
         }
     }
 }

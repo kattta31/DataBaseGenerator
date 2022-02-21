@@ -9,6 +9,8 @@ namespace DataBaseGenerator.Test
     [TestClass]
     public class UnitTest1
     {
+        private string _modality;
+
         [TestMethod]
         public void RandomNameGenerate()
         {
@@ -100,7 +102,7 @@ namespace DataBaseGenerator.Test
                 new OrderIdPatientWlRule(),
                 new RandomStateRule(),
                 new RandomSOPInstanceUIDRule(),
-                new RandomModalityRule(),
+                new RandomModalityRule(_modality),
                 new RandomStationAeTitleRule(),
                 new RandomProcedureStepStartDateTimeRule(),
                 new RandomPerformingPhysiciansNameRule(),

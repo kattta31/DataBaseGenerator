@@ -10,8 +10,8 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
     {
         private static IDictionary<int, string> _stationAeTitle = new Dictionary<int, string>
         {
-            {0, "UniExpert001"},
-            {1, "UniExpert002"}
+            //{0, "UniExpert001"},
+            {0, "UniExpert002"}
         };
 
         public string Generate()

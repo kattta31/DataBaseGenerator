@@ -59,7 +59,7 @@ namespace DataBaseGenerator.Core
 
         public IGeneratorRule<string> SOPInstanceUID { get; }
 
-        public IGeneratorRule<string> Modality { get; }
+        public IGeneratorRule<string> Modality { get; set; }
 
         public IGeneratorRule<string> StationAeTitle { get; }
 

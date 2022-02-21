@@ -206,23 +206,37 @@
             <TextBox Name="WorkListCount"
                      Width="150"
                      Height="50"
-                     HorizontalAlignment="Center"
+                     HorizontalAlignment="Left"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
 
-        <Grid Name="ButtonAddWorkList"
+        <Grid Name="TextBoxModality"
               Grid.Row="3"
               Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Margin="5">
+
+            <TextBox Name="Modality"
+                     Width="150"
+                     Height="50"
+                     HorizontalAlignment="Right"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Text="{Binding SetModality, UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+
+        <Grid Name="ButtonAddWorkList"
+              Grid.Row="3"
+              Grid.Column="1"
               Margin="5">
 
             <Button Name="AddWorkList"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
                     Content="AddWorkList"
                     Command="{Binding AddWorkList}" />
 
@@ -237,7 +251,7 @@
                     Grid.Column="0"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Right"
                     Content="Refresh WorkList"
                     Command="{Binding RefreshWorkList}" />
 

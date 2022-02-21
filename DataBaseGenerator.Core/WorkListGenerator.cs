@@ -9,6 +9,8 @@ namespace DataBaseGenerator.Core
 {
     public class WorkListGenerator
     {
+        private string _modality;
+
         public IEnumerable<WorkListGeneratorParameters> Generator(WorkListGeneratorParameters workListGeneratorParameters)
         {
             var workListGenerator = new List<WorkListGeneratorParameters>();
@@ -34,7 +36,7 @@ namespace DataBaseGenerator.Core
                 new OrderIdPatientWlRule(),
                 new RandomStateRule(),
                 new RandomSOPInstanceUIDRule(),
-                new RandomModalityRule(),
+                new RandomModalityRule(_modality),
                 new RandomStationAeTitleRule(),
                 new RandomProcedureStepStartDateTimeRule(),
                 new RandomPerformingPhysiciansNameRule(),

@@ -28,6 +28,7 @@ namespace DataBaseGenerator.UI.Wpf
 
 
         private PatientGeneratorParameters _patientGeneratorParameters;
+        private readonly RandomModalityRule _modalityRule;
 
         private MySqlConnection _myConnection;
         private MySqlCommand _mySqlCommand;
@@ -38,6 +39,7 @@ namespace DataBaseGenerator.UI.Wpf
         private string _updateText;
         private int _patientCount;
         private int _workListCount;
+        private string _modality;
 
 
 
@@ -53,6 +55,7 @@ namespace DataBaseGenerator.UI.Wpf
                 SetProperty(ref _updateText, value);
             }
         }
+
 
         public int SetPatientCount
         {
@@ -81,6 +84,19 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
+
+        public string SetModality
+        {
+            get
+            {
+                return _modality;
+            }
+
+            set
+            {
+                SetProperty(ref _modality, value);
+            }
+        }
 
         private DelegateCommand _connectDB;
         public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
@@ -253,7 +269,7 @@ namespace DataBaseGenerator.UI.Wpf
                     new OrderIdPatientWlRule(),
                     new RandomStateRule(),
                     new RandomSOPInstanceUIDRule(),
-                    new RandomModalityRule(),
+                    new RandomModalityRule(_modality),
                     new RandomStationAeTitleRule(),
                     new RandomProcedureStepStartDateTimeRule(),
                     new RandomPerformingPhysiciansNameRule(),
@@ -263,8 +279,8 @@ namespace DataBaseGenerator.UI.Wpf
                 {
                     WorkListCount = _workListCount
                 };
-
-                var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
+                
+                    var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
 
                 UpdateText = "WorkList added";
 
