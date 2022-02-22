@@ -8,13 +8,13 @@
                  d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
                  mc:Ignorable="d"
                  Title="DataBase Generator"
-                 Height="450"
-                 Width="800"
+                 Height="700"
+                 Width="840"
                  WindowStyle="ThreeDBorderWindow"
                  WindowStartupLocation="CenterScreen">
 
 
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
 
         <Grid.Resources>
 
@@ -25,15 +25,17 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -41,7 +43,7 @@
         <Grid Name="PatientTable"
               Grid.Row="0"
               Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Grid.ColumnSpan="3"
               Background="{DynamicResource MahApps.Brushes.Accent}"
               Margin="5">
 
@@ -93,20 +95,26 @@
               Grid.Column="0"
               Margin="5">
 
+            <TextBlock Name="PatCount"
+                       Text="Patient Count"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+
             <TextBox Name="PatientCount"
-                     Width="150"
+                     Width="100"
                      Height="50"
-                     HorizontalAlignment="Center"
+                     HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
-                     Text="{Binding SetPatientCount, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding SetPatientCount, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
 
         <Grid Name="ButtonAddPatient"
               Grid.Row="1"
-              Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Grid.Column="1"
               Margin="5">
 
             <Button Name="AddPatient"
@@ -120,7 +128,7 @@
 
         <Grid Name="ButtonRefreshPatient"
               Grid.Row="1"
-              Grid.Column="1"
+              Grid.Column="2"
               Margin="5">
 
             <Button Name="RefreshPatient"
@@ -136,8 +144,9 @@
         <Grid Name="WorkListTable"
               Grid.Row="2"
               Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Grid.ColumnSpan="3"
               Background="{DynamicResource MahApps.Brushes.Accent}"
+              
               Margin="5">
 
             <ListView Name="ViewAllWorkList"
@@ -203,55 +212,93 @@
               Grid.Column="0"
               Margin="5">
 
+            <TextBlock Name="WlCount"
+                       Text="WorkList Count"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+
             <TextBox Name="WorkListCount"
-                     Width="150"
+                     Width="100"
                      Height="50"
-                     HorizontalAlignment="Left"
+                     HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
-                     Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
 
         <Grid Name="TextBoxModality"
               Grid.Row="3"
-              Grid.Column="0"
+              Grid.Column="1"
               Margin="5">
 
-            <TextBox Name="Modality"
+            <TextBlock Name="Modality"
+                       Text="Modality"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+
+            <ComboBox Name="ModalityBox"
+                      Width="100"
+                      Height="50"
+                      HorizontalAlignment="Right"
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      ItemsSource="{Binding ModalityRules}"
+                      SelectedItem="{Binding SelectModality, Mode=TwoWay}"
+                      />
+
+        </Grid>
+
+        <Grid Name="TextBoxAeTitle"
+              Grid.Row="3"
+              Grid.Column="2"
+              Margin="5">
+
+            <TextBlock Name="AeTitle"
+                       Text="AE Title"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+
+            <TextBox Name="AeTitleBox"
                      Width="150"
                      Height="50"
                      HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
-                     Text="{Binding SetModality, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding SetAeTitle, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
 
         <Grid Name="ButtonAddWorkList"
-              Grid.Row="3"
-              Grid.Column="1"
+              Grid.Row="4"
+              Grid.Column="0"
               Margin="5">
 
             <Button Name="AddWorkList"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Left"
-                    Content="AddWorkList"
+                    HorizontalAlignment="Center"
+                    Content="Add WorkList"
                     Command="{Binding AddWorkList}" />
 
         </Grid>
 
         <Grid Name="ButtonRefreshWorkList"
-              Grid.Row="3"
-              Grid.Column="1"
+              Grid.Row="4"
+              Grid.Column="2"
               Margin="5">
 
             <Button Name="RefreshWorkList"
                     Grid.Column="0"
                     Width="150"
                     Height="50"
-                    HorizontalAlignment="Right"
+                    HorizontalAlignment="Center"
                     Content="Refresh WorkList"
                     Command="{Binding RefreshWorkList}" />
 
@@ -259,9 +306,9 @@
 
 
         <Grid Name="ViewUpdateText"
-              Grid.Row="4"
+              Grid.Row="5"
               Grid.Column="0"
-              Grid.ColumnSpan="2"
+              Grid.ColumnSpan="3"
               Background="{DynamicResource MahApps.Brushes.Accent}"
               Margin="5">
 
@@ -277,7 +324,7 @@
 
 
         <Grid Name="ButtonConnect"
-              Grid.Row="5"
+              Grid.Row="6"
               Grid.Column="0"
               Margin="5">
 
@@ -291,8 +338,8 @@
         </Grid>
 
         <Grid Name="ButtonSelect"
-              Grid.Row="5"
-              Grid.Column="1"
+              Grid.Row="6"
+              Grid.Column="2"
               Margin="5">
 
             <Button Name="Delete"

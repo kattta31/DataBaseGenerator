@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace DataBaseGenerator.UI.Wpf
 
         public MainViewModel()
         {
+            var defaultAeTitle = new RandomModalityRule("DX");
+            ModalityRules = new ObservableCollection<RandomModalityRule>
+            {
+                defaultAeTitle,
+                new RandomModalityRule("MG")
+            };
+
+            SelectModality = defaultAeTitle;
 
         }
 
@@ -39,7 +48,9 @@ namespace DataBaseGenerator.UI.Wpf
         private string _updateText;
         private int _patientCount;
         private int _workListCount;
-        private string _modality;
+        private RandomModalityRule _modality;
+        private string _aeTitle;
+
 
 
 
@@ -85,7 +96,9 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        public string SetModality
+        public ObservableCollection<RandomModalityRule> ModalityRules { get; }
+
+        public RandomModalityRule SelectModality
         {
             get
             {
@@ -97,6 +110,21 @@ namespace DataBaseGenerator.UI.Wpf
                 SetProperty(ref _modality, value);
             }
         }
+
+
+        public string SetAeTitle
+        {
+            get
+            {
+                return _aeTitle;
+            }
+
+            set
+            {
+                SetProperty(ref _aeTitle, value);
+            }
+        }
+
 
         private DelegateCommand _connectDB;
         public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
@@ -269,8 +297,8 @@ namespace DataBaseGenerator.UI.Wpf
                     new OrderIdPatientWlRule(),
                     new RandomStateRule(),
                     new RandomSOPInstanceUIDRule(),
-                    new RandomModalityRule(_modality),
-                    new RandomStationAeTitleRule(),
+                    SelectModality,
+                    new RandomStationAeTitleRule(_aeTitle),
                     new RandomProcedureStepStartDateTimeRule(),
                     new RandomPerformingPhysiciansNameRule(),
                     new RandomStudyDescriptionRule(),

@@ -19,5 +19,10 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
         {
             return Modality;
         }
+
+        public override string ToString()
+        {
+            return $"{Generate()}";
+        }
     }
 }

@@ -8,19 +8,17 @@ namespace DataBaseGenerator.Core.GeneratorRules.WorkList
 {
     public sealed class RandomStationAeTitleRule : IGeneratorRule<string>
     {
-        private static IDictionary<int, string> _stationAeTitle = new Dictionary<int, string>
+        public RandomStationAeTitleRule(string aeTitle)
         {
-            //{0, "UniExpert001"},
-            {0, "UniExpert002"}
-        };
+            AeTitle = aeTitle;
+        }
+
+        public string AeTitle { get; set; }
+
 
         public string Generate()
         {
-            var random = new Random();
-
-            var stationAe = _stationAeTitle[random.Next(0, _stationAeTitle.Count)];
-
-            return stationAe;
+            return AeTitle;
         }
     }
 }
