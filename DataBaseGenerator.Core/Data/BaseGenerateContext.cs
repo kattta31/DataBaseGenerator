@@ -36,7 +36,7 @@ namespace DataBaseGenerator.Core.Data
 
             //builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\DataBaseGenerator.Core\Data\appsettings.json", optional:true, reloadOnChange:true);
 
-            builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\appsettings.json", optional: true, reloadOnChange: true);
+            builder.AddJsonFile(@"D:\Develop\DataBaseGenerator\appsettings.json", optional: true, reloadOnChange: true);
 
             var config = builder.Build();
 
