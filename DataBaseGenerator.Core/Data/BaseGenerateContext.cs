@@ -7,6 +7,7 @@ using System.Text.Unicode;
 using System.Threading.Tasks;
 using DataBaseGenerator.Core;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace DataBaseGenerator.Core.Data
 {
@@ -15,6 +16,7 @@ namespace DataBaseGenerator.Core.Data
         public DbSet<Patient> Patient { get; set; }
 
         public DbSet<WorkList> WorkList { get; set; }
+
         
         public BaseGenerateContext()
         {
@@ -24,18 +26,27 @@ namespace DataBaseGenerator.Core.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(10, 4, 17)));
+           
+            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(8, 0, 28)));
+            
 
-            optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(8, 0, 28)));
+            var builder = new ConfigurationBuilder();
 
+            builder.SetBasePath(Directory.GetCurrentDirectory());
 
-            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;port=3307", new MySqlServerVersion(new Version(5, 6, 12)));
+            //builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\DataBaseGenerator.Core\Data\appsettings.json", optional:true, reloadOnChange:true);
 
-            //optionsBuilder.UseMySql(@"server=192.168.61.91;database=medxregistry;user=root;port=3305", new MySqlServerVersion(new Version(5, 6, 12)));
+            builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\appsettings.json", optional: true, reloadOnChange: true);
 
+            var config = builder.Build();
+
+            string connectingString = config.GetConnectionString(@"DefaultConnection");
+
+            
+            var options = optionsBuilder.UseMySql(connectingString, new MySqlServerVersion(new Version(8, 0, 28)));
         }
 
-
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
