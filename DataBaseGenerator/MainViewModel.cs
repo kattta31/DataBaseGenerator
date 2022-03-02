@@ -13,6 +13,7 @@ using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
 using DataBaseGenerator.Core.GeneratorRules.WorkList;
+using Microsoft.EntityFrameworkCore.Storage;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -38,7 +39,6 @@ namespace DataBaseGenerator.UI.Wpf
 
         private PatientGeneratorParameters _patientGeneratorParameters;
         private readonly RandomModalityRule _modalityRule;
-
         private MySqlConnection _myConnection;
         private MySqlCommand _mySqlCommand;
         private MySqlDataReader _dataReader;
@@ -189,6 +189,7 @@ namespace DataBaseGenerator.UI.Wpf
             MainWindow.AllPatientView.Items.Clear();
             MainWindow.AllPatientView.ItemsSource = AllPatients;
             MainWindow.AllPatientView.Items.Refresh();
+            UpdateText = "Patient table is update";
         }
 
 
@@ -203,6 +204,7 @@ namespace DataBaseGenerator.UI.Wpf
             MainWindow.AllWorkListView.Items.Clear();
             MainWindow.AllWorkListView.ItemsSource = AllWorkLists;
             MainWindow.AllWorkListView.Items.Refresh();
+            UpdateText = "WorkList table is update";
         }
 
 
@@ -231,17 +233,15 @@ namespace DataBaseGenerator.UI.Wpf
 
                 var addPatient = DataBaseCommand.GeneratePatientDateBase(newPatient);
 
-                UpdateText = "Patient added";
+                PerformRefreshPatients();
 
+                UpdateText = "Patient added";
             }
 
             catch (Exception e)
             {
                 UpdateText = "Patient not added";
             }
-
-            PerformRefreshPatients();
-
         }
 
 
@@ -274,17 +274,15 @@ namespace DataBaseGenerator.UI.Wpf
                 
                     var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
 
-                UpdateText = "WorkList added";
+                    PerformRefreshWorkList();
 
+                    UpdateText = "WorkList added";
             }
 
             catch (Exception e)
             {
                 UpdateText = "WorkList not added";
             }
-
-            PerformRefreshWorkList();
-
         }
 
 
@@ -316,7 +314,11 @@ namespace DataBaseGenerator.UI.Wpf
                 _dataReader.Close();
 
                 _myConnection.Close();
-                
+
+                PerformRefreshPatients();
+
+                PerformRefreshWorkList();
+
                 UpdateText = "Deletion completed";
             }
             catch (Exception e)
@@ -324,44 +326,5 @@ namespace DataBaseGenerator.UI.Wpf
                 UpdateText = "DataBase is not Deleted";
             }
         }
-
-
-        //Method for Modification Data Base !!!
-
-        //private DelegateCommand _modificationDB;
-        //public ICommand ModificationDataBase => _modificationDB ??= new DelegateCommand(ModificationDB);
-
-        //private void ModificationDB()
-        //{
-        //    try
-        //    {
-        //        _myConnection = new MySqlConnection(_connect);
-
-        //        _myConnection.Open();
-
-        //        _adapter = new MySqlDataAdapter();
-
-        //        _mySqlCommand = new MySqlCommand($"ALTER TABLE medxregistry.worklist CHANGE COLUMN CreateDate CreateDate DATE NULL, " +
-        //                                         $"CHANGE COLUMN CreateTime CreateTime TIME NULL, CHANGE COLUMN CompleteDate CompleteDate DATE NULL, " +
-        //                                         $"CHANGE COLUMN CompleteTime CompleteTime TIME NULL, " +
-        //                                         "CHANGE COLUMN ProcedureStepStartDateTime ProcedureStepStartDateTime DATETIME NULL ;", _myConnection);
-
-        //        _dataReader = _mySqlCommand.ExecuteReader();
-
-        //        UpdateText = "DataBase modifier";
-
-        //        _dataReader.Close();
-
-        //        _myConnection.Close();
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        UpdateText = "WorkList not modification";
-        //    }
-        //}
-
-
-
     }
 }
