@@ -147,41 +147,6 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        private DelegateCommand _selectDb;
-        public ICommand SelectDb => _selectDb = new DelegateCommand(PerformRequest);
-
-        private void PerformRequest()
-        {
-            try
-            {
-                _myConnection = new MySqlConnection(_connect);
-
-                _myConnection.Open();
-
-                _adapter = new MySqlDataAdapter();
-
-                _mySqlCommand = new MySqlCommand($"INSERT INTO patient (ID_Patient, LastName, FirstName, MiddleName, PatientID, BirthDate, Sex, Address, AddInfo, Occupation) VALUES ('10', '3', '4', '6', 'MXR-000005', '1984-01-02', 'm', 'm', 'm', 'm');", _myConnection);
-
-                _dataReader = _mySqlCommand.ExecuteReader();
-
-                UpdateText = "Patients registered";
-
-                while (_dataReader.Read())
-                {
-                    UpdateText = _dataReader[0].ToString();
-                }
-
-                _dataReader.Close();
-
-                _myConnection.Close();
-            }
-            catch (Exception e)
-            {
-                UpdateText = "Patient in Base";
-            }
-        }
-
-
 
         private List<Patient> _allPatients = DataBaseCommand.GetAllPatients();
 
@@ -196,7 +161,6 @@ namespace DataBaseGenerator.UI.Wpf
                 SetProperty(ref _allPatients, value);
             }
         }
-
 
 
         private List<WorkList> _allWorkLists = DataBaseCommand.GetAllWorkLists();

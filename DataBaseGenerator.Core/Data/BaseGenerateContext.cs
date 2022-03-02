@@ -27,16 +27,11 @@ namespace DataBaseGenerator.Core.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            
-            //optionsBuilder.UseMySql(@"server=localhost;database=medxregistry;user=root;password=root", new MySqlServerVersion(new Version(8, 0, 28)));
-            
-
             var builder = new ConfigurationBuilder();
 
             builder.SetBasePath(Directory.GetCurrentDirectory());
 
-            //builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\DataBaseGenerator.Core\Data\appsettings.json", optional:true, reloadOnChange:true);
-
-            builder.AddJsonFile(@"D:\Develop\DataBaseGenerator\appsettings.json", optional: true, reloadOnChange: true);
+            builder.AddJsonFile(@"D:\Develop\MedXRegistryGenerator\appsettings.json", optional: true, reloadOnChange: true);
 
             var config = builder.Build();
 

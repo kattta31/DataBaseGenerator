@@ -54,34 +54,31 @@
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn Header="ID_Patient"
-                                        DisplayMemberBinding="{Binding ID_Patient}" />
-
-                        <GridViewColumn Header="PatientID"
+                        <GridViewColumn Header="ID пациента"
                                         DisplayMemberBinding="{Binding PatientID}" />
 
-                        <GridViewColumn Header="LastName"
+                        <GridViewColumn Header="Фамилия"
                                         DisplayMemberBinding="{Binding LastName}" />
 
-                        <GridViewColumn Header="FirstName"
+                        <GridViewColumn Header="Имя"
                                         DisplayMemberBinding="{Binding FirstName}" />
 
-                        <GridViewColumn Header="MiddleName"
+                        <GridViewColumn Header="Отчество"
                                         DisplayMemberBinding="{Binding MiddleName}" />
 
-                        <GridViewColumn Header="BirthDate"
+                        <GridViewColumn Header="Дата Рождения"
                                         DisplayMemberBinding="{Binding BirthDate}" />
 
-                        <GridViewColumn Header="Sex"
+                        <GridViewColumn Header="Пол"
                                         DisplayMemberBinding="{Binding Sex}" />
 
-                        <GridViewColumn Header="Address"
+                        <GridViewColumn Header="Адрес"
                                         DisplayMemberBinding="{Binding Address}" />
 
-                        <GridViewColumn Header="AddInfo"
+                        <GridViewColumn Header="Доп. информация"
                                         DisplayMemberBinding="{Binding AddInfo}" />
 
-                        <GridViewColumn Header="Occupation"
+                        <GridViewColumn Header="Место работы"
                                         DisplayMemberBinding="{Binding Occupation}" />
 
                     </GridView>
@@ -100,7 +97,7 @@
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
+                       VerticalAlignment="Center"/>
 
             <TextBox Name="PatientCount"
                      Width="100"
@@ -108,6 +105,8 @@
                      HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
+                     FontWeight="Bold"
+                     Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetPatientCount, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
@@ -121,21 +120,21 @@
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
-                    Content="AddPatient"
+                    Content="Add Patient"
                     Command="{Binding AddPatient}" />
 
         </Grid>
 
-        <Grid Name="ButtonRefreshPatient"
+        <Grid Name="ButtonUpdatePatient"
               Grid.Row="1"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="RefreshPatient"
+            <Button Name="UpdatePatient"
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
-                    Content="Refresh Patient"
+                    Content="Update Patient"
                     Command="{Binding RefreshPatients}" />
 
         </Grid>
@@ -156,49 +155,46 @@
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn Header="ID_WorkList"
-                                        DisplayMemberBinding="{Binding ID_WorkList}" />
+                        <GridViewColumn Header="ID пациента"
+                                        DisplayMemberBinding="{Binding ID_Patient}" />
 
-                        <GridViewColumn Header="CreateDate"
+                        <GridViewColumn Header="Модальность"
+                                        DisplayMemberBinding="{Binding Modality}" />
+
+                        <GridViewColumn Header="AE_Title"
+                                        DisplayMemberBinding="{Binding StationAeTitle}" />
+
+                        <GridViewColumn Header="Состояние"
+                                        DisplayMemberBinding="{Binding State}" />
+
+                        <GridViewColumn Header="Описание"
+                                        DisplayMemberBinding="{Binding StudyDescription}" />
+
+                        <GridViewColumn Header="Дата добавления"
                                         DisplayMemberBinding="{Binding CreateDate}" />
 
-                        <GridViewColumn Header="CreateTime"
+                        <GridViewColumn Header="Время добавления"
                                         DisplayMemberBinding="{Binding CreateTime}" />
 
-                        <GridViewColumn Header="CompleteDate"
+                        <!--<GridViewColumn Header="CompleteDate"
                                         DisplayMemberBinding="{Binding CompleteDate}" />
 
                         <GridViewColumn Header="CompleteTime"
-                                        DisplayMemberBinding="{Binding CompleteTime}" />
+                                        DisplayMemberBinding="{Binding CompleteTime}" />-->
 
-                        <GridViewColumn Header="ID_Patient"
-                                        DisplayMemberBinding="{Binding ID_Patient}" />
+                       <!--<GridViewColumn Header="SOPInstanceUID"
+                                        DisplayMemberBinding="{Binding SOPInstanceUID}" />-->
 
-                        <GridViewColumn Header="State"
-                                        DisplayMemberBinding="{Binding State}" />
-
-                        <GridViewColumn Header="SOPInstanceUID"
-                                        DisplayMemberBinding="{Binding SOPInstanceUID}" />
-
-                        <GridViewColumn Header="Modality"
-                                        DisplayMemberBinding="{Binding Modality}" />
-
-                        <GridViewColumn Header="StationAeTitle"
-                                        DisplayMemberBinding="{Binding StationAeTitle}" />
-
-                        <GridViewColumn Header="ProcedureStepStartDateTime"
+                        <GridViewColumn Header="Дата процедуры"
                                         DisplayMemberBinding="{Binding ProcedureStepStartDateTime}" />
 
-                        <GridViewColumn Header="PerformingPhysiciansName"
+                        <GridViewColumn Header="Исполнит. врач"
                                         DisplayMemberBinding="{Binding PerformingPhysiciansName}" />
 
-                        <GridViewColumn Header="StudyDescription"
-                                        DisplayMemberBinding="{Binding StudyDescription}" />
-
-                        <GridViewColumn Header="ReferringPhysiciansName"
+                        <GridViewColumn Header="Направ. врач"
                                         DisplayMemberBinding="{Binding ReferringPhysiciansName}" />
 
-                        <GridViewColumn Header="RequestingPhysician"
+                        <GridViewColumn Header="Запрос. врач"
                                         DisplayMemberBinding="{Binding RequestingPhysician}" />
 
                     </GridView>
@@ -225,6 +221,8 @@
                      HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
+                     FontWeight="Bold"
+                     Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
@@ -247,6 +245,8 @@
                       HorizontalAlignment="Right"
                       VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
+                      FontWeight="Bold"
+                      Background="{DynamicResource MahApps.Brushes.Button.Border}"
                       ItemsSource="{Binding ModalityRules}"
                       SelectedItem="{Binding SelectModality, Mode=TwoWay}"
                       />
@@ -271,6 +271,8 @@
                      HorizontalAlignment="Right"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
+                     FontWeight="Bold"
+                     Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetAeTitle, UpdateSourceTrigger=PropertyChanged}" />
 
         </Grid>
@@ -289,17 +291,17 @@
 
         </Grid>
 
-        <Grid Name="ButtonRefreshWorkList"
+        <Grid Name="ButtonUpdateWorkList"
               Grid.Row="4"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="RefreshWorkList"
+            <Button Name="UpdateWorkList"
                     Grid.Column="0"
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
-                    Content="Refresh WorkList"
+                    Content="Update WorkList"
                     Command="{Binding RefreshWorkList}" />
 
         </Grid>
