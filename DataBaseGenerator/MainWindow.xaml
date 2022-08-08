@@ -349,7 +349,7 @@
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Delete"
-                    Command="{Binding DeletePatient}" />
+                    Command="{Binding DeleteFirstPatient}" />
 
         </Grid>
 
