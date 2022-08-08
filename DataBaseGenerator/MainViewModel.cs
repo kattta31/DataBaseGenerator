@@ -135,7 +135,7 @@ namespace DataBaseGenerator.UI.Wpf
             {
                 _myConnection = new MySqlConnection(_connect);
 
-                _myConnection.Open();
+                _myConnection.Ping();
 
                 UpdateText = "DB connect";
 
@@ -287,44 +287,76 @@ namespace DataBaseGenerator.UI.Wpf
 
 
 
-        private DelegateCommand _deletePatient;
-        public ICommand DeletePatient => _deletePatient ??= new DelegateCommand(PerformDeletePatient);
+        private DelegateCommand _deleteFirstPatient;
+        public ICommand DeleteFirstPatient => _deleteFirstPatient ??= new DelegateCommand(PerformDeleteFirstPatient);
 
-        private void PerformDeletePatient()
+        private void PerformDeleteFirstPatient()
         {
             try
             {
-                _myConnection = new MySqlConnection(_connect);
-
-                _myConnection.Open();
-
-                _adapter = new MySqlDataAdapter();
-
-                _mySqlCommand = new MySqlCommand($"DROP TABLE medxregistry.patient, medxregistry.worklist;", _myConnection);
-
-                _dataReader = _mySqlCommand.ExecuteReader();
-
-                UpdateText = "DataBases DELETE";
-
-                while (_dataReader.Read())
+                var patient = new PatientGeneratorParameters(
+                   new OrderIdPatientRule(),
+                   new RandomLastNameRule(),
+                   new RandomFirstNameRule(),
+                   new RandomMiddleNameRule(),
+                   new OrderPatientIdRule(),
+                   new RandomBirthDateRule(new DateTime()),
+                   new RandomSexRule(),
+                   new RandomAddressRule(),
+                   new RandomAddInfoRule(),
+                   new RandomOccupationRule())
                 {
-                    UpdateText = _dataReader[0].ToString();
-                }
+                    PatientCount = _patientCount
+                };
 
-                _dataReader.Close();
-
-                _myConnection.Close();
+                var deletePatient = DataBaseCommand.DeleteFirstPatient(patient);
 
                 PerformRefreshPatients();
-
-                PerformRefreshWorkList();
-
+                                
                 UpdateText = "Deletion completed";
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 UpdateText = "DataBase is not Deleted";
             }
         }
+
+
+        private DelegateCommand _deleteAllPatient;
+        public ICommand DeleteAllPatient => _deleteAllPatient ??= new DelegateCommand(PerformDeleteAllPatient);
+
+        private void PerformDeleteAllPatient()
+        {
+            try
+            {
+                var patient = new PatientGeneratorParameters(
+                   new OrderIdPatientRule(),
+                   new RandomLastNameRule(),
+                   new RandomFirstNameRule(),
+                   new RandomMiddleNameRule(),
+                   new OrderPatientIdRule(),
+                   new RandomBirthDateRule(new DateTime()),
+                   new RandomSexRule(),
+                   new RandomAddressRule(),
+                   new RandomAddInfoRule(),
+                   new RandomOccupationRule())
+                {
+                    PatientCount = _patientCount
+                };
+
+                var deletePatient = DataBaseCommand.DeleteAllPatients(patient);
+
+                PerformRefreshPatients();
+
+                UpdateText = "Deletion completed";
+            }
+            catch (Exception ex)
+            {
+                UpdateText = "DataBase is not Deleted";
+            }
+        }
+
+
+
     }
 }
