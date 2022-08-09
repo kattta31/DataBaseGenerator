@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -125,29 +126,7 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
-
-        private DelegateCommand _connectDB;
-        public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
-
-        private void PerformConnectDB()
-        {
-            try
-            {
-                _myConnection = new MySqlConnection(_connect);
-
-                _myConnection.Ping();
-
-                UpdateText = "DB connect";
-
-            }
-            catch (Exception e)
-            {
-                UpdateText = "DB not connect";
-            }
-        }
-
-
-
+        
         private List<Patient> _allPatients = DataBaseCommand.GetAllPatients();
 
         public List<Patient> AllPatients
@@ -313,11 +292,11 @@ namespace DataBaseGenerator.UI.Wpf
 
                 PerformRefreshPatients();
                                 
-                UpdateText = "Deletion completed";
+                UpdateText = "First Patient is Delete";
             }
             catch (Exception ex)
             {
-                UpdateText = "DataBase is not Deleted";
+                UpdateText = "Patient is not Deleted";
             }
         }
 
@@ -348,15 +327,115 @@ namespace DataBaseGenerator.UI.Wpf
 
                 PerformRefreshPatients();
 
-                UpdateText = "Deletion completed";
+                UpdateText = "Patient Table Deletion completed";
             }
             catch (Exception ex)
             {
-                UpdateText = "DataBase is not Deleted";
+                UpdateText = "Patient Table is not Deleted";
             }
         }
 
 
+        private DelegateCommand _deleteFirstWorkList;
+        public ICommand DeleteFirstWorkList => _deleteFirstWorkList ??= new DelegateCommand(PerformDeleteFirstWorkList);
+
+        private void PerformDeleteFirstWorkList()
+        {
+            try
+            {
+                var workList = new WorkListGeneratorParameters(
+                    new OrderIdWorklistRule(),
+                    new RandomCreateDateRule(),
+                    new RandomCreateTimeRule(),
+                    new RandomCompleteDateRule(),
+                    new RandomCompleteTimeRule(),
+                    new OrderIdPatientWlRule(),
+                    new RandomStateRule(),
+                    new RandomSOPInstanceUIDRule(),
+                    SelectModality,
+                    new RandomStationAeTitleRule(_aeTitle),
+                    new RandomProcedureStepStartDateTimeRule(),
+                    new RandomPerformingPhysiciansNameRule(),
+                    new RandomStudyDescriptionRule(),
+                    new RandomReferringPhysiciansNameRule(),
+                    new RandomRequestingPhysicianRule())
+                {
+                    WorkListCount = _workListCount
+                };
+
+                var deleteWorkList = DataBaseCommand.DeleteFirstWorkList(workList);
+
+                PerformRefreshWorkList();
+
+                UpdateText = "First in WorkList Delete";
+            }
+            catch (Exception ex)
+            {
+                UpdateText = "WorkList is not Deleted";
+            }
+        }
+
+
+        private DelegateCommand _deleteAllWorkList;
+        public ICommand DeleteAllWorkList => _deleteAllWorkList ??= new DelegateCommand(PerformDeleteAllWorkList);
+
+        private void PerformDeleteAllWorkList()
+        {
+            try
+            {
+                var workList = new WorkListGeneratorParameters(
+                    new OrderIdWorklistRule(),
+                    new RandomCreateDateRule(),
+                    new RandomCreateTimeRule(),
+                    new RandomCompleteDateRule(),
+                    new RandomCompleteTimeRule(),
+                    new OrderIdPatientWlRule(),
+                    new RandomStateRule(),
+                    new RandomSOPInstanceUIDRule(),
+                    SelectModality,
+                    new RandomStationAeTitleRule(_aeTitle),
+                    new RandomProcedureStepStartDateTimeRule(),
+                    new RandomPerformingPhysiciansNameRule(),
+                    new RandomStudyDescriptionRule(),
+                    new RandomReferringPhysiciansNameRule(),
+                    new RandomRequestingPhysicianRule())
+                {
+                    WorkListCount = _workListCount
+                };
+
+                var deletePatient = DataBaseCommand.DeleteAllWorkList(workList);
+
+                PerformRefreshWorkList();
+
+                UpdateText = "WorkList Table Deletion completed";
+            }
+            catch (Exception ex)
+            {
+                UpdateText = "WorkList is not Deleted";
+            }
+        }
+
+
+        private DelegateCommand _deleteAllTables;
+        public ICommand DeleteAllTables => _deleteAllTables ??= new DelegateCommand(PerformDeleteAllTables);
+
+        private void PerformDeleteAllTables()
+        {
+            try
+            {
+                PerformDeleteAllPatient();
+                PerformRefreshPatients();
+
+                PerformDeleteAllWorkList();
+                PerformRefreshWorkList();
+
+                UpdateText = "All Tables Deletion completed";
+            }
+            catch (Exception ex)
+            {
+                UpdateText = "Tables is not Deleted";
+            }
+        }
 
     }
 }
