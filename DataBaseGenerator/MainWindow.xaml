@@ -117,7 +117,7 @@
               Margin="5">
 
             <Button Name="AddPatient"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Add Patient"
@@ -131,7 +131,7 @@
               Margin="5">
 
             <Button Name="UpdatePatient"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Update Patient"
@@ -146,7 +146,7 @@
               Margin="5">
 
             <Button Name="DeleteFirstPatient"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Delete First"
@@ -160,7 +160,7 @@
               Margin="5">
 
             <Button Name="DeleteAllPatient"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Delete All"
@@ -312,7 +312,7 @@
               Margin="5">
 
             <Button Name="AddWorkList"
-                    Width="150"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Add WorkList"
@@ -327,7 +327,7 @@
 
             <Button Name="UpdateWorkList"
                     Grid.Column="0"
-                    Width="150"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Update WorkList"
@@ -342,7 +342,7 @@
               Margin="5">
 
             <Button Name="DeleteFirstWorkList"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Delete First WL"
@@ -356,7 +356,7 @@
               Margin="5">
 
             <Button Name="DeleteAllWorkList"
-                    Width="100"
+                    Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Delete All WL"
