@@ -126,7 +126,18 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
-        
+
+        private DelegateCommand _connectDB;
+        public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
+
+        private void PerformConnectDB()
+        {
+            MessageBox.Show("Ну да конечно, хахахах !!!");
+            MessageBox.Show("Попробуй еще раз !!!");
+            MessageBox.Show("Не останавливайся, ты уже так далеко зашел !!!");
+        }
+
+
         private List<Patient> _allPatients = DataBaseCommand.GetAllPatients();
 
         public List<Patient> AllPatients
