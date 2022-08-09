@@ -15,11 +15,21 @@ namespace DataBaseGenerator.UI.Wpf
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+            try
+            {
+                base.OnStartup(e);
 
-            var mainWindow = new MainWindow();
-            mainWindow.DataContext = new MainViewModel();
-            mainWindow.Show();
+                var mainWindow = new MainWindow();
+                mainWindow.DataContext = new MainViewModel();
+                mainWindow.Show();
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show("Check your connection settings !!!");                
+                base.Shutdown();
+            }
+
         }
 
     }
