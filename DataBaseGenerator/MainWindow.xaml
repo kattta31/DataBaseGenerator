@@ -93,7 +93,7 @@
               Margin="5">
 
             <TextBlock Name="PatCount"
-                       Text="Patient Count"
+                       Text="PatiEnt Count"
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
@@ -121,7 +121,7 @@
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Add Patient"
-                    Command="{Binding AddPatient}" />
+                    Command="{Binding DeleteFirstPatient}" />
 
         </Grid>
 
@@ -149,8 +149,8 @@
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Content="Delete First"
-                    Command="{Binding DeleteFirstPatient}" />
+                    Content="Delet First"
+                    Command="{Binding AddPatient}" />
 
         </Grid>
 
@@ -163,7 +163,7 @@
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
-                    Content="Delete All"
+                    Content="Delet All"
                     Command="{Binding DeleteAllPatient}" />
 
         </Grid>
@@ -406,7 +406,7 @@
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
-                    Content="Delete All Tables"
+                    Content="Удалить все таблицы"
                     Command="{Binding DeleteAllTables}" />
 
         </Grid>
