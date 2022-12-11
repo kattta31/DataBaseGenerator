@@ -135,6 +135,7 @@ namespace DataBaseGenerator.UI.Wpf
             MessageBox.Show("Ну да конечно, хахахах !!!");
             MessageBox.Show("Попробуй еще раз !!!");
             MessageBox.Show("Не останавливайся, ты уже так далеко зашел !!!");
+            MessageBox.Show("У тебя все получится ;) !!!");
         }
 
 
@@ -230,7 +231,7 @@ namespace DataBaseGenerator.UI.Wpf
 
             catch (Exception e)
             {
-                UpdateText = "Patient not added";
+                UpdateText = "Пациент не добавлен";
             }
         }
 
