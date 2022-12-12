@@ -2,19 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
 using DataBaseGenerator.Core.GeneratorRules.WorkList;
-using Microsoft.EntityFrameworkCore.Storage;
+using MahApps.Metro.Actions;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -51,6 +45,7 @@ namespace DataBaseGenerator.UI.Wpf
         private int _workListCount;
         private RandomModalityRule _modality;
         private string _aeTitle;
+        DialogMessageWindow _dialogMessage = new DialogMessageWindow();
 
 
 
@@ -127,6 +122,7 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
+
         private DelegateCommand _connectDB;
         public ICommand ConnectDB => _connectDB = new DelegateCommand(PerformConnectDB);
 
@@ -137,6 +133,7 @@ namespace DataBaseGenerator.UI.Wpf
             MessageBox.Show("Не останавливайся, ты уже так далеко зашел !!!");
             MessageBox.Show("У тебя все получится ;) !!!");
         }
+
 
 
         private List<Patient> _allPatients = DataBaseCommand.GetAllPatients();
@@ -262,12 +259,12 @@ namespace DataBaseGenerator.UI.Wpf
                 {
                     WorkListCount = _workListCount
                 };
-                
-                    var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
 
-                    PerformRefreshWorkList();
+                var addWorkList = DataBaseCommand.GenerateWorkListBase(newWorkList);
 
-                    UpdateText = "WorkList added";
+                PerformRefreshWorkList();
+
+                UpdateText = "WorkList added";
             }
 
             catch (Exception e)
@@ -303,7 +300,7 @@ namespace DataBaseGenerator.UI.Wpf
                 var deletePatient = DataBaseCommand.DeleteFirstPatient(patient);
 
                 PerformRefreshPatients();
-                                
+
                 UpdateText = "First Patient is Delete";
             }
             catch (Exception ex)
@@ -448,6 +445,47 @@ namespace DataBaseGenerator.UI.Wpf
                 UpdateText = "Tables is not Deleted";
             }
         }
+
+
+        /// <summary>
+        /// Dialog Window Commands
+        /// </summary>
+
+
+
+        private DelegateCommand _aboutProgram;
+        public ICommand AboutProgram => _aboutProgram = new DelegateCommand(InformationMessage);
+
+        private void InformationMessage()
+        {
+            _dialogMessage.DataContext = this;
+            _dialogMessage.ShowDialog();
+        }
+
+
+
+        private DelegateCommand _dialog;
+        public ICommand ClosingDialogWindow => _dialog = new DelegateCommand(ClosingDialog);
+
+        private void ClosingDialog()
+        {
+            _dialogMessage.Close();
+        }
+
+
+
+
+        private DelegateCommand _hotkey;
+        public ICommand HotkeyForDialogWindow => _hotkey = new DelegateCommand(HotkeyForDialog);
+
+        private void HotkeyForDialog()
+        {
+            _dialogMessage.DataContext = this;
+            MessageBox.Show("Отличная попытка ДРУЖИЩЕ");
+        }
+
+
+
 
     }
 }
