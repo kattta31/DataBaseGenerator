@@ -6,7 +6,8 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
                  d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
-                 mc:Ignorable="d"
+                 mc:Ignorable="d"  
+                 Icon="D:\Develop\MedXRegistryGenerator\DataBaseGenerator\DBGenerator.ico"
                  Title="DataBase Generator"
                  Height="700"
                  Width="840"
@@ -14,6 +15,7 @@
                  WindowStartupLocation="CenterScreen">
 
 
+    
     <Grid ShowGridLines="False">
 
         <Grid.Resources>
@@ -41,23 +43,35 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-
+        
+        
         <Grid Name="MenuPanel"
               Grid.Row="0"
               Grid.Column="0"              
               Grid.ColumnSpan="3"
-              Margin="5">
+              Margin="5,5,5,0">
+            
 
             <Border>
                 <StackPanel>
                     <Menu>
-                        <MenuItem 
+                        <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
-                            BorderThickness="3"
                             Header="Справка">
                             <MenuItem Header="О программе"/>
+                        </MenuItem>
+                        <MenuItem 
+                            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                            Header="About">
 
 
+                            <KeyBinding Modifiers="Ctrl" Key="O" Command="{Binding HotkeyForDialogWindow}"/>
+
+                            <MenuItem 
+                                Header="О программе"
+                                InputGestureText="Ctrl+O"
+                                Command="{Binding AboutProgram}"/>
+                            
                         </MenuItem>
                     </Menu>
                 </StackPanel>
