@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.Design;
 using System.Data;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
 using DataBaseGenerator.Core;
@@ -469,18 +471,19 @@ namespace DataBaseGenerator.UI.Wpf
 
         private void ClosingDialog()
         {
+            //SoundPlayer soundPlayer = new SoundPlayer("C:\\Temp\\nizza.wav");
+            //soundPlayer.Load();
+            //soundPlayer.PlaySync();
             _dialogMessage.Close();
         }
 
-
-
+        
 
         private DelegateCommand _hotkey;
         public ICommand HotkeyForDialogWindow => _hotkey = new DelegateCommand(HotkeyForDialog);
 
         private void HotkeyForDialog()
         {
-            _dialogMessage.DataContext = this;
             MessageBox.Show("Отличная попытка ДРУЖИЩЕ");
         }
 

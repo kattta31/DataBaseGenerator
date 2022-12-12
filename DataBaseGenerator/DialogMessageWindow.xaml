@@ -33,11 +33,11 @@
               Margin="5">
 
             <Button
-                Command="{Binding ClosingDialogWindow}">                
+                Command="{Binding ClosingDialogWindow}">
                 <Button.Content>
                     <Image 
                     x:Name="DialogImage" 
-                    Source="D:\\Develop\\MedXRegistryGenerator\\DataBaseGenerator\\333.jpg"/>
+                    Source="D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\333.jpg"/>
                 </Button.Content>
             </Button>
         </Grid>

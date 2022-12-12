@@ -7,15 +7,17 @@
                  xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
                  d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
                  mc:Ignorable="d"  
-                 Icon="D:\Develop\MedXRegistryGenerator\DataBaseGenerator\DBGenerator.ico"
+                 Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\DBGenerator.ico"
                  Title="DataBase Generator"
                  Height="700"
                  Width="840"
                  WindowStyle="ThreeDBorderWindow"
                  WindowStartupLocation="CenterScreen">
 
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding HotkeyForDialogWindow}"/>
+    </Window.InputBindings>
 
-    
     <Grid ShowGridLines="False">
 
         <Grid.Resources>
@@ -64,14 +66,9 @@
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="About">
 
-
-                            <KeyBinding Modifiers="Ctrl" Key="O" Command="{Binding HotkeyForDialogWindow}"/>
-
                             <MenuItem 
-                                Header="О программе"
-                                InputGestureText="Ctrl+O"
+                                Header="О программе  (Ctrl+O)"
                                 Command="{Binding AboutProgram}"/>
-                            
                         </MenuItem>
                     </Menu>
                 </StackPanel>
