@@ -16,6 +16,7 @@
 
     <Window.InputBindings>
         <KeyBinding Gesture="Ctrl+O" Command="{Binding HotkeyForDialogWindow}"/>
+        <KeyBinding Gesture="Alt+X" Command="{Binding HotkeyExitFromProgram}"/>
     </Window.InputBindings>
 
     <Grid ShowGridLines="False">
@@ -56,18 +57,67 @@
 
             <Border>
                 <StackPanel>
-                    <Menu>
+                    <Menu
+                        x:Name="ContextMenu">
                         <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
-                            Header="Справка">
-                            <MenuItem Header="О программе"/>
+                            Header="Файл">
+                            <MenuItem Header="Новый (Ctrl + N)"/>
+                            <MenuItem Header="Открыть (Ctrl + Open)"/>
+                            <MenuItem Header="Сохранить (Ctrl + S)"/>
+                            <MenuItem Header="Сохранить как... (Ctrl + N)"/>
+                            <MenuItem Header="Печать (Ctrl + P)"/>
+                            <MenuItem Header="Выход (Alt + X)" Command="{Binding HotkeyExitFromProgram}"/>
                         </MenuItem>
+                        <MenuItem                             
+                            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                            Header="Вид">
+                            <MenuItem Header="Поверх всех окон"/>
+                            <MenuItem Header="Вкладки во весь Экран"/>
+                            <MenuItem Header="Масштаб текста">
+                                <MenuItem Header="Крупнее"/>
+                                <MenuItem Header="Мельче"/>
+                                <MenuItem Header="Восстановить масштаб..."/>
+                            </MenuItem>
+                            <MenuItem Header="Свернуть все окна"/>
+                        </MenuItem>
+                        <MenuItem                             
+                            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                            Header="Опции">
+                            <MenuItem Header="Настройки..."/>
+                            <MenuItem Header="Импортировать"/>
+                            <MenuItem Header="Экспортировать"/>
+                            <MenuItem Header="Удалить программу"/>
+                        </MenuItem>
+                        <MenuItem                             
+                            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                            Header="Инструменты">
+                            <MenuItem Header="MD5">
+                                <MenuItem Header="Сгенерировать"/>
+                                <MenuItem Header="Не генерировать"/>
+                                <MenuItem Header="Лучше вообще не трогать"/>
+                            </MenuItem>
+                            <MenuItem Header="SHA-256">
+                                <MenuItem Header="Не нажимать" Command="{Binding ToolMessage}"/>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem                             
+                            BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                            Header="Плагины">
+                            <MenuItem Header="Плагин мастерства"/>
+                            <MenuItem Header="Просто плагин"/>
+                            <MenuItem Header="Бла-Бла плагин"/>
+                            <MenuItem Header="Управление плагинами"/>
+                            <MenuItem Header="Открыть папку плагинов"/>
+                        </MenuItem>                        
                         <MenuItem 
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
-                            Header="About">
-
+                            Header="Справка">
                             <MenuItem 
-                                Header="О программе  (Ctrl+O)"
+                                Header="Вызвать справку"
+                                Command="{Binding OpenSpecificationWindow}"/>
+                            <MenuItem 
+                                Header="О программе...  (Ctrl+O)"
                                 Command="{Binding AboutProgram}"/>
                         </MenuItem>
                     </Menu>
