@@ -6,6 +6,7 @@ using System.Data;
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
@@ -47,8 +48,10 @@ namespace DataBaseGenerator.UI.Wpf
         private int _workListCount;
         private RandomModalityRule _modality;
         private string _aeTitle;
-        DialogMessageWindow _dialogMessage = new DialogMessageWindow();
-
+        private DialogMessageWindow _dialogMessage = new DialogMessageWindow();
+        private MediaPlayer _mediaPlayer = new MediaPlayer();
+        private MainViewModel _mainViewModel;
+        private SpecificationWindow _specificationWindow = new SpecificationWindow();
 
 
 
@@ -464,16 +467,17 @@ namespace DataBaseGenerator.UI.Wpf
             _dialogMessage.ShowDialog();
         }
 
+       
 
+        
 
         private DelegateCommand _dialog;
         public ICommand ClosingDialogWindow => _dialog = new DelegateCommand(ClosingDialog);
 
         private void ClosingDialog()
         {
-            //SoundPlayer soundPlayer = new SoundPlayer("C:\\Temp\\nizza.wav");
-            //soundPlayer.Load();
-            //soundPlayer.PlaySync();
+            _mediaPlayer.Open(new Uri("D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\NoNo.mp3"));
+            _mediaPlayer.Play();
             _dialogMessage.Close();
         }
 
@@ -483,10 +487,47 @@ namespace DataBaseGenerator.UI.Wpf
         public ICommand HotkeyForDialogWindow => _hotkey = new DelegateCommand(HotkeyForDialog);
 
         private void HotkeyForDialog()
-        {
-            MessageBox.Show("Отличная попытка ДРУЖИЩЕ");
+        {            
+            MessageBox.Show("Отличная попытка ДРУЖИЩЕ", "ага )))", MessageBoxButton.OK, MessageBoxImage.Stop);
         }
 
+
+        private DelegateCommand _hotkeyExit;
+        public ICommand HotkeyExitFromProgram => _hotkeyExit = new DelegateCommand(HotkeyExit);
+
+        private void HotkeyExit()
+        {
+            Application.Current.Shutdown();
+        }
+
+
+        
+        private DelegateCommand _specification;
+        public ICommand OpenSpecificationWindow => _specification = new DelegateCommand(PerformSpecification);
+
+        private void PerformSpecification()
+        {
+            _specificationWindow.DataContext = this;
+            _specificationWindow.Show();
+        }
+
+
+        private DelegateCommand _closeSpecification;
+        public ICommand CloseSpecificationWindow => _closeSpecification = new DelegateCommand(CloseSpecification);
+
+        private void CloseSpecification()
+        {
+            _specificationWindow.Close();
+        }
+
+
+        private DelegateCommand _tools;
+        public ICommand ToolMessage => _tools = new DelegateCommand(ToolMessageBox);
+
+        private void ToolMessageBox()
+        {
+            MessageBox.Show("Ну я же просил !!!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
 
 
 
