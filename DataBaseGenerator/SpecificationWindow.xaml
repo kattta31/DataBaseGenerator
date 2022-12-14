@@ -35,7 +35,7 @@
 
             <Image
                 x:Name="SpecificationImage" 
-                Source="D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\Specification.jpg"/>
+                Source="D:\\Develop\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\Specification.jpg"/>
 
         </Grid>
 
@@ -55,7 +55,12 @@
         </Grid>
 
 
-
+        <!-- Path to Resources after Install and in Debug 
+        
+        Source="C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\Specification.jpg"/>
+        
+        Source="D:\\Develop\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\Specification.jpg"/>
+        -->
 
 
 

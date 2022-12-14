@@ -52,6 +52,11 @@ namespace DataBaseGenerator.UI.Wpf
         private MediaPlayer _mediaPlayer = new MediaPlayer();
         private MainViewModel _mainViewModel;
         private SpecificationWindow _specificationWindow = new SpecificationWindow();
+        
+        string _pathToResourceAudio = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\NoNo.mp3";
+
+        // Path To ResourceAudio after Install
+        //string _pathToResourceAudio = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\NoNo.mp3";
 
 
 
@@ -476,7 +481,7 @@ namespace DataBaseGenerator.UI.Wpf
 
         private void ClosingDialog()
         {
-            _mediaPlayer.Open(new Uri("D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\NoNo.mp3"));
+            _mediaPlayer.Open(new Uri(_pathToResourceAudio));
             _mediaPlayer.Play();
             _dialogMessage.Close();
         }

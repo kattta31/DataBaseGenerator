@@ -37,10 +37,18 @@
                 <Button.Content>
                     <Image 
                     x:Name="DialogImage" 
-                    Source="D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\333.jpg"/>
+                    Source="D:\\Develop\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\333.jpg"/>
                 </Button.Content>
             </Button>
         </Grid>
+
+
+        <!-- Path to Resources after Install and in Debug 
+        
+        Source="C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\333.jpg"/>
+                
+        Source="D:\\Develop\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\333.jpg"/>
+        -->
 
 
     </Grid>

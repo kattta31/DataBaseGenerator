@@ -7,13 +7,21 @@
                  xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
                  d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
                  mc:Ignorable="d"  
-                 Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\DBGenerator.ico"
+                 Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator.Core\Resources\DBGenerator.ico"
                  Title="DataBase Generator"
                  Height="700"
                  Width="840"
                  WindowStyle="ThreeDBorderWindow"
                  WindowStartupLocation="CenterScreen">
 
+    <!-- Path to Icon after Install and in Debug 
+    
+    Icon="C:\Program Files (x86)\DBGeneratorBroken\Resources\DBGenerator.ico"
+                
+    Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator.Core\Resources\DBGenerator.ico"
+    -->
+    
+    
     <Window.InputBindings>
         <KeyBinding Gesture="Ctrl+O" Command="{Binding HotkeyForDialogWindow}"/>
         <KeyBinding Gesture="Alt+X" Command="{Binding HotkeyExitFromProgram}"/>
