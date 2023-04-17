@@ -11,12 +11,13 @@ using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
 using DataBaseGenerator.Core.GeneratorRules.WorkList;
+using DataBaseGenerator.UI.Wpf.View;
 using MahApps.Metro.Actions;
 using MySqlConnector;
 using Prism.Commands;
 using Prism.Mvvm;
 
-namespace DataBaseGenerator.UI.Wpf
+namespace DataBaseGenerator.UI.Wpf.ViewModel
 {
     public class MainViewModel : BindableBase
     {
@@ -52,7 +53,7 @@ namespace DataBaseGenerator.UI.Wpf
         private MediaPlayer _mediaPlayer = new MediaPlayer();
         private MainViewModel _mainViewModel;
         private SpecificationWindow _specificationWindow = new SpecificationWindow();
-        
+
         string _pathToResourceAudio = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\NoNo.mp3";
 
         // Path To ResourceAudio after Install
@@ -472,9 +473,9 @@ namespace DataBaseGenerator.UI.Wpf
             _dialogMessage.ShowDialog();
         }
 
-       
 
-        
+
+
 
         private DelegateCommand _dialog;
         public ICommand ClosingDialogWindow => _dialog = new DelegateCommand(ClosingDialog);
@@ -486,13 +487,13 @@ namespace DataBaseGenerator.UI.Wpf
             _dialogMessage.Close();
         }
 
-        
+
 
         private DelegateCommand _hotkey;
         public ICommand HotkeyForDialogWindow => _hotkey = new DelegateCommand(HotkeyForDialog);
 
         private void HotkeyForDialog()
-        {            
+        {
             MessageBox.Show("Отличная попытка ДРУЖИЩЕ", "ага )))", MessageBoxButton.OK, MessageBoxImage.Stop);
         }
 
@@ -506,7 +507,7 @@ namespace DataBaseGenerator.UI.Wpf
         }
 
 
-        
+
         private DelegateCommand _specification;
         public ICommand OpenSpecificationWindow => _specification = new DelegateCommand(PerformSpecification);
 

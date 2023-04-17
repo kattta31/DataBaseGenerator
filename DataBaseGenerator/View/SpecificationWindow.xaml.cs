@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DataBaseGenerator.UI.Wpf
+namespace DataBaseGenerator.UI.Wpf.View
 {
     /// <summary>
     /// Interaction logic for SpecificationWindow.xaml

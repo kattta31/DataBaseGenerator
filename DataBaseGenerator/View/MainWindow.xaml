@@ -1,201 +1,203 @@
-﻿<mah:MetroWindow x:Class="DataBaseGenerator.UI.Wpf.MainWindow"
+﻿<mah:MetroWindow x:Class="DataBaseGenerator.UI.Wpf.View.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                 xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
+                 xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf.ViewModel"
                  d:DataContext="{d:DesignInstance Type=wpf:MainViewModel, IsDesignTimeCreatable=False}"
-                 mc:Ignorable="d"  
-                 Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator.Core\Resources\DBGenerator.ico"
-                 Title="DataBase Generator"
-                 Height="700"
+                 mc:Ignorable="d" 
+                 Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\Sources\DBGenerator.ico"
+                 Title="DataBase Generator" 
+                 Height="700" 
                  Width="840"
                  WindowStyle="ThreeDBorderWindow"
                  WindowStartupLocation="CenterScreen">
 
-    <!-- Path to Icon after Install and in Debug 
+
+
+        <!-- Path to Icon after Install and in Debug 
     
     Icon="C:\Program Files (x86)\DBGeneratorBroken\Resources\DBGenerator.ico"
                 
     Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator.Core\Resources\DBGenerator.ico"
     -->
-    
-    
-    <Window.InputBindings>
-        <KeyBinding Gesture="Ctrl+O" Command="{Binding HotkeyForDialogWindow}"/>
-        <KeyBinding Gesture="Alt+X" Command="{Binding HotkeyExitFromProgram}"/>
-    </Window.InputBindings>
 
-    <Grid ShowGridLines="False">
 
-        <Grid.Resources>
+        <Window.InputBindings>
+            <KeyBinding Gesture="Ctrl+O" Command="{Binding HotkeyForDialogWindow}"/>
+            <KeyBinding Gesture="Alt+X" Command="{Binding HotkeyExitFromProgram}"/>
+        </Window.InputBindings>
 
-            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
-            </Style>
+        <Grid ShowGridLines="False">
 
-        </Grid.Resources>
+            <Grid.Resources>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                </Style>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+            </Grid.Resources>
 
-        
-        
-        <Grid Name="MenuPanel"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid Name="MenuPanel"
               Grid.Row="0"
               Grid.Column="0"              
               Grid.ColumnSpan="3"
               Margin="5,5,5,0">
-            
 
-            <Border>
-                <StackPanel>
-                    <Menu
+
+                <Border>
+                    <StackPanel>
+                        <Menu
                         x:Name="ContextMenu">
-                        <MenuItem                             
+                            <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Файл">
-                            <MenuItem Header="Новый (Ctrl + N)"/>
-                            <MenuItem Header="Открыть (Ctrl + Open)"/>
-                            <MenuItem Header="Сохранить (Ctrl + S)"/>
-                            <MenuItem Header="Сохранить как... (Ctrl + N)"/>
-                            <MenuItem Header="Печать (Ctrl + P)"/>
-                            <MenuItem Header="Выход (Alt + X)" Command="{Binding HotkeyExitFromProgram}"/>
-                        </MenuItem>
-                        <MenuItem                             
+                                <MenuItem Header="Новый (Ctrl + N)"/>
+                                <MenuItem Header="Открыть (Ctrl + Open)"/>
+                                <MenuItem Header="Сохранить (Ctrl + S)"/>
+                                <MenuItem Header="Сохранить как... (Ctrl + N)"/>
+                                <MenuItem Header="Печать (Ctrl + P)"/>
+                                <MenuItem Header="Выход (Alt + X)" Command="{Binding HotkeyExitFromProgram}"/>
+                            </MenuItem>
+                            <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Вид">
-                            <MenuItem Header="Поверх всех окон"/>
-                            <MenuItem Header="Вкладки во весь Экран"/>
-                            <MenuItem Header="Масштаб текста">
-                                <MenuItem Header="Крупнее"/>
-                                <MenuItem Header="Мельче"/>
-                                <MenuItem Header="Восстановить масштаб..."/>
+                                <MenuItem Header="Поверх всех окон"/>
+                                <MenuItem Header="Вкладки во весь Экран"/>
+                                <MenuItem Header="Масштаб текста">
+                                    <MenuItem Header="Крупнее"/>
+                                    <MenuItem Header="Мельче"/>
+                                    <MenuItem Header="Восстановить масштаб..."/>
+                                </MenuItem>
+                                <MenuItem Header="Свернуть все окна"/>
                             </MenuItem>
-                            <MenuItem Header="Свернуть все окна"/>
-                        </MenuItem>
-                        <MenuItem                             
+                            <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Опции">
-                            <MenuItem Header="Настройки..."/>
-                            <MenuItem Header="Импортировать"/>
-                            <MenuItem Header="Экспортировать"/>
-                            <MenuItem Header="Удалить программу"/>
-                        </MenuItem>
-                        <MenuItem                             
+                                <MenuItem Header="Настройки..."/>
+                                <MenuItem Header="Импортировать"/>
+                                <MenuItem Header="Экспортировать"/>
+                                <MenuItem Header="Удалить программу"/>
+                            </MenuItem>
+                            <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Инструменты">
-                            <MenuItem Header="MD5">
-                                <MenuItem Header="Сгенерировать"/>
-                                <MenuItem Header="Не генерировать"/>
-                                <MenuItem Header="Лучше вообще не трогать"/>
+                                <MenuItem Header="MD5">
+                                    <MenuItem Header="Сгенерировать"/>
+                                    <MenuItem Header="Не генерировать"/>
+                                    <MenuItem Header="Лучше вообще не трогать"/>
+                                </MenuItem>
+                                <MenuItem Header="SHA-256">
+                                    <MenuItem Header="Не нажимать" Command="{Binding ToolMessage}"/>
+                                </MenuItem>
                             </MenuItem>
-                            <MenuItem Header="SHA-256">
-                                <MenuItem Header="Не нажимать" Command="{Binding ToolMessage}"/>
-                            </MenuItem>
-                        </MenuItem>
-                        <MenuItem                             
+                            <MenuItem                             
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Плагины">
-                            <MenuItem Header="Плагин мастерства"/>
-                            <MenuItem Header="Просто плагин"/>
-                            <MenuItem Header="Бла-Бла плагин"/>
-                            <MenuItem Header="Управление плагинами"/>
-                            <MenuItem Header="Открыть папку плагинов"/>
-                        </MenuItem>                        
-                        <MenuItem 
+                                <MenuItem Header="Плагин мастерства"/>
+                                <MenuItem Header="Просто плагин"/>
+                                <MenuItem Header="Бла-Бла плагин"/>
+                                <MenuItem Header="Управление плагинами"/>
+                                <MenuItem Header="Открыть папку плагинов"/>
+                            </MenuItem>
+                            <MenuItem 
                             BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Справка">
-                            <MenuItem 
+                                <MenuItem 
                                 Header="Вызвать справку"
                                 Command="{Binding OpenSpecificationWindow}"/>
-                            <MenuItem 
+                                <MenuItem 
                                 Header="О программе...  (Ctrl+O)"
                                 Command="{Binding AboutProgram}"/>
-                        </MenuItem>
-                    </Menu>
-                </StackPanel>
-            </Border>
-        </Grid>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
+                </Border>
+            </Grid>
 
-       
-        
 
-        <Grid Name="PatientTable"
+
+
+            <Grid Name="PatientTable"
               Grid.Row="1"
               Grid.Column="0"
               Grid.ColumnSpan="3"
               Background="{DynamicResource MahApps.Brushes.Accent}"
               Margin="5">
 
-            <ListView Name="ViewAllPatient"
+                <ListView Name="ViewAllPatient"
                       ItemsSource="{Binding AllPatients}"
                       Margin="5">
 
-                <ListView.View>
-                    <GridView>
+                    <ListView.View>
+                        <GridView>
 
-                        <GridViewColumn Header="ID пациента"
+                            <GridViewColumn Header="ID пациента"
                                         DisplayMemberBinding="{Binding PatientID}" />
 
-                        <GridViewColumn Header="Фамилия"
+                            <GridViewColumn Header="Фамилия"
                                         DisplayMemberBinding="{Binding LastName}" />
 
-                        <GridViewColumn Header="Имя"
+                            <GridViewColumn Header="Имя"
                                         DisplayMemberBinding="{Binding FirstName}" />
 
-                        <GridViewColumn Header="Отчество"
+                            <GridViewColumn Header="Отчество"
                                         DisplayMemberBinding="{Binding MiddleName}" />
 
-                        <GridViewColumn Header="Дата Рождения"
+                            <GridViewColumn Header="Дата Рождения"
                                         DisplayMemberBinding="{Binding BirthDate}" />
 
-                        <GridViewColumn Header="Пол"
+                            <GridViewColumn Header="Пол"
                                         DisplayMemberBinding="{Binding Sex}" />
 
-                        <GridViewColumn Header="Адрес"
+                            <GridViewColumn Header="Адрес"
                                         DisplayMemberBinding="{Binding Address}" />
 
-                        <GridViewColumn Header="Доп. информация"
+                            <GridViewColumn Header="Доп. информация"
                                         DisplayMemberBinding="{Binding AddInfo}" />
 
-                        <GridViewColumn Header="Место работы"
+                            <GridViewColumn Header="Место работы"
                                         DisplayMemberBinding="{Binding Occupation}" />
 
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="TextBoxPatientCount"
+            <Grid Name="TextBoxPatientCount"
               Grid.Row="2"
               Grid.Column="0"
               Margin="5">
 
-            <TextBlock Name="PatCount"
+                <TextBlock Name="PatCount"
                        Text="PatiEnt Count"
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"/>
 
-            <TextBox Name="PatientCount"
+                <TextBox Name="PatientCount"
                      Width="100"
                      Height="50"
                      HorizontalAlignment="Right"
@@ -205,67 +207,67 @@
                      Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetPatientCount, UpdateSourceTrigger=PropertyChanged}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonAddPatient"
+            <Grid Name="ButtonAddPatient"
               Grid.Row="2"
               Grid.Column="1"
               Margin="5">
 
-            <Button Name="AddPatient"
+                <Button Name="AddPatient"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Add Patient"
                     Command="{Binding DeleteFirstPatient}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonUpdatePatient"
+            <Grid Name="ButtonUpdatePatient"
               Grid.Row="2"
               Grid.Column="1"
               Margin="5">
 
-            <Button Name="UpdatePatient"
+                <Button Name="UpdatePatient"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Update Patient"
                     Command="{Binding RefreshPatients}" />
 
-        </Grid>
+            </Grid>
 
 
-        <Grid Name="ButtonDeleteFirstPatient"
+            <Grid Name="ButtonDeleteFirstPatient"
               Grid.Row="2"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="DeleteFirstPatient"
+                <Button Name="DeleteFirstPatient"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Delet First"
                     Command="{Binding AddPatient}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonDeleteAllPatient"
+            <Grid Name="ButtonDeleteAllPatient"
               Grid.Row="2"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="DeleteAllPatient"
+                <Button Name="DeleteAllPatient"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Delet All"
                     Command="{Binding DeleteAllPatient}" />
 
-        </Grid>
+            </Grid>
 
 
-        <Grid Name="WorkListTable"
+            <Grid Name="WorkListTable"
               Grid.Row="3"
               Grid.Column="0"
               Grid.ColumnSpan="3"
@@ -273,74 +275,74 @@
               
               Margin="5">
 
-            <ListView Name="ViewAllWorkList"
+                <ListView Name="ViewAllWorkList"
                       ItemsSource="{Binding AllWorkLists}"
                       Margin="5">
 
-                <ListView.View>
-                    <GridView>
+                    <ListView.View>
+                        <GridView>
 
-                        <GridViewColumn Header="ID пациента"
+                            <GridViewColumn Header="ID пациента"
                                         DisplayMemberBinding="{Binding ID_Patient}" />
 
-                        <GridViewColumn Header="Модальность"
+                            <GridViewColumn Header="Модальность"
                                         DisplayMemberBinding="{Binding Modality}" />
 
-                        <GridViewColumn Header="AE_Title"
+                            <GridViewColumn Header="AE_Title"
                                         DisplayMemberBinding="{Binding StationAeTitle}" />
 
-                        <GridViewColumn Header="Состояние"
+                            <GridViewColumn Header="Состояние"
                                         DisplayMemberBinding="{Binding State}" />
 
-                        <GridViewColumn Header="Описание"
+                            <GridViewColumn Header="Описание"
                                         DisplayMemberBinding="{Binding StudyDescription}" />
 
-                        <GridViewColumn Header="Дата добавления"
+                            <GridViewColumn Header="Дата добавления"
                                         DisplayMemberBinding="{Binding CreateDate}" />
 
-                        <GridViewColumn Header="Время добавления"
+                            <GridViewColumn Header="Время добавления"
                                         DisplayMemberBinding="{Binding CreateTime}" />
 
-                        <!--<GridViewColumn Header="CompleteDate"
+                            <!--<GridViewColumn Header="CompleteDate"
                                         DisplayMemberBinding="{Binding CompleteDate}" />
 
                         <GridViewColumn Header="CompleteTime"
                                         DisplayMemberBinding="{Binding CompleteTime}" />-->
 
-                       <!--<GridViewColumn Header="SOPInstanceUID"
+                            <!--<GridViewColumn Header="SOPInstanceUID"
                                         DisplayMemberBinding="{Binding SOPInstanceUID}" />-->
 
-                        <GridViewColumn Header="Дата процедуры"
+                            <GridViewColumn Header="Дата процедуры"
                                         DisplayMemberBinding="{Binding ProcedureStepStartDateTime}" />
 
-                        <GridViewColumn Header="Исполнит. врач"
+                            <GridViewColumn Header="Исполнит. врач"
                                         DisplayMemberBinding="{Binding PerformingPhysiciansName}" />
 
-                        <GridViewColumn Header="Направ. врач"
+                            <GridViewColumn Header="Направ. врач"
                                         DisplayMemberBinding="{Binding ReferringPhysiciansName}" />
 
-                        <GridViewColumn Header="Запрос. врач"
+                            <GridViewColumn Header="Запрос. врач"
                                         DisplayMemberBinding="{Binding RequestingPhysician}" />
 
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="TextBoxWorkListCount"
+            <Grid Name="TextBoxWorkListCount"
               Grid.Row="4"
               Grid.Column="0"
               Margin="5">
 
-            <TextBlock Name="WlCount"
+                <TextBlock Name="WlCount"
                        Text="WorkList Count"
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
 
-            <TextBox Name="WorkListCount"
+                <TextBox Name="WorkListCount"
                      Width="100"
                      Height="50"
                      HorizontalAlignment="Right"
@@ -350,21 +352,21 @@
                      Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetWorkListCount, UpdateSourceTrigger=PropertyChanged}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="TextBoxModality"
+            <Grid Name="TextBoxModality"
               Grid.Row="4"
               Grid.Column="1"
               Margin="5">
 
-            <TextBlock Name="Modality"
+                <TextBlock Name="Modality"
                        Text="Modality"
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
 
-            <ComboBox Name="ModalityBox"
+                <ComboBox Name="ModalityBox"
                       Width="100"
                       Height="50"
                       HorizontalAlignment="Right"
@@ -376,21 +378,21 @@
                       SelectedItem="{Binding SelectModality, Mode=TwoWay}"
                       />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="TextBoxAeTitle"
+            <Grid Name="TextBoxAeTitle"
               Grid.Row="4"
               Grid.Column="2"
               Margin="5">
 
-            <TextBlock Name="AeTitle"
+                <TextBlock Name="AeTitle"
                        Text="AE Title"
                        FontSize="15"
                        FontWeight="Bold"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
 
-            <TextBox Name="AeTitleBox"
+                <TextBox Name="AeTitleBox"
                      Width="150"
                      Height="50"
                      HorizontalAlignment="Right"
@@ -400,28 +402,28 @@
                      Background="{DynamicResource MahApps.Brushes.Button.Border}"
                      Text="{Binding SetAeTitle, UpdateSourceTrigger=PropertyChanged}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonAddWorkList"
+            <Grid Name="ButtonAddWorkList"
               Grid.Row="5"
               Grid.Column="0"
               Margin="5">
 
-            <Button Name="AddWorkList"
+                <Button Name="AddWorkList"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Add WorkList"
                     Command="{Binding AddWorkList}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonUpdateWorkList"
+            <Grid Name="ButtonUpdateWorkList"
               Grid.Row="5"
               Grid.Column="1"
               Margin="5">
 
-            <Button Name="UpdateWorkList"
+                <Button Name="UpdateWorkList"
                     Grid.Column="0"
                     Width="120"
                     Height="50"
@@ -429,46 +431,46 @@
                     Content="Update WorkList"
                     Command="{Binding RefreshWorkList}" />
 
-        </Grid>
+            </Grid>
 
 
-        <Grid Name="ButtonDeleteFirstWorkList"
+            <Grid Name="ButtonDeleteFirstWorkList"
               Grid.Row="5"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="DeleteFirstWorkList"
+                <Button Name="DeleteFirstWorkList"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Left"
                     Content="Delete First WL"
                     Command="{Binding DeleteFirstWorkList}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonDeleteAllWorkList"
+            <Grid Name="ButtonDeleteAllWorkList"
               Grid.Row="5"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="DeleteAllWorkList"
+                <Button Name="DeleteAllWorkList"
                     Width="120"
                     Height="50"
                     HorizontalAlignment="Right"
                     Content="Delete All WL"
                     Command="{Binding DeleteAllWorkList}" />
 
-        </Grid>
+            </Grid>
 
 
-        <Grid Name="ViewUpdateText"
+            <Grid Name="ViewUpdateText"
               Grid.Row="6"
               Grid.Column="0"
               Grid.ColumnSpan="3"
               Background="{DynamicResource MahApps.Brushes.Accent}"
               Margin="5">
 
-            <TextBox Name="UpdateText"
+                <TextBox Name="UpdateText"
                      Margin="5"
                      FontSize="22"
                      HorizontalContentAlignment="Center"
@@ -476,37 +478,37 @@
                      Text="{Binding UpdateText, UpdateSourceTrigger= PropertyChanged}"
                      IsReadOnly="True" />
 
-        </Grid>
+            </Grid>
 
 
-        <Grid Name="ButtonConnect"
+            <Grid Name="ButtonConnect"
               Grid.Row="7"
               Grid.Column="0"
               Margin="5">
 
-            <Button Name="Connect"
+                <Button Name="Connect"
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Connect"
                     Command="{Binding ConnectDB}" />
 
-        </Grid>
+            </Grid>
 
-        <Grid Name="ButtonSelect"
+            <Grid Name="ButtonSelect"
               Grid.Row="7"
               Grid.Column="2"
               Margin="5">
 
-            <Button Name="Delete"
+                <Button Name="Delete"
                     Width="150"
                     Height="50"
                     HorizontalAlignment="Center"
                     Content="Удалить все таблицы"
                     Command="{Binding DeleteAllTables}" />
 
+            </Grid>
+
+
         </Grid>
-
-
-    </Grid>
 </mah:MetroWindow>

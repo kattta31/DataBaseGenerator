@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using DataBaseGenerator.UI.Wpf.View;
+using DataBaseGenerator.UI.Wpf.ViewModel;
 
 namespace DataBaseGenerator.UI.Wpf
 {
