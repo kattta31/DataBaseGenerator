@@ -18,9 +18,9 @@ namespace DataBaseGenerator.Core
 
         public int ID_Patient { get; set; }
 
-        public string State { get; set; }
+        public string? State { get; set; }
 
-        public string SOPInstanceUID { get; set; }
+        public string? SOPInstanceUID { get; set; }
 
         public string Modality { get; set; }
 
