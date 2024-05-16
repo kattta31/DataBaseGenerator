@@ -33,6 +33,7 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
 
             SelectModality = defaultAeTitle;
 
+            Gender = new List<string> { "Man", "Female", "Other" };
         }
 
 
@@ -49,6 +50,14 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
         private int _workListCount;
         private RandomModalityRule _modality;
         private string _aeTitle;
+        private string _gender;
+        private string _addIdPatieent;
+        private string _addFamily;
+        private string _addName;
+        private string _addMiddleName;
+        private string _addAdress;
+        private string _addWorkPlase;
+        private string _addInfo;
         private DialogMessageWindow _dialogMessage = new DialogMessageWindow();
         private MediaPlayer _mediaPlayer = new MediaPlayer();
         private MainViewModel _mainViewModel;
@@ -132,6 +141,82 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
             }
         }
 
+
+        public string AddIdPatieent 
+        { 
+            get => _addIdPatieent;
+            set
+            {
+                SetProperty(ref _addIdPatieent, value);
+            }
+        }
+
+        public string AddFamily
+        {
+            get => _addFamily;
+            set
+            {
+                SetProperty(ref _addFamily, value);
+            }
+        }
+
+        public string AddName
+        {
+            get => _addName;
+            set
+            {
+                SetProperty(ref _addName, value);
+            }
+        }
+
+        public string AddMiddleName
+        {
+            get => _addMiddleName;
+            set
+            {
+                SetProperty(ref _addMiddleName, value);
+            }
+        }
+
+
+        public List<string> Gender { get; }
+
+        public string SelecedGender
+        {
+            get => _gender;
+
+            set
+            {
+                SetProperty(ref _gender, value);
+            }
+        }
+
+        public string AddAdress
+        {
+            get => _addAdress;
+            set
+            {
+                SetProperty(ref _addAdress, value);
+            }
+        }
+
+        public string AddWorkPlase
+        {
+            get => _addWorkPlase;
+            set
+            {
+                SetProperty(ref _addWorkPlase, value);
+            }
+        }
+
+        public string AddInfo
+        {
+            get => _addInfo;
+            set
+            {
+                SetProperty(ref _addInfo, value);
+            }
+        }
 
 
         private DelegateCommand _connectDB;
@@ -536,6 +621,46 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
         }
 
 
+
+        private DelegateCommand _cancelAddPatient;
+        public ICommand CancelAddPatient => _cancelAddPatient ??= new DelegateCommand(PerformCancelAddPatient);
+
+        private void PerformCancelAddPatient()
+        {
+            AddIdPatieent = string.Empty;
+
+            AddFamily = string.Empty;
+
+            AddName = string.Empty;
+
+            AddMiddleName = string.Empty;
+
+            AddAdress = string.Empty;
+
+            AddWorkPlase = string.Empty;
+
+            AddInfo = string.Empty;
+
+            SelecedGender = null;
+
+            UpdateText = "Как скажете, отменяю !";
+        }
+
+        private DelegateCommand _addOnePatient;
+        public ICommand AddOnePatient => _addOnePatient ??= new DelegateCommand(PerformAddOnePatient);
+
+        private void PerformAddOnePatient()
+        {
+            AddIdPatieent = string.Empty;
+
+            AddName = string.Empty;
+
+            AddAdress = string.Empty;
+
+            AddInfo = string.Empty;
+
+            UpdateText = "Операция не может быть выполнена !";
+        }
 
     }
 }
