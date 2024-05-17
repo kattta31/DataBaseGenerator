@@ -29,4 +29,10 @@
     <ProjectReference Include="..\DataBaseGenerator.Core\DataBaseGenerator.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
