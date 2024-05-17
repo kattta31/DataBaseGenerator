@@ -19,9 +19,8 @@
     <!--
         Path to Icon after Install and in Debug
         
-        Icon="C:\Program Files (x86)\DBGeneratorBroken\Resources\DBGenerator.ico"
+        Icon="C:\Program Files (x86)\DBGenerator\Resources\DBGenerator.ico"
         Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\Sources\DBGenerator.ico"
-    
     -->
 
     <Grid ShowGridLines="False">
