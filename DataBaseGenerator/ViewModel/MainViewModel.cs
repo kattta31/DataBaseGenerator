@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Data;
+using System.Diagnostics;
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
@@ -15,11 +17,12 @@ using DataBaseGenerator.UI.Wpf.View;
 using MahApps.Metro.Actions;
 using MySqlConnector;
 using Prism.Commands;
+using Prism.Common;
 using Prism.Mvvm;
 
 namespace DataBaseGenerator.UI.Wpf.ViewModel
 {
-    public class MainViewModel : BindableBase
+    public partial class MainViewModel : ObservableObject
     {
 
         public MainViewModel()
@@ -63,11 +66,21 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
         private MainViewModel _mainViewModel;
         private SpecificationWindow _specificationWindow = new SpecificationWindow();
 
-        string _pathToResourceAudio = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\NoNo.mp3";
+        [ObservableProperty]
+        private string _pathToResourceAudio = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\NoNo.mp3";
+        //private string _pathToResourceAudio = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\NoNo.mp3";
 
-        // Path To ResourceAudio after Install
-        //string _pathToResourceAudio = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\NoNo.mp3";
+        [ObservableProperty]
+        private string _pathToResourceForDialogMessage = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\333.jpg";
+        //private string _pathToResourceForDialogMessage = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\333.jpg";
 
+        [ObservableProperty]
+        private string _pathToResourceForSpecificationWindow = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\Specification.jpg";
+        //private string _pathToResourceForSpecificationWindow = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\Specification.jpg";
+
+        [ObservableProperty]
+        private string _pathToIcon = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\DBGenerator.ico";
+        //private string _pathToIcon = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\DBGenerator.ico";
 
 
 
@@ -567,7 +580,7 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
 
         private void ClosingDialog()
         {
-            _mediaPlayer.Open(new Uri(_pathToResourceAudio));
+            _mediaPlayer.Open(new Uri(PathToResourceAudio));
             _mediaPlayer.Play();
             _dialogMessage.Close();
         }

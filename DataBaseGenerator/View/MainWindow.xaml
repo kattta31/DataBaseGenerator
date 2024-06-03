@@ -11,20 +11,10 @@
     Height="700"
     d:DataContext="{d:DesignInstance Type=wpf:MainViewModel,
                                      IsDesignTimeCreatable=False}"
-    Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\Sources\DBGenerator.ico"
+    Icon="{Binding PathToIcon}"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
-
-
-
-    <!--
-        Path to Icon after Install and in Debug
-        
-        Icon="C:\Program Files (x86)\DBGeneratorBroken\Resources\DBGenerator.ico"
-        
-        Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator.Core\Resources\DBGenerator.ico"
-    -->
 
 
     <Window.InputBindings>
