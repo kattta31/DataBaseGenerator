@@ -162,7 +162,10 @@
                         Margin="5,5,0,0"
                         FontWeight="DemiBold"
                         Text="Дата рождения:" />
-                    <mah:DateTimePicker Margin="5" />
+                    <mah:DateTimePicker
+                        Margin="5"
+                        SelectedDateFormat="Short"
+                        SelectedDateTime="{Binding PatientBirthDate}" />
 
                     <TextBlock
                         Margin="5,5,0,0"

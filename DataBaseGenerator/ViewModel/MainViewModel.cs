@@ -155,8 +155,8 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
         }
 
 
-        public string AddIdPatieent 
-        { 
+        public string AddIdPatieent
+        {
             get => _addIdPatieent;
             set
             {
@@ -200,6 +200,18 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
 
             set
             {
+                if (value == Gender[0])
+                {
+                    value = "M";
+                }
+                else if (value == Gender[1])
+                {
+                    value = "O";
+                }
+                else if (value == Gender[2])
+                {
+                    value = "F";
+                }
                 SetProperty(ref _gender, value);
             }
         }
@@ -230,6 +242,9 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
                 SetProperty(ref _addInfo, value);
             }
         }
+
+        [ObservableProperty]
+        public DateTime _patientBirthDate = DateTime.Today.AddYears(-100);
 
 
         private DelegateCommand _connectDB;
@@ -664,16 +679,49 @@ namespace DataBaseGenerator.UI.Wpf.ViewModel
 
         private void PerformAddOnePatient()
         {
-            AddIdPatieent = string.Empty;
+            try
+            {
+                var newPatient = new PatientInputParameters(
+                    1,
+                    AddFamily,
+                    AddName,
+                    AddMiddleName,
+                    AddIdPatieent,
+                    PatientBirthDate,
+                    SelecedGender,
+                    AddAdress,
+                    AddInfo,
+                    AddWorkPlase)
+                {
+                    PatientCount = _patientCount
+                };
 
-            AddName = string.Empty;
+                var addPatient = DataBaseCommand.AddPatientInDateBase(newPatient);
 
-            AddAdress = string.Empty;
+                PerformRefreshPatients();
 
-            AddInfo = string.Empty;
+                CleareFields();
 
-            UpdateText = "Операция не может быть выполнена !";
+                UpdateText = "Patient added";
+            }
+            catch (Exception e)
+            {
+                UpdateText = "Пациент не добавлен";
+            }
         }
+
+        private void CleareFields()
+        {
+            AddIdPatieent = string.Empty;
+            AddFamily = string.Empty;
+            AddName = string.Empty;
+            AddMiddleName = string.Empty;
+            SelecedGender = null;
+            AddAdress = string.Empty;
+            AddWorkPlase = string.Empty;
+            AddInfo = string.Empty;
+        }
+
 
     }
 }
