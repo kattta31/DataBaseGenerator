@@ -52,6 +52,18 @@ namespace DataBaseGenerator.Core.Data
 
         }
 
+        public static IEnumerable<PatientInputParameters> AddPatientInDateBase(PatientInputParameters patientGeneratorParameters)
+        {
+            var dataBaseGenerators = new List<PatientInputParameters>();
+
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                var patients = CreateOnePatient(patientGeneratorParameters);
+                dataBaseGenerators.Add(patientGeneratorParameters);
+            }
+
+            return dataBaseGenerators;
+        }
 
         public static IEnumerable<WorkListGeneratorParameters> GenerateWorkListBase(WorkListGeneratorParameters workListGeneratorParameters)
         {
@@ -115,7 +127,50 @@ namespace DataBaseGenerator.Core.Data
             }
         }
 
+        public static string CreateOnePatient(PatientInputParameters patientGeneratorParameters)
+        {
+            string result = "Patient created";
 
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+
+                bool checkIsExist = dataBase.Patient.Any(
+                    element => element.ID_Patient == patientGeneratorParameters.ID_Patient
+                        && element.LastName == patientGeneratorParameters.LastName
+                        && element.FirstName == patientGeneratorParameters.FirstName
+                        && element.MiddleName == patientGeneratorParameters.MiddleName
+                        && element.PatientID == patientGeneratorParameters.PatientID
+                        && element.BirthDate == patientGeneratorParameters.BirthDate
+                        && element.Sex == patientGeneratorParameters.Sex
+                        && element.Address == patientGeneratorParameters.Address
+                        && element.AddInfo == patientGeneratorParameters.AddInfo
+                        && element.Occupation == patientGeneratorParameters.Occupation);
+
+                if (!checkIsExist)
+                {
+                    Patient newPatient = new Patient
+                    {
+                        ID_Patient = patientGeneratorParameters.ID_Patient,
+                        LastName = patientGeneratorParameters.LastName,
+                        FirstName = patientGeneratorParameters.FirstName,
+                        MiddleName = patientGeneratorParameters.MiddleName,
+                        PatientID = patientGeneratorParameters.PatientID,
+                        BirthDate = patientGeneratorParameters.BirthDate,
+                        Sex = patientGeneratorParameters.Sex,
+                        Address = patientGeneratorParameters.Address,
+                        AddInfo = patientGeneratorParameters.AddInfo,
+                        Occupation = patientGeneratorParameters.Occupation
+                    };
+
+                    dataBase.Patient.Add(newPatient);
+                    dataBase.SaveChanges();
+
+                    result = "Done";
+                }
+
+                return result;
+            }
+        }
 
         public static string CreateWorkList(int workListIndex, WorkListGeneratorParameters workListGeneratorParameters)
         {
