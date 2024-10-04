@@ -199,7 +199,7 @@
                 Margin="25,10,0,0"
                 HorizontalAlignment="Left"
                 Command="{Binding AddOnePatient}"
-                Content="Добавить" />
+                Content="Add one" />
             <Button
                 Grid.Row="1"
                 Width="70"
@@ -207,7 +207,7 @@
                 Margin="0,10,25,0"
                 HorizontalAlignment="Right"
                 Command="{Binding CancelAddPatient}"
-                Content="Отмена" />
+                Content="Cancel" />
         </Grid>
 
 
