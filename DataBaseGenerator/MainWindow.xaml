@@ -7,11 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpf="clr-namespace:DataBaseGenerator.UI.Wpf"
     Title="DataBase Generator"
-    Width="840"
+    Width="1100"
     Height="700"
     d:DataContext="{d:DesignInstance Type=wpf:MainViewModel,
                                      IsDesignTimeCreatable=False}"
-    Icon="D:\Develop\DataBaseGenerator\DataBaseGenerator\Sources\DBGenerator.ico"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
@@ -34,6 +33,7 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -47,12 +47,174 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid
-            Name="PatientTable"
+            Name="MenuPanel"
             Grid.Row="0"
             Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="5,5,5,0">
+
+
+            <Border>
+                <StackPanel>
+                    <Menu x:Name="ContextMenu">
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Файл">
+                            <MenuItem Header="Новый (Ctrl + N)" />
+                            <MenuItem Header="Открыть (Ctrl + Open)" />
+                            <MenuItem Header="Сохранить (Ctrl + S)" />
+                            <MenuItem Header="Сохранить как... (Ctrl + N)" />
+                            <MenuItem Header="Печать (Ctrl + P)" />
+                            <MenuItem Header="Выход (Alt + X)" />
+                        </MenuItem>
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Вид">
+                            <MenuItem Header="Поверх всех окон" />
+                            <MenuItem Header="Вкладки во весь Экран" />
+                            <MenuItem Header="Масштаб текста">
+                                <MenuItem Header="Крупнее" />
+                                <MenuItem Header="Мельче" />
+                                <MenuItem Header="Восстановить масштаб..." />
+                            </MenuItem>
+                            <MenuItem Header="Свернуть все окна" />
+                        </MenuItem>
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Опции">
+                            <MenuItem Header="Настройки..." />
+                            <MenuItem Header="Импортировать" />
+                            <MenuItem Header="Экспортировать" />
+                            <MenuItem Header="Удалить программу" />
+                        </MenuItem>
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Инструменты">
+                            <MenuItem Header="MD5">
+                                <MenuItem Header="Сгенерировать" />
+                                <MenuItem Header="Не генерировать" />
+                                <MenuItem Header="Лучше вообще не трогать" />
+                            </MenuItem>
+                            <MenuItem Header="SHA-256">
+                                <MenuItem Header="Не нажимать" />
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Плагины">
+                            <MenuItem Header="Плагин мастерства" />
+                            <MenuItem Header="Просто плагин" />
+                            <MenuItem Header="Бла-Бла плагин" />
+                            <MenuItem Header="Управление плагинами" />
+                            <MenuItem Header="Открыть папку плагинов" />
+                        </MenuItem>
+                        <MenuItem BorderBrush="{DynamicResource MahApps.Brushes.Accent}" Header="Справка" />
+                    </Menu>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid
+            Name="AddPatients"
+            Grid.Row="1"
+            Grid.RowSpan="7"
+            Grid.Column="0"
+            Margin="5,5,5,5">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                BorderThickness="5">
+                <StackPanel>
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="ИД пациента" />
+                    <TextBox Margin="5" Text="{Binding AddIdPatieent, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Фамилия:" />
+                    <TextBox Margin="5" Text="{Binding AddFamily, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Имя:" />
+                    <TextBox Margin="5" Text="{Binding AddName, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Отчество:" />
+                    <TextBox Margin="5" Text="{Binding AddMiddleName, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Дата рождения:" />
+                    <mah:DateTimePicker
+                        Margin="5"
+                        SelectedDateFormat="Short"
+                        SelectedDateTime="{Binding PatientBirthDate}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Пол:" />
+                    <ComboBox
+                        Margin="5"
+                        ItemsSource="{Binding Gender}"
+                        SelectedItem="{Binding SelecedGender}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Адрес:" />
+                    <TextBox Margin="5" Text="{Binding AddAdress, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Место работы" />
+                    <TextBox Margin="5" Text="{Binding AddWorkPlase, Mode=TwoWay}" />
+
+                    <TextBlock
+                        Margin="5,5,0,0"
+                        FontWeight="DemiBold"
+                        Text="Дополнительная информация:" />
+                    <TextBox
+                        Height="67"
+                        Margin="5"
+                        Text="{Binding AddInfo, Mode=TwoWay}" />
+
+                </StackPanel>
+            </Border>
+
+            <Button
+                Grid.Row="1"
+                Width="70"
+                Height="50"
+                Margin="25,10,0,0"
+                HorizontalAlignment="Left"
+                Command="{Binding AddOnePatient}"
+                Content="Добавить" />
+            <Button
+                Grid.Row="1"
+                Width="70"
+                Height="50"
+                Margin="0,10,25,0"
+                HorizontalAlignment="Right"
+                Command="{Binding CancelAddPatient}"
+                Content="Отмена" />
+        </Grid>
+
+
+        <Grid
+            Name="PatientTable"
+            Grid.Row="1"
+            Grid.Column="1"
             Grid.ColumnSpan="3"
             Margin="5"
             Background="{DynamicResource MahApps.Brushes.Accent}">
@@ -91,8 +253,8 @@
 
         <Grid
             Name="TextBoxPatientCount"
-            Grid.Row="1"
-            Grid.Column="0"
+            Grid.Row="2"
+            Grid.Column="1"
             Margin="5">
 
             <TextBlock
@@ -118,8 +280,8 @@
 
         <Grid
             Name="ButtonAddPatient"
-            Grid.Row="1"
-            Grid.Column="1"
+            Grid.Row="2"
+            Grid.Column="2"
             Margin="5">
 
             <Button
@@ -134,8 +296,8 @@
 
         <Grid
             Name="ButtonUpdatePatient"
-            Grid.Row="1"
-            Grid.Column="1"
+            Grid.Row="2"
+            Grid.Column="2"
             Margin="5">
 
             <Button
@@ -151,8 +313,8 @@
 
         <Grid
             Name="ButtonDeleteFirstPatient"
-            Grid.Row="1"
-            Grid.Column="2"
+            Grid.Row="2"
+            Grid.Column="3"
             Margin="5">
 
             <Button
@@ -167,8 +329,8 @@
 
         <Grid
             Name="ButtonDeleteAllPatient"
-            Grid.Row="1"
-            Grid.Column="2"
+            Grid.Row="2"
+            Grid.Column="3"
             Margin="5">
 
             <Button
@@ -184,8 +346,8 @@
 
         <Grid
             Name="WorkListTable"
-            Grid.Row="2"
-            Grid.Column="0"
+            Grid.Row="3"
+            Grid.Column="1"
             Grid.ColumnSpan="3"
             Margin="5"
             Background="{DynamicResource MahApps.Brushes.Accent}">
@@ -237,8 +399,8 @@
 
         <Grid
             Name="TextBoxWorkListCount"
-            Grid.Row="3"
-            Grid.Column="0"
+            Grid.Row="4"
+            Grid.Column="1"
             Margin="5">
 
             <TextBlock
@@ -264,8 +426,8 @@
 
         <Grid
             Name="TextBoxModality"
-            Grid.Row="3"
-            Grid.Column="1"
+            Grid.Row="4"
+            Grid.Column="2"
             Margin="5">
 
             <TextBlock
@@ -292,8 +454,8 @@
 
         <Grid
             Name="TextBoxAeTitle"
-            Grid.Row="3"
-            Grid.Column="2"
+            Grid.Row="4"
+            Grid.Column="3"
             Margin="5">
 
             <TextBlock
@@ -319,8 +481,8 @@
 
         <Grid
             Name="ButtonAddWorkList"
-            Grid.Row="4"
-            Grid.Column="0"
+            Grid.Row="5"
+            Grid.Column="1"
             Margin="5">
 
             <Button
@@ -335,8 +497,8 @@
 
         <Grid
             Name="ButtonUpdateWorkList"
-            Grid.Row="4"
-            Grid.Column="1"
+            Grid.Row="5"
+            Grid.Column="2"
             Margin="5">
 
             <Button
@@ -353,8 +515,8 @@
 
         <Grid
             Name="ButtonDeleteFirstWorkList"
-            Grid.Row="4"
-            Grid.Column="2"
+            Grid.Row="5"
+            Grid.Column="3"
             Margin="5">
 
             <Button
@@ -369,8 +531,8 @@
 
         <Grid
             Name="ButtonDeleteAllWorkList"
-            Grid.Row="4"
-            Grid.Column="2"
+            Grid.Row="5"
+            Grid.Column="3"
             Margin="5">
 
             <Button
@@ -386,8 +548,8 @@
 
         <Grid
             Name="ViewUpdateText"
-            Grid.Row="5"
-            Grid.Column="0"
+            Grid.Row="6"
+            Grid.Column="1"
             Grid.ColumnSpan="3"
             Margin="5"
             Background="{DynamicResource MahApps.Brushes.Accent}">
@@ -406,8 +568,8 @@
 
         <Grid
             Name="ButtonConnect"
-            Grid.Row="6"
-            Grid.Column="0"
+            Grid.Row="7"
+            Grid.Column="1"
             Margin="5">
 
             <Button
@@ -422,8 +584,8 @@
 
         <Grid
             Name="ButtonSelect"
-            Grid.Row="6"
-            Grid.Column="2"
+            Grid.Row="7"
+            Grid.Column="3"
             Margin="5">
 
             <Button
