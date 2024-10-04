@@ -42,7 +42,7 @@ namespace DataBaseGenerator.Core.Data
             {
                 for (var patientindex = 0; patientindex < patientGeneratorParameters.PatientCount; patientindex++)
                 {
-                    var patients = CreatePatient(patientindex, patientGeneratorParameters);
+                    var patients = CreatePatient(patientindex + 1, patientGeneratorParameters);
 
                     dataBaseGenerators.Add(patientGeneratorParameters);
                 }
@@ -52,6 +52,18 @@ namespace DataBaseGenerator.Core.Data
 
         }
 
+        public static IEnumerable<PatientInputParameters> AddPatientInDateBase(PatientInputParameters patientGeneratorParameters)
+        {
+            var dataBaseGenerators = new List<PatientInputParameters>();
+
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                var patients = CreateOnePatient(patientGeneratorParameters);
+                dataBaseGenerators.Add(patientGeneratorParameters);
+            }
+
+            return dataBaseGenerators;
+        }
 
         public static IEnumerable<WorkListGeneratorParameters> GenerateWorkListBase(WorkListGeneratorParameters workListGeneratorParameters)
         {
@@ -61,7 +73,7 @@ namespace DataBaseGenerator.Core.Data
             {
                 for (var workListIndex = 0; workListIndex < workListGeneratorParameters.WorkListCount; workListIndex++)
                 {
-                    var workList = CreateWorkList(workListIndex, workListGeneratorParameters);
+                    var workList = CreateWorkList(workListIndex + 1, workListGeneratorParameters);
 
                     workListGenerators.Add(workListGeneratorParameters);
                 }
@@ -115,7 +127,50 @@ namespace DataBaseGenerator.Core.Data
             }
         }
 
+        public static string CreateOnePatient(PatientInputParameters patientGeneratorParameters)
+        {
+            string result = "Patient created";
 
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+
+                bool checkIsExist = dataBase.Patient.Any(
+                    element => element.ID_Patient == patientGeneratorParameters.ID_Patient
+                        && element.LastName == patientGeneratorParameters.LastName
+                        && element.FirstName == patientGeneratorParameters.FirstName
+                        && element.MiddleName == patientGeneratorParameters.MiddleName
+                        && element.PatientID == patientGeneratorParameters.PatientID
+                        && element.BirthDate == patientGeneratorParameters.BirthDate
+                        && element.Sex == patientGeneratorParameters.Sex
+                        && element.Address == patientGeneratorParameters.Address
+                        && element.AddInfo == patientGeneratorParameters.AddInfo
+                        && element.Occupation == patientGeneratorParameters.Occupation);
+
+                if (!checkIsExist)
+                {
+                    Patient newPatient = new Patient
+                    {
+                        ID_Patient = patientGeneratorParameters.ID_Patient,
+                        LastName = patientGeneratorParameters.LastName,
+                        FirstName = patientGeneratorParameters.FirstName,
+                        MiddleName = patientGeneratorParameters.MiddleName,
+                        PatientID = patientGeneratorParameters.PatientID,
+                        BirthDate = patientGeneratorParameters.BirthDate,
+                        Sex = patientGeneratorParameters.Sex,
+                        Address = patientGeneratorParameters.Address,
+                        AddInfo = patientGeneratorParameters.AddInfo,
+                        Occupation = patientGeneratorParameters.Occupation
+                    };
+
+                    dataBase.Patient.Add(newPatient);
+                    dataBase.SaveChanges();
+
+                    result = "Done";
+                }
+
+                return result;
+            }
+        }
 
         public static string CreateWorkList(int workListIndex, WorkListGeneratorParameters workListGeneratorParameters)
         {
@@ -175,17 +230,67 @@ namespace DataBaseGenerator.Core.Data
         }
 
 
-
-        public static string DeletePatient(Patient patient)
+        public static string DeleteFirstPatient(PatientGeneratorParameters patientGeneratorParameters)
         {
             string result = "Patient is not create";
 
             using (BaseGenerateContext dataBase = new BaseGenerateContext())
             {
-                dataBase.Patient.Remove(patient);
+                dataBase.Patient.Remove(dataBase.Patient.First());
                 dataBase.SaveChanges();
 
                 result = $"Сделано! Пациент удален из базы";
+
+            }
+
+            return result;
+        }
+
+
+        public static string DeleteAllPatients(PatientGeneratorParameters patientGeneratorParameters)
+        {
+            string result = "Patient is not create";
+
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                dataBase.Patient.RemoveRange(dataBase.Patient);
+                dataBase.SaveChanges();
+
+                result = $"Сделано! Все Пациенты удалены из базы";
+
+            }
+
+            return result;
+        }
+
+
+        public static string DeleteFirstWorkList(WorkListGeneratorParameters workListGeneratorParameters)
+        {
+            string result = "WorkList is not create";
+
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                dataBase.WorkList.Remove(dataBase.WorkList.First());
+                dataBase.SaveChanges();
+
+                result = $"Сделано! Первый из Рабочего списка удален";
+
+            }
+
+            return result;
+        }
+
+
+        public static string DeleteAllWorkList(WorkListGeneratorParameters workListGeneratorParameters)
+        {
+            string result = "WorkList is not create";
+
+            using (BaseGenerateContext dataBase = new BaseGenerateContext())
+            {
+                dataBase.WorkList.RemoveRange(dataBase.WorkList);
+                dataBase.SaveChanges();
+
+                result = $"Сделано! Весь рабочий список удален";
 
             }
 
