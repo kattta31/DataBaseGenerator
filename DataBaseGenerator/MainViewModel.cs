@@ -2,26 +2,19 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DataBaseGenerator.Core;
 using DataBaseGenerator.Core.Data;
 using DataBaseGenerator.Core.GeneratorRules.Patient;
 using DataBaseGenerator.Core.GeneratorRules.WorkList;
-using Microsoft.EntityFrameworkCore.Storage;
 using MySqlConnector;
 using Prism.Commands;
-using Prism.Mvvm;
 
 namespace DataBaseGenerator.UI.Wpf
 {
-    public class MainViewModel : BindableBase
+    public partial class MainViewModel : ObservableObject
     {
 
         public MainViewModel()
@@ -35,6 +28,7 @@ namespace DataBaseGenerator.UI.Wpf
 
             SelectModality = defaultAeTitle;
 
+            Gender = new List<string> { "Man", "Female", "Other" };
         }
 
 
@@ -51,6 +45,27 @@ namespace DataBaseGenerator.UI.Wpf
         private int _workListCount;
         private RandomModalityRule _modality;
         private string _aeTitle;
+        private string _gender;
+        private string _addIdPatieent;
+        private string _addFamily;
+        private string _addName;
+        private string _addMiddleName;
+        private string _addAdress;
+        private string _addWorkPlase;
+        private string _addInfo;
+
+
+        [ObservableProperty]
+        private string _pathToResourceForDialogMessage = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\333.jpg";
+        //private string _pathToResourceForDialogMessage = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\333.jpg";
+
+        [ObservableProperty]
+        private string _pathToResourceForSpecificationWindow = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator.Core\\Resources\\Specification.jpg";
+        //private string _pathToResourceForSpecificationWindow = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\Specification.jpg";
+
+        [ObservableProperty]
+        private string _pathToIcon = ".\\Sources\\DBGenerator.ico";
+        //private string _pathToIcon = "C:\\Program Files (x86)\\DBGeneratorBroken\\Resources\\DBGenerator.ico";
 
 
 
@@ -125,6 +140,98 @@ namespace DataBaseGenerator.UI.Wpf
                 SetProperty(ref _aeTitle, value);
             }
         }
+
+
+        public string AddIdPatieent
+        {
+            get => _addIdPatieent;
+            set
+            {
+                SetProperty(ref _addIdPatieent, value);
+            }
+        }
+
+        public string AddFamily
+        {
+            get => _addFamily;
+            set
+            {
+                SetProperty(ref _addFamily, value);
+            }
+        }
+
+        public string AddName
+        {
+            get => _addName;
+            set
+            {
+                SetProperty(ref _addName, value);
+            }
+        }
+
+        public string AddMiddleName
+        {
+            get => _addMiddleName;
+            set
+            {
+                SetProperty(ref _addMiddleName, value);
+            }
+        }
+
+
+        public List<string> Gender { get; }
+
+        public string SelecedGender
+        {
+            get => _gender;
+
+            set
+            {
+                if (value == Gender[0])
+                {
+                    value = "M";
+                }
+                else if (value == Gender[1])
+                {
+                    value = "F";
+                }
+                else if (value == Gender[2])
+                {
+                    value = "O";
+                }
+                SetProperty(ref _gender, value);
+            }
+        }
+
+        public string AddAdress
+        {
+            get => _addAdress;
+            set
+            {
+                SetProperty(ref _addAdress, value);
+            }
+        }
+
+        public string AddWorkPlase
+        {
+            get => _addWorkPlase;
+            set
+            {
+                SetProperty(ref _addWorkPlase, value);
+            }
+        }
+
+        public string AddInfo
+        {
+            get => _addInfo;
+            set
+            {
+                SetProperty(ref _addInfo, value);
+            }
+        }
+
+        [ObservableProperty]
+        public DateTime _patientBirthDate = DateTime.Today.AddYears(-100);
 
 
         private DelegateCommand _connectDB;
@@ -448,5 +555,77 @@ namespace DataBaseGenerator.UI.Wpf
             }
         }
 
+
+        private DelegateCommand _cancelAddPatient;
+        public ICommand CancelAddPatient => _cancelAddPatient ??= new DelegateCommand(PerformCancelAddPatient);
+
+        private void PerformCancelAddPatient()
+        {
+            AddIdPatieent = string.Empty;
+
+            AddFamily = string.Empty;
+
+            AddName = string.Empty;
+
+            AddMiddleName = string.Empty;
+
+            AddAdress = string.Empty;
+
+            AddWorkPlase = string.Empty;
+
+            AddInfo = string.Empty;
+
+            SelecedGender = null;
+
+            UpdateText = "Как скажете, отменяю !";
+        }
+
+        private DelegateCommand _addOnePatient;
+        public ICommand AddOnePatient => _addOnePatient ??= new DelegateCommand(PerformAddOnePatient);
+
+        private void PerformAddOnePatient()
+        {
+            try
+            {
+                var newPatient = new PatientInputParameters(
+                    1,
+                    AddFamily,
+                    AddName,
+                    AddMiddleName,
+                    AddIdPatieent,
+                    PatientBirthDate,
+                    SelecedGender,
+                    AddAdress,
+                    AddInfo,
+                    AddWorkPlase)
+                {
+                    PatientCount = _patientCount
+                };
+
+                var addPatient = DataBaseCommand.AddPatientInDateBase(newPatient);
+
+                PerformRefreshPatients();
+
+                CleareFields();
+
+                UpdateText = "Patient added";
+            }
+            catch (Exception e)
+            {
+                UpdateText = "Пациент не добавлен";
+            }
+        }
+
+        private void CleareFields()
+        {
+            AddIdPatieent = string.Empty;
+            AddFamily = string.Empty;
+            AddName = string.Empty;
+            AddMiddleName = string.Empty;
+            SelecedGender = null;
+            AddAdress = string.Empty;
+            AddWorkPlase = string.Empty;
+            AddInfo = string.Empty;
+        }
     }
 }
