@@ -79,10 +79,5 @@ namespace DataBaseGenerator.Test.Services
             _logger.Debug($"MainWindowState State - [{result}]");
             return result;
         }
-
-        public IClientState ToNextState()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

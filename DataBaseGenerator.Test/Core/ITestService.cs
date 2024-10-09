@@ -10,7 +10,6 @@ namespace DataBaseGenerator.Test.Core
     {
         bool IsStarted { get; }
 
-
         Task<bool> StartAsync();
 
         Task<bool> StopAsync();

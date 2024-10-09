@@ -15,8 +15,6 @@ namespace DataBaseGenerator.Test.Core
 
         Window GetMainWindow();
 
-        IClientState ToNextState();
-
         bool IsState(Window window);
 
     }
