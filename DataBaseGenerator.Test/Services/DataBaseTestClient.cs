@@ -30,7 +30,7 @@ namespace DataBaseGenerator.Test.Services
 
         public async Task<IClientState> StartAsync(TimeSpan timeout)
         {
-            _logger.Trace("Entering in StartAsync in UniExpertTestSecurityClient");
+            _logger.Trace("Entering in StartAsync in DataBaseTestClient");
 
             Window mainWindow = null;
             ConditionFactory cf = null;
@@ -65,28 +65,28 @@ namespace DataBaseGenerator.Test.Services
                 _logger.Trace("Main window is found");
             });
 
-            _logger.Trace("Wait for Authenticate state");
+            _logger.Trace("Wait for MainWindow state");
             //wait for Authenticate state
             var menuWindowWaitPolicy = Policy.Handle<Exception>()
                 .WaitAndRetryAsync(retryCounts, retryAttempt => _retryDelay);
             await menuWindowWaitPolicy.ExecuteAsync(async () =>
             {
-                _logger.Trace("Try to find MenuExitButton");
+                _logger.Trace("Try to find ConnectButton");
 
                 var connectButton = mainWindow.FindFirstDescendant(cf.ByAutomationId("ConnectButton"))
                     .AsButton();
                 connectButton.DrawHighlight();
                 if (connectButton == null)
                 {
-                    _logger.Error("Can`t go to Authenticate State");
+                    _logger.Error("Can`t go to MainWindow State");
                     throw new Exception("Button did not find");
                 }
 
                 await Task.CompletedTask;
-                _logger.Trace("MenuExitButton is found");
+                _logger.Trace("ConnectButton is found");
             });
 
-            _logger.Debug("UniExpertTestSecurityClient Started");
+            _logger.Debug("DataBaseTestClient Started");
             return new MainWindowState(mainWindow, cf);
         }
 
