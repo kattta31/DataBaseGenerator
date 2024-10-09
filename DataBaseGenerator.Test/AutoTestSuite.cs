@@ -37,8 +37,7 @@ namespace DataBaseGenerator.Test
             }
             catch (Exception exception)
             {
-                _logger.Error(exception, "Test Go To Patient Selecting State Failed");
-
+                _logger.Error(exception, "Test Go To Main Window State Failed");
                 throw;
             }
             finally
