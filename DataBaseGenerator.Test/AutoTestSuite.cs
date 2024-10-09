@@ -34,6 +34,18 @@ namespace DataBaseGenerator.Test
                 var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
                 Assert.IsNotNull(menuState);
 
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+                    mainWindowState.ClickConnectButton();
+
+                    var openDialogWindow = mainWindowState.CheckDialogWindowOpen();
+
+                    Assert.IsTrue(openDialogWindow);
+                }
             }
             catch (Exception exception)
             {
