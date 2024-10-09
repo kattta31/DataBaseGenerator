@@ -142,7 +142,10 @@
                         Margin="5,5,0,0"
                         FontWeight="DemiBold"
                         Text="Имя:" />
-                    <TextBox Margin="5" Text="{Binding AddName, Mode=TwoWay}" />
+                    <TextBox
+                        Margin="5"
+                        AutomationProperties.AutomationId="NameField"
+                        Text="{Binding AddName, Mode=TwoWay}" />
 
                     <TextBlock
                         Margin="5,5,0,0"
