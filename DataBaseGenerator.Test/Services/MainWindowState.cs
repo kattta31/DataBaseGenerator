@@ -79,5 +79,26 @@ namespace DataBaseGenerator.Test.Services
             _logger.Debug($"MainWindowState State - [{result}]");
             return result;
         }
+
+
+        public void ClickConnectButton()
+        {
+            var connectButton = _mainWindowStateLocators.ConnectButton;
+            connectButton.Click();
+        }
+
+        public bool CheckDialogWindowOpen()
+        {
+            var result = false;
+
+            var dialogWindow = _mainWindowStateLocators.DialogWindow;
+
+            if (dialogWindow != null)
+            {
+                result = true;
+            }
+
+            return result;
+        }
     }
 }
