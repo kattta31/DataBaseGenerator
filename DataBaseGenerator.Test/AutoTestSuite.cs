@@ -16,7 +16,7 @@ namespace DataBaseGenerator.Test
         private readonly NLog.ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
         private ITestClient _testClient;
 
-        private string _pathToTestClient = "D:\\Develop\\DataBaseGenerator\\DataBaseGenerator\\bin\\Debug\\net8.0-windows\\DataBaseGenerator.UI.Wpf.exe";
+        private string _pathToTestClient = "D:\\C#\\DataBaseGenerator\\DataBaseGenerator\\bin\\Debug\\net8.0-windows\\DataBaseGenerator.UI.Wpf.exe";
 
         public AutoTestSuite()
         {
