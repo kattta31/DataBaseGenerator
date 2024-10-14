@@ -80,9 +80,25 @@ namespace DataBaseGenerator.Test.Services
             return result;
         }
 
-        public IClientState ToNextState()
+
+        public void ClickConnectButton()
         {
-            throw new NotImplementedException();
+            var connectButton = _mainWindowStateLocators.ConnectButton;
+            connectButton.Click();
+        }
+
+        public bool CheckDialogWindowOpen()
+        {
+            var result = false;
+
+            var dialogWindow = _mainWindowStateLocators.DialogWindow;
+
+            if (dialogWindow != null)
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FlaUI.Core.AutomationElements;
+﻿using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Conditions;
 
 namespace DataBaseGenerator.Test.Locators
@@ -21,6 +16,8 @@ namespace DataBaseGenerator.Test.Locators
         }
 
         public AutomationElement ConnectButton => _window.FindFirstDescendant(_conditionFactory.ByName("ConnectButton")).AsButton();
+        public AutomationElement DialogWindow => _window.FindFirstDescendant(_conditionFactory.ByLocalizedControlType("диалоговое окно"));
+
         public AutomationElement AddIdPatieentTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddIdPatieentTextBox")).AsTextBox();
         public AutomationElement AddFamilyTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddFamilyTextBox")).AsTextBox();
         public AutomationElement AddNameTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddNameTextBox")).AsTextBox();
