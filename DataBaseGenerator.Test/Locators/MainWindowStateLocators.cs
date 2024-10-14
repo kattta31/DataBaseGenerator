@@ -15,33 +15,33 @@ namespace DataBaseGenerator.Test.Locators
             _conditionFactory = conditionFactory;
         }
 
-        public AutomationElement ConnectButton => _window.FindFirstDescendant(_conditionFactory.ByName("ConnectButton")).AsButton();
+        public AutomationElement ConnectButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ConnectButton")).AsButton();
         public AutomationElement DialogWindow => _window.FindFirstDescendant(_conditionFactory.ByLocalizedControlType("диалоговое окно"));
 
-        public AutomationElement AddIdPatieentTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddIdPatieentTextBox")).AsTextBox();
-        public AutomationElement AddFamilyTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddFamilyTextBox")).AsTextBox();
-        public AutomationElement AddNameTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddNameTextBox")).AsTextBox();
-        public AutomationElement AddMiddleNameTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddMiddleNameTextBox")).AsTextBox();
-        public AutomationElement AddAdressTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddAdressTextBox")).AsTextBox();
-        public AutomationElement SelecedGenderComboBox => _window.FindFirstDescendant(_conditionFactory.ByName("SelecedGenderComboBox")).AsComboBox();
-        public AutomationElement AddWorkPlaseTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddWorkPlaseTextBox")).AsTextBox();
-        public AutomationElement AddInfoTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AddInfoTextBox")).AsTextBox();
-        public AutomationElement AddOnePatientButton => _window.FindFirstDescendant(_conditionFactory.ByName("AddOnePatientButton")).AsButton();
-        public AutomationElement CancelAddPatientButton => _window.FindFirstDescendant(_conditionFactory.ByName("CancelAddPatientButton")).AsButton();
-        public AutomationElement PatientCountTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("PatientCountTextBox")).AsTextBox();
-        public AutomationElement AddPatientButton => _window.FindFirstDescendant(_conditionFactory.ByName("AddPatientButton")).AsButton();
-        public AutomationElement RefreshPatientsButton => _window.FindFirstDescendant(_conditionFactory.ByName("RefreshPatientsButton")).AsButton();
-        public AutomationElement DeleteFirstPatientButton => _window.FindFirstDescendant(_conditionFactory.ByName("DeleteFirstPatientButton")).AsButton();
-        public AutomationElement DeleteAllPatientButton => _window.FindFirstDescendant(_conditionFactory.ByName("DeleteAllPatientButton")).AsButton();
-        public AutomationElement DeleteAllTablesButton => _window.FindFirstDescendant(_conditionFactory.ByName("DeleteAllTablesButton")).AsButton();
-        public AutomationElement WorkListCountTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("WorkListCountTextBox")).AsTextBox();
-        public AutomationElement ModalityComboBox => _window.FindFirstDescendant(_conditionFactory.ByName("ModalityComboBox")).AsComboBox();
-        public AutomationElement AeTitleBoxTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("AeTitleBoxTextBox")).AsTextBox();
-        public AutomationElement AddWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByName("AddWorkListButton")).AsButton();
-        public AutomationElement RefreshWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByName("RefreshWorkListButton")).AsButton();
-        public AutomationElement DeleteFirstWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByName("DeleteFirstWorkListButton")).AsButton();
-        public AutomationElement DeleteAllWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByName("DeleteAllWorkListButton")).AsButton();
-        public AutomationElement UpdateTextTextBox => _window.FindFirstDescendant(_conditionFactory.ByName("UpdateTextTextBox")).AsTextBox();
+        public AutomationElement AddIdPatieentTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddIdPatieentTextBox")).AsTextBox();
+        public AutomationElement AddFamilyTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddFamilyTextBox")).AsTextBox();
+        public AutomationElement AddNameTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddNameTextBox")).AsTextBox();
+        public AutomationElement AddMiddleNameTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddMiddleNameTextBox")).AsTextBox();
+        public AutomationElement AddAdressTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddAdressTextBox")).AsTextBox();
+        public AutomationElement SelecedGenderComboBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("SelecedGenderComboBox")).AsComboBox();
+        public AutomationElement AddWorkPlaseTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddWorkPlaseTextBox")).AsTextBox();
+        public AutomationElement AddInfoTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddInfoTextBox")).AsTextBox();
+        public AutomationElement AddOnePatientButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddOnePatientButton")).AsButton();
+        public AutomationElement CancelAddPatientButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("CancelAddPatientButton")).AsButton();
+        public AutomationElement PatientCountTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("PatientCountTextBox")).AsTextBox();
+        public AutomationElement AddPatientButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddPatientButton")).AsButton();
+        public AutomationElement RefreshPatientsButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("RefreshPatientsButton")).AsButton();
+        public AutomationElement DeleteFirstPatientButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteFirstPatientButton")).AsButton();
+        public AutomationElement DeleteAllPatientButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteAllPatientButton")).AsButton();
+        public AutomationElement DeleteAllTablesButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteAllTablesButton")).AsButton();
+        public AutomationElement WorkListCountTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("WorkListCountTextBox")).AsTextBox();
+        public AutomationElement ModalityComboBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ModalityComboBox")).AsComboBox();
+        public AutomationElement AeTitleBoxTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AeTitleBoxTextBox")).AsTextBox();
+        public AutomationElement AddWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddWorkListButton")).AsButton();
+        public AutomationElement RefreshWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("RefreshWorkListButton")).AsButton();
+        public AutomationElement DeleteFirstWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteFirstWorkListButton")).AsButton();
+        public AutomationElement DeleteAllWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteAllWorkListButton")).AsButton();
+        public AutomationElement UpdateTextTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("UpdateTextTextBox")).AsTextBox();
 
     }
 }
