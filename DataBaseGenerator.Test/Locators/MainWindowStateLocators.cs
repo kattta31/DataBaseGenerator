@@ -17,6 +17,7 @@ namespace DataBaseGenerator.Test.Locators
 
         public AutomationElement ConnectButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ConnectButton")).AsButton();
         public AutomationElement DialogWindow => _window.FindFirstDescendant(_conditionFactory.ByLocalizedControlType("диалоговое окно"));
+        public AutomationElement DialogWindowOkButton => _window.FindFirstDescendant(_conditionFactory.ByLocalizedControlType("кнопка"));
 
         public AutomationElement AddIdPatieentTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddIdPatieentTextBox")).AsTextBox();
         public AutomationElement AddFamilyTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("AddFamilyTextBox")).AsTextBox();
@@ -42,6 +43,7 @@ namespace DataBaseGenerator.Test.Locators
         public AutomationElement DeleteFirstWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteFirstWorkListButton")).AsButton();
         public AutomationElement DeleteAllWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteAllWorkListButton")).AsButton();
         public AutomationElement UpdateTextTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("UpdateTextTextBox")).AsTextBox();
+        public AutomationElement ViewAllPatientTable => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ViewAllPatientTable"));
 
     }
 }

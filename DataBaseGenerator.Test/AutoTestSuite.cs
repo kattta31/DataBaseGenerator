@@ -42,9 +42,21 @@ namespace DataBaseGenerator.Test
                 {
                     mainWindowState.ClickConnectButton();
 
-                    var openDialogWindow = mainWindowState.CheckDialogWindowOpen();
+                    bool openDialogWindow = mainWindowState.CheckDialogWindowOpen();
 
                     Assert.IsTrue(openDialogWindow);
+
+                    mainWindowState.CloseDialogWindow();
+                    mainWindowState.ClickDeleteAllPatientButton();
+                    mainWindowState.InputPatientCountTextBox();
+                    mainWindowState.ClickAddPatientButton();
+
+                    int patientCount = mainWindowState.GetViewAllPatientTableRowCount();
+
+                    Assert.AreEqual(7,patientCount);
+
+
+
                 }
             }
             catch (Exception exception)

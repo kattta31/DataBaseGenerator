@@ -237,9 +237,9 @@
 
             <ListView
                 Name="ViewAllPatient"
+                AutomationProperties.AutomationId="ViewAllPatientTable"
                 Margin="5"
                 ItemsSource="{Binding AllPatients}">
-
                 <ListView.View>
                     <GridView>
 
