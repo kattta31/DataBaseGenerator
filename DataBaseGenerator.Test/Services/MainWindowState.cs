@@ -97,11 +97,11 @@ namespace DataBaseGenerator.Test.Services
             {
                 result = true;
             }
-
-            
             return result;
-            
+
         }
+
+
         public int GetViewAllPatientTableRowCount()
         {
             var viewAllPatientTable = _mainWindowStateLocators.ViewAllPatientTable;
@@ -127,9 +127,9 @@ namespace DataBaseGenerator.Test.Services
         public void InputPatientCountTextBox()
         {
             var PatientCountTextBox = _mainWindowStateLocators.PatientCountTextBox;
-                PatientCountTextBox.DrawHighlight();
-                PatientCountTextBox.AsTextBox().Focus();
-                PatientCountTextBox.AsTextBox().Text = "7";
+            PatientCountTextBox.DrawHighlight();
+            PatientCountTextBox.AsTextBox().Focus();
+            PatientCountTextBox.AsTextBox().Text = "7";
         }
 
         public void CloseDialogWindow()
@@ -138,10 +138,68 @@ namespace DataBaseGenerator.Test.Services
             {
                 _mainWindowStateLocators.DialogWindowOkButton.DrawHighlight().Click();
             }
-          //  _mainWindowStateLocators.DialogWindowOkButton.DrawHighlight().Click();
-           // _mainWindowStateLocators.DialogWindowOkButton.DrawHighlight().Click();
-           // _mainWindowStateLocators.DialogWindowOkButton.DrawHighlight().Click();
+
 
         }
+
+        public bool IsViewAllPatientTableEmpty()
+        {
+            var viewAllPatientTable = _mainWindowStateLocators.ViewAllPatientTable;
+            var rowCount = viewAllPatientTable.AsGrid().RowCount;
+            if (rowCount == 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public void InputWorkListCountTextBox()
+        {
+            var WorkListCountTextBox = _mainWindowStateLocators.WorkListCountTextBox;
+            WorkListCountTextBox.DrawHighlight();
+            WorkListCountTextBox.AsTextBox().Focus();
+            WorkListCountTextBox.AsTextBox().Text = "5";
+        }
+
+        public void InputAeTitleBoxTextBox()
+        {
+            var AeTitleBoxTextBox = _mainWindowStateLocators.AeTitleBoxTextBox;
+            AeTitleBoxTextBox.DrawHighlight();
+            AeTitleBoxTextBox.AsTextBox().Focus();
+            AeTitleBoxTextBox.AsTextBox().Text = "3";
+        }
+
+        public void ClickAddWorklistButton()
+        {
+            var AddWorklistButton = _mainWindowStateLocators.AddWorkListButton;
+            AddWorklistButton.DrawHighlight();
+            AddWorklistButton.Click();
+        }
+
+        public int GetViewAllWorkListTableRowCount()
+        {
+            var viewAllWorkListTable = _mainWindowStateLocators.ViewAllWorkListTable;
+            viewAllWorkListTable.DrawHighlight();
+            int rowCount = viewAllWorkListTable.AsGrid().RowCount;
+            return rowCount;
+        }
+
+        public void ClickDeleteAllWorkListButton()
+        {
+            var DeleteAllWorkListButton = _mainWindowStateLocators.DeleteAllWorkListButton;
+            DeleteAllWorkListButton.DrawHighlight();
+            DeleteAllWorkListButton.Click();
+        }
+
+        public void GetViewAllWorkListTable()
+        {
+            var viewAllWorkListTable = _mainWindowStateLocators.ViewAllWorkListTable;
+            viewAllWorkListTable.DrawHighlight();
+           
+            
+        }
+
+
     }
 }

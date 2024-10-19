@@ -47,16 +47,7 @@ namespace DataBaseGenerator.Test
                     Assert.IsTrue(openDialogWindow);
 
                     mainWindowState.CloseDialogWindow();
-                    mainWindowState.ClickDeleteAllPatientButton();
-                    mainWindowState.InputPatientCountTextBox();
-                    mainWindowState.ClickAddPatientButton();
-
-                    int patientCount = mainWindowState.GetViewAllPatientTableRowCount();
-
-                    Assert.AreEqual(7,patientCount);
-
-
-
+                 
                 }
             }
             catch (Exception exception)
@@ -70,6 +61,140 @@ namespace DataBaseGenerator.Test
             }
         }
 
+       
+
+        [TestMethod]
+        public async Task TestAddPatientButton()
+        {
+            try
+            {
+                _logger.Info("Entering in Test Add Patient Button");
+
+                var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
+                Assert.IsNotNull(menuState);
+
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+                  
+                    mainWindowState.ClickDeleteAllPatientButton();
+                    mainWindowState.InputPatientCountTextBox();
+                    mainWindowState.ClickAddPatientButton();
+
+                    int patientCount = mainWindowState.GetViewAllPatientTableRowCount();
+
+                    Assert.AreEqual(7, patientCount);
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(exception, "Test Add Patient Button Failed");
+                throw;
+            }
+            finally
+            {
+                _testClient.Kill();
+            }
+
+        }
+
+        [TestMethod]
+        public async Task TestDeleteAllButton()
+        {
+            try
+            {
+                _logger.Info("Entering in Test Delete All Button");
+
+                var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
+                Assert.IsNotNull(menuState);
+
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+
+                    
+                    bool isTableEmpty = mainWindowState.IsViewAllPatientTableEmpty();
+
+                    if (isTableEmpty)
+                    {
+                        mainWindowState.InputPatientCountTextBox();
+                        mainWindowState.ClickAddPatientButton();
+                        mainWindowState.ClickDeleteAllPatientButton();
+                                                
+                    }
+                    
+                    else
+                    {
+                        mainWindowState.ClickDeleteAllPatientButton();
+                    }
+
+                    Assert.AreEqual(0,mainWindowState.GetViewAllPatientTableRowCount());
+                                       
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(exception, "Test Delete All Button Failed");
+                throw;
+            }
+            finally
+            {
+                _testClient.Kill();
+            }
+
+        }
+
+
+        [TestMethod]
+        public async Task TestAddWorklistButton()
+        {
+            try
+            {
+                _logger.Info("Entering in Test Add Worklist Button");
+
+                var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
+                Assert.IsNotNull(menuState);
+
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+                    mainWindowState.GetViewAllWorkListTable();
+                    mainWindowState.ClickDeleteAllWorkListButton();
+                    mainWindowState.InputAeTitleBoxTextBox();
+                    mainWindowState.InputWorkListCountTextBox();
+                    mainWindowState.ClickAddWorklistButton();
+
+                    var worklistCount = mainWindowState.GetViewAllWorkListTableRowCount();
+
+
+                    Assert.AreEqual(5, worklistCount);
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(exception, "Test Add Worklist Button Failed");
+                throw;
+            }
+            finally
+            {
+                _testClient.Kill();
+            }
+
+        }
+
+
 
     }
+
 }

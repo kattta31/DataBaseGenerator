@@ -44,6 +44,8 @@ namespace DataBaseGenerator.Test.Locators
         public AutomationElement DeleteAllWorkListButton => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("DeleteAllWorkListButton")).AsButton();
         public AutomationElement UpdateTextTextBox => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("UpdateTextTextBox")).AsTextBox();
         public AutomationElement ViewAllPatientTable => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ViewAllPatientTable"));
+        public AutomationElement ViewAllWorkListTable => _window.FindFirstDescendant(_conditionFactory.ByAutomationId("ViewAllWorkListTable"));
+        
 
     }
 }
