@@ -47,7 +47,7 @@ namespace DataBaseGenerator.Test
                     Assert.IsTrue(openDialogWindow);
 
                     mainWindowState.CloseDialogWindow();
-                 
+
                 }
             }
             catch (Exception exception)
@@ -61,7 +61,7 @@ namespace DataBaseGenerator.Test
             }
         }
 
-       
+
 
         [TestMethod]
         public async Task TestAddPatientButton()
@@ -79,7 +79,7 @@ namespace DataBaseGenerator.Test
 
                 if (openWindow is MainWindowState mainWindowState)
                 {
-                  
+
                     mainWindowState.ClickDeleteAllPatientButton();
                     mainWindowState.InputPatientCountTextBox();
                     mainWindowState.ClickAddPatientButton();
@@ -119,7 +119,7 @@ namespace DataBaseGenerator.Test
                 if (openWindow is MainWindowState mainWindowState)
                 {
 
-                    
+
                     bool isTableEmpty = mainWindowState.IsViewAllPatientTableEmpty();
 
                     if (isTableEmpty)
@@ -127,16 +127,16 @@ namespace DataBaseGenerator.Test
                         mainWindowState.InputPatientCountTextBox();
                         mainWindowState.ClickAddPatientButton();
                         mainWindowState.ClickDeleteAllPatientButton();
-                                                
+
                     }
-                    
+
                     else
                     {
                         mainWindowState.ClickDeleteAllPatientButton();
                     }
 
-                    Assert.AreEqual(0,mainWindowState.GetViewAllPatientTableRowCount());
-                                       
+                    Assert.AreEqual(0, mainWindowState.GetViewAllPatientTableRowCount());
+
                 }
             }
             catch (Exception exception)
@@ -168,7 +168,7 @@ namespace DataBaseGenerator.Test
 
                 if (openWindow is MainWindowState mainWindowState)
                 {
-                    mainWindowState.GetViewAllWorkListTable();
+
                     mainWindowState.ClickDeleteAllWorkListButton();
                     mainWindowState.InputAeTitleBoxTextBox();
                     mainWindowState.InputWorkListCountTextBox();
@@ -193,7 +193,113 @@ namespace DataBaseGenerator.Test
 
         }
 
+        [TestMethod]
+        public async Task TestDeleteAllWlButton()
+        {
+            try
+            {
+                _logger.Info("Entering in Test Delete All Wl Button");
 
+                var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
+                Assert.IsNotNull(menuState);
+
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+
+
+                    bool isTableEmpty = mainWindowState.IsViewAllWorkListTableEmpty();
+
+                    if (isTableEmpty)
+                    {
+                        mainWindowState.InputAeTitleBoxTextBox();
+                        mainWindowState.InputWorkListCountTextBox();
+                        mainWindowState.ClickAddWorklistButton();
+                        mainWindowState.ClickDeleteAllWorkListButton();
+
+                    }
+
+                    else
+                    {
+                        mainWindowState.ClickDeleteAllWorkListButton();
+                    }
+
+                    Assert.AreEqual(0, mainWindowState.GetViewAllWorkListTableRowCount());
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(exception, "Test Delete All Wl Button Failed");
+                throw;
+            }
+            finally
+            {
+                _testClient.Kill();
+            }
+
+        }
+
+        [TestMethod]
+        public async Task TestDeleteAllTablesButton()
+        {
+            try
+            {
+                _logger.Info("Entering in Test Delete All Wl Button");
+
+                var menuState = await _testClient.StartAsync(TimeSpan.FromSeconds(30));
+                Assert.IsNotNull(menuState);
+
+                var openWindow = await menuState.GoToStateAsync("MainWindowState", TimeSpan.FromSeconds(30));
+
+                var window = openWindow.GetMainWindow();
+
+                if (openWindow is MainWindowState mainWindowState)
+                {
+
+                    bool isPatientTableEmpty = mainWindowState.IsViewAllPatientTableEmpty();
+                    bool isWorkListTableEmpty = mainWindowState.IsViewAllWorkListTableEmpty();
+
+
+                    if (isPatientTableEmpty)
+                    {
+                        mainWindowState.InputPatientCountTextBox();
+                        mainWindowState.ClickAddPatientButton();
+
+                    }
+                    if (isWorkListTableEmpty)
+                    {
+                        mainWindowState.InputAeTitleBoxTextBox();
+                        mainWindowState.InputWorkListCountTextBox();
+                        mainWindowState.ClickAddWorklistButton();
+                    }
+
+
+                    mainWindowState.ClickDeleteAllTablesButton();
+
+                    int rowPatientCount = mainWindowState.GetViewAllPatientTableRowCount();
+                    int rowWorklistCount = mainWindowState.GetViewAllWorkListTableRowCount();
+                   
+
+                    Assert.AreEqual(0, rowPatientCount + rowWorklistCount);
+
+
+                }
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(exception, "Test Delete All Wl Button Failed");
+                throw;
+            }
+            finally
+            {
+                _testClient.Kill();
+            }
+
+        }
 
     }
 

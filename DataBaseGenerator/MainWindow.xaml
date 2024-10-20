@@ -375,6 +375,7 @@
 
             <ListView
                 Name="ViewAllWorkList"
+                AutomationProperties.AutomationId="ViewAllWorkListTable"
                 Margin="5"
                 ItemsSource="{Binding AllWorkLists}">
 

@@ -187,17 +187,28 @@ namespace DataBaseGenerator.Test.Services
 
         public void ClickDeleteAllWorkListButton()
         {
-            var DeleteAllWorkListButton = _mainWindowStateLocators.DeleteAllWorkListButton;
-            DeleteAllWorkListButton.DrawHighlight();
-            DeleteAllWorkListButton.Click();
+            var deleteAllWorkListButton = _mainWindowStateLocators.DeleteAllWorkListButton;
+            deleteAllWorkListButton.DrawHighlight();
+            deleteAllWorkListButton.Click();
         }
 
-        public void GetViewAllWorkListTable()
+        public bool IsViewAllWorkListTableEmpty()
         {
             var viewAllWorkListTable = _mainWindowStateLocators.ViewAllWorkListTable;
-            viewAllWorkListTable.DrawHighlight();
-           
-            
+            var rowCount = viewAllWorkListTable.AsGrid().RowCount;
+            if (rowCount == 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public void ClickDeleteAllTablesButton()
+        {
+            var deleteAllTablesButton = _mainWindowStateLocators.DeleteAllTablesButton;
+            deleteAllTablesButton.DrawHighlight();
+            deleteAllTablesButton.Click();
         }
 
 
